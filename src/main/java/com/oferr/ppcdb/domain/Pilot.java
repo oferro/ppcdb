@@ -44,18 +44,16 @@ public class Pilot {
 	@Column(name = "ANSWER", length = 15)
 	private String piAnswer;
 
-	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "ppPilotMang")
 	@JsonIgnore
-    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "created"})
+	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler", "created" })
 	private List<Ppc> ppcs = new ArrayList<>();
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "flPilot")
 	@JsonIgnore
-    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "created"})
+	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler", "created" })
 	private List<Flight> flights = new ArrayList<>();
 
-	
 	public Pilot() {
 	}
 
@@ -71,8 +69,8 @@ public class Pilot {
 		this.setPiAnswer(piAnswer);
 	}
 
-	//Getter and setter
-	
+	// Getter and setter
+
 	public long getId() {
 		return id;
 	}
@@ -137,26 +135,26 @@ public class Pilot {
 		this.piAnswer = piAnswer;
 	}
 
-//	 PPC obj udtade from Pilot class
+	// PPC obj udtade from Pilot class
 	public void addPpc(Ppc ppc) {
-        ppcs.add(ppc);
-        ppc.setPpPilotMang(this);
-    }
- 
-    public void removePpc(Ppc ppc) {
-        ppcs.remove(ppc);
-        ppc.setPpPilotMang(null);
-    }
+		ppcs.add(ppc);
+		ppc.setPpPilotMang(this);
+	}
+
+	public void removePpc(Ppc ppc) {
+		ppcs.remove(ppc);
+		ppc.setPpPilotMang(null);
+	}
 
 //   Flight obj udtade from Pilot class
 	public void addFlight(Flight flight) {
-        flights.add(flight);
-        flight.setFlPilot(this);
-    }
- 
-    public void removeFlight(Flight flight) {
-        flights.remove(flight);
-        flight.setFlPilot(null);
-    }
+		flights.add(flight);
+		flight.setFlPilot(this);
+	}
+
+	public void removeFlight(Flight flight) {
+		flights.remove(flight);
+		flight.setFlPilot(null);
+	}
 
 }

@@ -1,64 +1,72 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ page import = "java.util.Date" %>
+<%@ page import = "java.text.SimpleDateFormat" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html dir="rtl">
+<html dir="ltr">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Actor Add Form</title>
+<title>Flight Add Form</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="style.css">
+
+<%
+  SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+  String date = sdf.format(new Date());
+%>
+
 </head>
 <body>
-	<form action="FlightController" method="post" name="add">
-<!--
-		<div>
-			<label for="id_param">ID (readonly)</label> <input readonly
-				type="text" name="id_param" value="<c:out  value="${sahkan.id}"/>" />
-		</div>
--->
-		<div>
-			<label for="ppcId_param">PPC ID(Int)</label> <input type="text"
-				name="ppcId_param" value="<c:out  value="${tisa.ppcId}"/>" />
-		</div>
-
-		<div>
-			<label for="userId_param">User ID(Int)</label> <input type="text"
-				name="userId_param" value="<c:out  value="${tisa.userId}"/>" />
+<h1>Flight Add Form</h1>
+	<form action="/flight/addFlight"  method="post" name="frm" class="container">
+		<div class="row">
+			<label class="col-1" for="pilotId">Pilot ID : </label> 
+			<select class="col-2" name=pilotId>
+				<c:forEach var="p" items="${pilotList}">
+					<option value="${p.id}">${p.piFirstName}</option>
+				</c:forEach>
+			</select>
 		</div>
 
 		<div>
-			<label for="date_param">Flight Date</label> <input type="text"
-				name="date_param" value="<c:out  value="${tisa.date}"/>" />
+			<label for="ppcId">PPC ID : </label> 
+			<select name=ppcId>
+				<c:forEach var="p" items="${ppcList}">
+					<option value="${p.id}">${p.ppName}</option>
+				</c:forEach>
+			</select>
 		</div>
 
 		<div>
-			<label for="toHour_param">Time Start</label> <input type="text"
-				name="toHour_param" value="<c:out  value="${tisa.toHour}"/>" />
+			<label for="flDate">Flight Date</label> 
+			<input type="text"	name="flDate"  placeholder="YYYY-MM-DD" value=<%=date%> />
 		</div>
 
 		<div>
-			<label for="lndHour_param">Time Landing</label> <input type="text"
-				name="lndHour_param" value="<c:out  value="${tisa.lndHour}"/>" />
+			<label for="flToTime">Time Start</label> 
+			<input type="text"	name="flToTime"  placeholder="HH:MM"/>
 		</div>
 
 		<div>
-			<label for="airField_param">Air Field</label> <input type="text"
-				name="airField_param" value="<c:out  value="${tisa.airField}"/>" />
+			<label for="flLndTime">Time Landing</label> 
+			<input type="text"	name="flLndTime" placeholder="HH:MM" />
 		</div>
 
 		<div>
-			<label for="fltRoute_param">Flight Route</label> <input type="text"
-				name="fltRoute_param" value="<c:out  value="${tisa.fltRoute}"/>" />
+			<label for="flAirField">Air Field</label> 
+			<input type="text"	name="flAirField"/>
 		</div>
 
 		<div>
-			<label for="update_param">Update Date (readonly)</label> <input
-				readonly type="text" name="update_param"
-				value="<c:out  value="${sahkan.last_update}"/>" />
+			<label for="flRoute">Flight Route</label> 
+			<input type="text"	name="flRoute"  />
 		</div>
-<!--  button config run on Chrom -->
-		<button type="submit" value="add" name="myaction" >הוספת טיסה</button>
 
-		<input type="submit" value="add" name="myaction" />
-		
+
+		<input type="submit" value="update" name="frm" /> <a href="/">Cancel</a>
 	</form>
 </body>
 </html>

@@ -135,7 +135,7 @@
 		<div class="row">
 			<H2>רשימת טיסות</H2>
 			<h3>
-				<a href="FlightController?myaction=add">חדש</a> <a
+				<a href="addflight">חדש</a> <a
 					href="FlightController?myaction=listOfFlights">רענן</a>
 			</h3>
 			<table class=table>
@@ -163,9 +163,9 @@
 							<td><c:out value="${t.flAirField}" /></td>
 							<td><c:out value="${t.flRoute}" /></td>
 							<td><a
-								href="FlightController?myaction=delete&id=<c:out  value="${t.id}"/>">מחיקה</a>
+								href="flightDel/<c:out  value="${t.id}"/>">מחיקה</a>
 								<a
-								href="flight/id?id=<c:out  value="${t.id}"/>">עדכון</a>
+								href="flightUpdate/<c:out  value="${t.id}"/>">עדכון</a>
 							</td>
 
 						</tr>

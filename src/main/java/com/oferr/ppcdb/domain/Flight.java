@@ -102,6 +102,7 @@ public class Flight {
 		this.setFlRemark(flRemark);
 	}
 	
+
 	
 	// Getter & Setter
 
@@ -136,7 +137,12 @@ public class Flight {
 	public void setFlDate(LocalDate flDate) {
 		this.flDate = flDate;
 	}
-
+	
+	public void setFlDate(String flDate) {
+		this.flDate = LocalDate.parse(flDate);
+	}
+	
+	
 	public LocalTime getFlToTime() {
 		return flToTime;
 	}
@@ -145,6 +151,11 @@ public class Flight {
 		this.flToTime = flToTime;
 	}
 
+	public void setFlToTime(String flToTime) {
+		this.flToTime = LocalTime.parse(flToTime);
+	}
+
+
 	public LocalTime getFlLndTime() {
 		return flLndTime;
 	}
@@ -152,6 +163,11 @@ public class Flight {
 	public void setFlLndTime(LocalTime flLndTime) {
 		this.flLndTime = flLndTime;
 	}
+
+	public void setFlLndTime(String flLndTime) {
+		this.flLndTime = LocalTime.parse(flLndTime);
+	}
+
 
 	public String getFlPassengerName() {
 		return flPassengerName;

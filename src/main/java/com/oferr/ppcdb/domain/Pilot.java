@@ -135,6 +135,24 @@ public class Pilot {
 		this.piAnswer = piAnswer;
 	}
 
+	
+	
+	public List<Ppc> getPpcs() {
+		return ppcs;
+	}
+
+	public void setPpcs(List<Ppc> ppcs) {
+		this.ppcs = ppcs;
+	}
+
+	public List<Flight> getFlights() {
+		return flights;
+	}
+
+	public void setFlights(List<Flight> flights) {
+		this.flights = flights;
+	}
+
 	// PPC obj udtade from Pilot class
 	public void addPpc(Ppc ppc) {
 		ppcs.add(ppc);
@@ -157,4 +175,10 @@ public class Pilot {
 		flight.setFlPilot(null);
 	}
 
+// 	get Full name
+	public String getFullName() {
+		String fn = this.getPiFirstName() + " " + this.getPiLastName();
+		return fn;
+	}
+	
 }

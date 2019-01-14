@@ -100,7 +100,7 @@
 		<div class="row">
 			<div class="col-sm-4">
 				<span class="glyphicon glyphicon-calendar logo-small"></span>
-				<h4>FLIGHT</h4>
+				<a href=#flights><h4>FLIGHT</h4></a>
 				<p>Flight Logbook</p>
 			</div>
 			<div class="col-sm-4">
@@ -119,7 +119,7 @@
 			<div class="col-sm-4">
 				<span class="glyphicon glyphicon-user logo-small"></span>
 				<h4>Owners</h4>
-				<p>User & Partners</p>
+				<p>Pilots & Partners</p>
 			</div>
 			<div class="col-sm-4">
 				<span class="glyphicon glyphicon-print logo-small"></span>
@@ -132,11 +132,11 @@
 				<p>Lorem ipsum dolor sit amet..</p>
 			</div>
 		</div>
-		<div class="row">
+		<div class="row" id="flights">
 			<H2>רשימת טיסות</H2>
 			<h3>
 				<a href="addflight">חדש</a> <a
-					href="FlightController?myaction=listOfFlights">רענן</a>
+					href="/#services">רענן</a>
 			</h3>
 			<table class=table>
 				<thead>
@@ -174,7 +174,42 @@
 			</table>
 
 		</div>
-	</div>
+		<div class="row" id="pilots">
+			<H2>רשימת טייסים</H2>
+			<h3>
+				<a href="addpilot">חדש</a> <a
+					href="/#pilots">רענן</a>
+			</h3>
+			<table class=table>
+				<thead>
+					<tr>
+						<TH>ID</TH>
+						<TH>שם פרטי</TH>
+						<TH>שם משפחה</TH>
+						<TH>מייל</TH>
+						<TH>טלפון</TH>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach items="${pilotList}" var="p">
+						<tr>
+							<td><c:out value="${p.id}" /></td>
+							<td><c:out value="${p.piFirstName}" /></td>
+							<td><c:out value="${p.piLastName}" /></td>
+							<td><c:out value="${p.piEmail}" /></td>
+							<td><c:out value="${p.piPhone}" /></td>
+							<td><a
+								href="pilotDel/<c:out  value="${p.id}"/>">מחיקה</a>
+								<a
+								href="pilotUpdate/<c:out  value="${p.id}"/>">עדכון</a>
+							</td>
+
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+
+		</div>	</div>
 	<div id="portfolio" class="container-fluid text-center bg-grey">
 		<h2>Portfolio</h2>
 		<h4>What we have created</h4>
@@ -208,159 +243,20 @@
 			</div>
 		</div>
 	</div>
-	<h2>What our customers say</h2>
-	<div id="myCarousel" class="carousel slide text-center"
-		data-ride="carousel">
-		<!-- Indicators -->
-		<ol class="carousel-indicators">
-			<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-			<li data-target="#myCarousel" data-slide-to="1"></li>
-			<li data-target="#myCarousel" data-slide-to="2"></li>
-		</ol>
-
-		<!-- Wrapper for slides -->
-		<div class="carousel-inner" role="listbox">
-			<div class="item active">
-				<h4>
-					"This company is the best. I am so happy with the result!"<br>
-					<span style="font-style: normal;">Michael Roe, Vice
-						President, Comment Box</span>
-				</h4>
-			</div>
-			<div class="item">
-				<h4>
-					"One word... WOW!!"<br> <span style="font-style: normal;">John
-						Doe, Salesman, Rep Inc</span>
-				</h4>
-			</div>
-			<div class="item">
-				<h4>
-					"Could I... BE any more happy with this company?"<br> <span
-						style="font-style: normal;">Chandler Bing, Actor,
-						FriendsAlot</span>
-				</h4>
-			</div>
-		</div>
-
-		<!-- Left and right controls -->
-		<a class="left carousel-control" href="#myCarousel" role="button"
-			data-slide="prev"> <span class="glyphicon glyphicon-chevron-left"
-			aria-hidden="true"></span> <span class="sr-only">Previous</span>
-		</a> <a class="right carousel-control" href="#myCarousel" role="button"
-			data-slide="next"> <span
-			class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-			<span class="sr-only">Next</span>
-		</a>
-	</div>
-	<div id="pricing" class="container-fluid">
-		<div class="text-center">
-			<h2>Pricing</h2>
-			<h4>Choose a payment plan that works for you</h4>
-		</div>
-		<div class="row">
-			<div class="col-sm-4">
-				<div class="panel panel-default text-center">
-					<div class="panel-heading">
-						<h1>Basic</h1>
-					</div>
-					<div class="panel-body">
-						<p>
-							<strong>20</strong> Lorem
-						</p>
-						<p>
-							<strong>15</strong> Ipsum
-						</p>
-						<p>
-							<strong>5</strong> Dolor
-						</p>
-						<p>
-							<strong>2</strong> Sit
-						</p>
-						<p>
-							<strong>Endless</strong> Amet
-						</p>
-					</div>
-					<div class="panel-footer">
-						<h3>$19</h3>
-						<h4>per month</h4>
-						<button class="btn btn-lg">Sign Up</button>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-4">
-				<div class="panel panel-default text-center">
-					<div class="panel-heading">
-						<h1>Pro</h1>
-					</div>
-					<div class="panel-body">
-						<p>
-							<strong>50</strong> Lorem
-						</p>
-						<p>
-							<strong>25</strong> Ipsum
-						</p>
-						<p>
-							<strong>10</strong> Dolor
-						</p>
-						<p>
-							<strong>5</strong> Sit
-						</p>
-						<p>
-							<strong>Endless</strong> Amet
-						</p>
-					</div>
-					<div class="panel-footer">
-						<h3>$29</h3>
-						<h4>per month</h4>
-						<button class="btn btn-lg">Sign Up</button>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-4">
-				<div class="panel panel-default text-center">
-					<div class="panel-heading">
-						<h1>Premium</h1>
-					</div>
-					<div class="panel-body">
-						<p>
-							<strong>100</strong> Lorem
-						</p>
-						<p>
-							<strong>50</strong> Ipsum
-						</p>
-						<p>
-							<strong>25</strong> Dolor
-						</p>
-						<p>
-							<strong>10</strong> Sit
-						</p>
-						<p>
-							<strong>Endless</strong> Amet
-						</p>
-					</div>
-					<div class="panel-footer">
-						<h3>$49</h3>
-						<h4>per month</h4>
-						<button class="btn btn-lg">Sign Up</button>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
 	<div id="contact" class="container-fluid bg-grey">
 		<h2 class="text-center">CONTACT</h2>
 		<div class="row">
 			<div class="col-sm-5 text-left">
 				<p>Contact us and we'll get back to you within 24 hours.</p>
 				<p>
-					<span class="glyphicon glyphicon-map-marker"></span> Chicago, US
+					<span class="glyphicon glyphicon-map-marker"></span> Israel
 				</p>
 				<p>
-					<span class="glyphicon glyphicon-phone"></span> +00 1515151515
+					<span class="glyphicon glyphicon-phone"></span> +972 54-255-5137
 				</p>
 				<p>
 					<span class="glyphicon glyphicon-envelope"></span>
-					myemail@something.com
+					ofer_ro@yahoo.com
 				</p>
 			</div>
 			<div class="col-sm-7">
@@ -386,7 +282,7 @@
 		</div>
 	</div>
 	<!-- Add Google Maps -->
-	<!-- 
+	
 <!-- Till I have a user key for google map
 		<div id="googleMap" style="height: 400px; width: 100%;"></div>
 		<script>
@@ -429,8 +325,8 @@ Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="#about">ABOUT</a></li>
 				<li><a href="#services">SERVICES</a></li>
-				<li><a href="#portfolio">PORTFOLIO</a></li>
-				<li><a href="#pricing">PRICING</a></li>
+				<li><a href="#flights">FLIGHTS</a></li>
+				<li><a href="#pilots">PILOTS</a></li>
 				<li><a href="#contact">CONTACT</a></li>
 			</ul>
 		</div>
@@ -448,7 +344,7 @@ Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
 		$(document).ready(
 				function() {
 					// Add smooth scrolling to all links in navbar + footer link
-					$(".navbar a, footer a[href='#myPage']").on('click',
+					$(".navbar a, footer a[href='#myPage'],a[href='#flights'],a[href='#pilots']").on('click',
 							function(event) {
 
 								// Make sure this.hash has a value before overriding default behavior

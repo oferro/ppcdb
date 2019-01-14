@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,13 +32,22 @@ public class FlightController {
 	@Autowired
 	PilotRepository pilotRepository;
 
+	
+//	fill up the flight list in index.jsp	------------------------------------------------
+	
 	@RequestMapping("/")
 	public ModelAndView home() {
-		Iterable<Flight> tisot = repository.findAll();
-		ModelAndView mav = new ModelAndView("index", "tisot", tisot);
+		Sort sort = Sort.by(Sort.Direction.DESC, "flDate");
+		Iterable<Flight> tisot = repository.findAll(sort);
+		Iterable<Pilot> pilotList = pilotRepository.findAll();
+		ModelAndView mav = new ModelAndView("index");
+		mav.addObject("tisot", tisot).addObject("pilotList", pilotList);
 		return mav;
 	}
 
+	
+//	Open flight updateflight.jsp form 		-----------------------------------------------
+	
 	@RequestMapping("/flightUpdate/{id}")
 	public ModelAndView updateFlight(@PathVariable("id") String id) {
 		Long lId = Long.parseLong(id);
@@ -48,13 +58,14 @@ public class FlightController {
 				fl = optFlight.get();
 			}
 			System.out.println("List of Flight: "+fl);
-			List<Flight> flList = null;
-			flList.add(fl);
-			System.out.println("List of Flight: "+flList);		
+			System.out.println("List of Flight: "+optFlight);		
 			ModelAndView mav = new ModelAndView("updateflight");
-		mav.addObject("tisa" ,flList);
+		mav.addObject("tisa" ,fl);
 		return mav;
 	}
+
+	
+//	open addflight.jsp form for new flight   	--------------------------------------------
 	
 	@RequestMapping("/addflight")
 	public ModelAndView addFlight() {
@@ -65,6 +76,9 @@ public class FlightController {
 		return mav;
 	}
 
+	
+//	return from addflight to the flight list 	--------------------------------------------
+	
 	@RequestMapping(value = "/flight/addFlight", method = RequestMethod.POST)
 	public String addFlight(@RequestParam("pilotId") String pilotId, @RequestParam("ppcId") String ppcId,
 			@RequestParam("flDate") String flDate, @RequestParam("flToTime") String flToTime,
@@ -100,6 +114,35 @@ public class FlightController {
 		return "redirect:/";
 	}
 
+	
+//	return from updateflight.jsp form 		--------------------------------------------------------
+	
+	@RequestMapping(value = "/flight/updateflight", method = RequestMethod.POST)
+	public String addFlight(@RequestParam("id") String id,
+			@RequestParam("flDate") String flDate, @RequestParam("flToTime") String flToTime,
+			@RequestParam("flLndTime") String flLndTime, @RequestParam("flAirField") String flAirField,
+			@RequestParam("flRoute") String flRoute) {
+//	Flight obj
+		Optional<Flight> optFlight = repository.findById(Long.parseLong(id));
+		Flight fl = new Flight();
+		if (optFlight.isPresent()) {
+			fl = optFlight.get();
+		}
+
+//	Fill up pilot fl obj
+		fl.setFlDate(flDate);
+		fl.setFlToTime(flToTime);
+		fl.setFlLndTime(flLndTime);
+		fl.setFlAirField(flAirField);
+		fl.setFlRoute(flRoute);
+//	repository insert
+		repository.save(fl);
+		return "redirect:/";
+	}
+
+	
+//	Delete flight		--------------------------------------------------------------------
+	
 	@RequestMapping(value = "/flightDel/{id}")
 	public String deleteFlight(@PathVariable ("id") String id) {
 		Long lId = Long.parseLong(id);
@@ -108,20 +151,5 @@ public class FlightController {
 		System.out.println("delete category id: " + lId);
 		return "redirect:/";
 	}
-
-//	@RequestMapping(value="/category2/update/{id}")
-//	public ModelAndView updateCategory (@PathVariable("id") String id) {
-//		Iterable<Category> reshima = repository.findByID(Long.parseLong(id));
-//		ModelAndView mav = new ModelAndView("formcategory", "reshima", reshima);
-//	   System.out.println("update category id: "+id);
-//	   return mav;
-//	}
-
-//	@RequestMapping("/flight/id")
-//	public ModelAndView updateFlight(@RequestParam("id") long personId) {
-//		Iterable<Flight> tisa = repository.findById(personId);
-//		ModelAndView mav = new ModelAndView("formflight", "tisa", tisa);
-//		return mav;
-//    }
 
 }

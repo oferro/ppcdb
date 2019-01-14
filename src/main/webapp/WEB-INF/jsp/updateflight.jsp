@@ -13,8 +13,7 @@
 
 </head>
 <body>
-	<form class="container" method="post" action="/Flight/updateflight" >
-	<c:forEach var="tisa" item="tisa">
+	<form class="container" method="post" action="/flight/updateflight" >
 		<div>
 			<label for="id">ID (readonly)</label> 
 			<input readonly	type="text" name="id" value="<c:out  value="${tisa.id}"/>" />
@@ -36,13 +35,13 @@
 		</div>
 
 		<div>
-			<label for="flToHour">Time Start</label> 
-			<input type="text"	name="flToHour" value="<c:out  value="${tisa.flToTime}"/>" />
+			<label for="flToTime">Time Start</label> 
+			<input type="text"	name="flToTime" value="<c:out  value="${tisa.flToTime}"/>" />
 		</div>
 
 		<div>
-			<label for="flLndHour">Time Landing</label> 
-			<input type="text"	name="flLndHour" value="<c:out  value="${tisa.flLndTime}"/>" />
+			<label for="flLndTime">Time Landing</label> 
+			<input type="text"	name="flLndTime" value="<c:out  value="${tisa.flLndTime}"/>" />
 		</div>
 
 		<div>
@@ -56,8 +55,7 @@
 		</div>
 
 
-		<input type="submit" value="update" name="myaction" />
-		</c:forEach>
-	</form:form>
+		<input type="submit" value="update" name="myaction" /> <a href="/#services">Cancel</a>
+	</form>
 </body>
 </html>

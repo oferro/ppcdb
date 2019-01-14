@@ -1,7 +1,7 @@
 package com.oferr.ppcdb.domain;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface PilotRepository extends CrudRepository<Pilot, Long> {
+public interface PilotRepository extends JpaRepository<Pilot, Long> {
 
 }

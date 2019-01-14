@@ -1,8 +1,8 @@
 package com.oferr.ppcdb.domain;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface FlightRepository extends CrudRepository<Flight, Long> {
+public interface FlightRepository extends JpaRepository<Flight, Long> {
 	
 
 }

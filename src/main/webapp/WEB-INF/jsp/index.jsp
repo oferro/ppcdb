@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<html lang="he" dir="rtl">
+<html lang="he" dir="ltr">
 <head>
 <title>PPC Logbook System</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -62,37 +62,6 @@
 			life cycle of the PPC.
 	</div>
 
-	<!-- 
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col-sm-8">
-				<h2>About Company Page</h2>
-				<h4>Lorem ipsum..</h4>
-				<p>Lorem ipsum..</p>
-				<button class="btn btn-default btn-lg">Get in Touch</button>
-			</div>
-			<div class="col-sm-4">
-				<span class="glyphicon glyphicon-signal logo"></span>
-			</div>
-		</div>
-	</div>
-	<div class="container-fluid bg-grey">
-		<div class="row">
-			<div class="col-sm-4">
-				<span class="glyphicon glyphicon-globe logo"></span>
-			</div>
-			<div class="col-sm-8">
-				<h2>Our Values</h2>
-				<h4>
-					<strong>MISSION:</strong> Our mission lorem ipsum..
-				</h4>
-				<p>
-					<strong>VISION:</strong> Our vision Lorem ipsum..
-				</p>
-			</div>
-		</div>
-	</div>
--->
 	<div id="services" class="container-fluid text-center">
 		<h2>SERVICES</h2>
 		<h4>What we offer</h4>
@@ -110,7 +79,7 @@
 			</div>
 			<div class="col-sm-4">
 				<span class="glyphicon glyphicon-lock logo-small"></span>
-				<h4>PPC</h4>
+				<a href=#ppcs><h4>PPC</h4></a>
 				<p>PPC Details</p>
 			</div>
 		</div>
@@ -118,7 +87,7 @@
 		<div class="row">
 			<div class="col-sm-4">
 				<span class="glyphicon glyphicon-user logo-small"></span>
-				<h4>Owners</h4>
+				<a href=#pilots><h4>Owners</h4></a>
 				<p>Pilots & Partners</p>
 			</div>
 			<div class="col-sm-4">
@@ -208,37 +177,74 @@
 					</c:forEach>
 				</tbody>
 			</table>
+		</div>	
+		<div class="row bg-grey" id="ppcs">
+			<H2>רשימת כלי ממ"ג</H2>
+			<h3>
+				<a href="addPpc">חדש</a> <a
+					href="/#ppcs">רענן</a>
+			</h3>
+			<table class=table>
+				<thead>
+					<tr>
+						<TH>ID</TH>
+						<TH>שם ממג</TH>
+						<TH>שם יצרן</TH>
+						<TH>סוג מנוע</TH>
+						<TH>שעמ התחלתי</TH>
+						<TH>נפח מיכל דלק</TH>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach items="${ppcList}" var="pp">
+						<tr>
+							<td><c:out value="${pp.id}" /></td>
+							<td><c:out value="${pp.ppName}" /></td>
+							<td><c:out value="${pp.ppManuf}" /></td>
+							<td><c:out value="${pp.ppEnginType}" /></td>
+							<td><c:out value="${pp.ppEngHourStart}" /></td>
+							<td><c:out value="${pp.ppFuelQt}" /></td>
+							<td><a
+								href="ppcDel/<c:out  value="${pp.id}"/>">מחיקה</a>
+								<a
+								href="ppcUpdate/<c:out  value="${pp.id}"/>">עדכון</a>
+							</td>
 
-		</div>	</div>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+		</div>	
+	</div>
 	<div id="portfolio" class="container-fluid text-center bg-grey">
 		<h2>Portfolio</h2>
 		<h4>What we have created</h4>
 		<div class="row text-center">
 			<div class="col-sm-4">
 				<div class="thumbnail">
-					<img src="paris.jpg" alt="Paris">
+					<img src="shokeda.jpg" alt="Shokeda">
 					<p>
-						<strong>Paris</strong>
+						<strong>Shokeda</strong>
 					</p>
-					<p>Yes, we built Paris</p>
+					<p>Yes, we flight at Shokeda</p>
 				</div>
 			</div>
 			<div class="col-sm-4">
 				<div class="thumbnail">
-					<img src="newyork.jpg" alt="New York">
+					<img src="kfarMaimon.jpg" alt="Kfar Maimon">
 					<p>
-						<strong>New York</strong>
+						<strong>Kfar Maimon</strong>
 					</p>
-					<p>We built New York</p>
+					<p>We built Kfar Maimon</p>
 				</div>
 			</div>
 			<div class="col-sm-4">
 				<div class="thumbnail">
-					<img src="sanfran.jpg" alt="San Francisco">
+					<img src="myPPC.jpg" alt="My PPC">
 					<p>
-						<strong>San Francisco</strong>
+						<strong>My PPC</strong>
 					</p>
-					<p>Yes, San Fran is ours</p>
+					<p>Yes, My PPC at Saad airfield</p>
 				</div>
 			</div>
 		</div>
@@ -256,7 +262,7 @@
 				</p>
 				<p>
 					<span class="glyphicon glyphicon-envelope"></span>
-					ofer_ro@yahoo.com
+					<a href="mailto:ofer_ro@yahoo.com?subject=PPC Logbook site">ofer_ro@yahoo.com</a>
 				</p>
 			</div>
 			<div class="col-sm-7">

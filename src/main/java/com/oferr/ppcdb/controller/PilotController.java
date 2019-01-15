@@ -1,12 +1,13 @@
 package com.oferr.ppcdb.controller;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.oferr.ppcdb.domain.Pilot;
@@ -48,11 +49,30 @@ public class PilotController{
 		repository.save(pi);
 		return "redirect:/";
 	}
+	
+//	Open pilot updatepilot.jsp form 		-----------------------------------------------
+	
+	@RequestMapping("/pilotUpdate/{id}")
+	public ModelAndView updatePilot(@PathVariable("id") String id) {
+		Long lId = Long.parseLong(id);
+		System.out.println("ID for repository Update is : " + lId);
+		Optional<Pilot> optPilot = repository.findById(lId);
+		Pilot pi = new Pilot();
+			if(optPilot.isPresent()) {
+				pi = optPilot.get();
+			}
+			System.out.println("List of Pilot: "+pi);
+			System.out.println("List of Pilot: "+optPilot);		
+			ModelAndView mav = new ModelAndView("updatepilot");
+		mav.addObject("pilot" ,pi);
+		return mav;
+	}
+
 
 //	Delete Pilot		--------------------------------------------------------------------
 	
 	@RequestMapping(value = "/pilotDel/{id}")
-	public ModelAndView deleteFlight(@PathVariable ("id") String id) {
+	public ModelAndView deletePilot(@PathVariable ("id") String id) {
 		Long lId = Long.parseLong(id);
 		System.out.println("Pilot ID for repository Delete is : " + lId);
 		Pilot delPilot = repository.getOne(lId);
@@ -60,7 +80,7 @@ public class PilotController{
 
 //	Check if there is flights for this pilot befor delete ?
 		if (delPilot.getFlights().isEmpty()) {
-			System.out.println("pilot.Flights isEmpty() = " +delPilot.getPpcs().isEmpty());
+			System.out.println("pilot.Flights isEmpty() = " +delPilot.getFlights().isEmpty());
 //			repository.deleteById(lId);
 			String msg = "Pilot Deltle : " + delPilot.getFullName();
 			System.out.println("deleted Pilot id: " + lId);
@@ -69,7 +89,7 @@ public class PilotController{
 		} else {
 			String msgError = "Pilot " +delPilot.getFullName() +" - can't delete. there is Flight records for this pilot";
 			System.out.println(msgError);
-			System.out.println("NOT delete category id: " + lId);
+			System.out.println("NOT delete Pilot, id: " + lId);
 			mav.setViewName("error");
 			mav.addObject("message", msgError);
 		}

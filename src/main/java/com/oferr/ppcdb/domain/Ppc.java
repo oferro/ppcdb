@@ -113,6 +113,11 @@ public class Ppc {
 	public void setPpEngHourStart(Double ppEngHourStart) {
 		this.ppEngHourStart = BigDecimal.valueOf(ppEngHourStart);
 	}
+	
+	public void setPpEngHourStart(String ppEngHourStart) {
+		double engHour = Float.parseFloat(ppEngHourStart); 
+		this.ppEngHourStart = BigDecimal.valueOf(engHour);
+	}
 
 	public BigDecimal getPpFuelQt() {
 		return ppFuelQt;
@@ -121,7 +126,12 @@ public class Ppc {
 	public void setPpFuelQt(Double ppFuelQt) {
 		this.ppFuelQt = BigDecimal.valueOf(ppFuelQt);
 	}
-
+	
+	public void setPpFuelQt(String ppFuelQt) {
+		double fuelQt = Float.parseFloat(ppFuelQt);
+		this.ppFuelQt = BigDecimal.valueOf(fuelQt);
+	}
+	
 	public Pilot getPpPilotMang() {
 		return ppPilotMang;
 	}

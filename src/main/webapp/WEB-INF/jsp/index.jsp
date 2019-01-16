@@ -216,6 +216,7 @@
 			</table>
 		</div>	
 	</div>
+<!-- 
 	<div id="portfolio" class="container-fluid text-center bg-grey">
 		<h2>Portfolio</h2>
 		<h4>What we have created</h4>
@@ -249,6 +250,7 @@
 			</div>
 		</div>
 	</div>
+	 -->
 	<div id="contact" class="container-fluid bg-grey">
 		<h2 class="text-center">CONTACT</h2>
 		<div class="row">

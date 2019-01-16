@@ -22,14 +22,15 @@ public class PilotController{
 //	open addPilot.jsp form for new pilot   	--------------------------------------------
 	
 	@RequestMapping("/addpilot")
-	public String addPilot() {
+	public String openAddPilot() {
 		return "addPilot";
 	}
 	
 //	return from addpilot to the pilot list 	--------------------------------------------
 	
 	@RequestMapping(value = "/pilot/addPilot", method = RequestMethod.POST)
-	public String addFlight(@RequestParam("piFirstName") String piFirstName, 
+	public String addPilot(
+			@RequestParam("piFirstName") String piFirstName, 
 			@RequestParam("piLastName") String piLastName,
 			@RequestParam("piEmail") String piEmail, 
 			@RequestParam("piPw") String piPw,
@@ -53,7 +54,7 @@ public class PilotController{
 //	Open pilot updatepilot.jsp form 		-----------------------------------------------
 	
 	@RequestMapping("/pilotUpdate/{id}")
-	public ModelAndView updatePilot(@PathVariable("id") String id) {
+	public ModelAndView openUpdatePilot(@PathVariable("id") String id) {
 		Long lId = Long.parseLong(id);
 		System.out.println("ID for repository Update is : " + lId);
 		Optional<Pilot> optPilot = repository.findById(lId);
@@ -68,6 +69,30 @@ public class PilotController{
 		return mav;
 	}
 
+//	return from updatepilot to the pilot list 	--------------------------------------------
+	
+	@RequestMapping(value = "/pilot/updatePilot", method = RequestMethod.POST)
+	public String updatePilot(
+			@RequestParam("id") String id,
+			@RequestParam("piFirstName") String piFirstName, 
+			@RequestParam("piLastName") String piLastName,
+			@RequestParam("piEmail") String piEmail, 
+			@RequestParam("piPw") String piPw,
+			@RequestParam("piPhone") String piPhone 
+			) {
+//	Flight obj
+		Pilot pi = repository.getOne(Long.parseLong(id));
+
+//	Fill up pilot pi obj
+		pi.setPiFirstName(piFirstName);
+		pi.setPiLastName(piLastName);
+		pi.setPiEmail(piEmail);
+		pi.setPiPw(piPw);
+		pi.setPiPhone(piPhone);
+//	repository insert
+		repository.save(pi);
+		return "redirect:/";
+	}
 
 //	Delete Pilot		--------------------------------------------------------------------
 	

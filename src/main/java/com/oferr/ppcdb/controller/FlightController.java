@@ -48,7 +48,7 @@ public class FlightController {
 //	Open flight updateflight.jsp form 		-----------------------------------------------
 	
 	@RequestMapping("/flightUpdate/{id}")
-	public ModelAndView updateFlight(@PathVariable("id") String id) {
+	public ModelAndView openUpdateFlight(@PathVariable("id") String id) {
 		Long lId = Long.parseLong(id);
 		System.out.println("ID for repository Update is : " + lId);
 		Optional<Flight> optFlight = repository.findById(lId);
@@ -67,7 +67,7 @@ public class FlightController {
 //	open addflight.jsp form for new flight   	--------------------------------------------
 	
 	@RequestMapping("/addflight")
-	public ModelAndView addFlight() {
+	public ModelAndView openAddFlight() {
 		Iterable<Pilot> pilotList = pilotRepository.findAll();
 		Iterable<Ppc> ppcList = ppcRepository.findAll();
 		ModelAndView mav = new ModelAndView("addflight");
@@ -79,10 +79,15 @@ public class FlightController {
 //	return from addflight to the flight list 	--------------------------------------------
 	
 	@RequestMapping(value = "/flight/addFlight", method = RequestMethod.POST)
-	public String addFlight(@RequestParam("pilotId") String pilotId, @RequestParam("ppcId") String ppcId,
-			@RequestParam("flDate") String flDate, @RequestParam("flToTime") String flToTime,
-			@RequestParam("flLndTime") String flLndTime, @RequestParam("flAirField") String flAirField,
-			@RequestParam("flRoute") String flRoute) {
+	public String addFlight(
+			@RequestParam("pilotId") String pilotId, 
+			@RequestParam("ppcId") String ppcId,
+			@RequestParam("flDate") String flDate, 
+			@RequestParam("flToTime") String flToTime,
+			@RequestParam("flLndTime") String flLndTime, 
+			@RequestParam("flAirField") String flAirField,
+			@RequestParam("flRoute") String flRoute
+			) {
 //	Flight obj
 		Flight fl = new Flight();
 
@@ -117,10 +122,14 @@ public class FlightController {
 //	return from updateflight.jsp form 		--------------------------------------------------------
 	
 	@RequestMapping(value = "/flight/updateflight", method = RequestMethod.POST)
-	public String addFlight(@RequestParam("id") String id,
-			@RequestParam("flDate") String flDate, @RequestParam("flToTime") String flToTime,
-			@RequestParam("flLndTime") String flLndTime, @RequestParam("flAirField") String flAirField,
-			@RequestParam("flRoute") String flRoute) {
+	public String updateFlight(
+			@RequestParam("id") String id,
+			@RequestParam("flDate") String flDate, 
+			@RequestParam("flToTime") String flToTime,
+			@RequestParam("flLndTime") String flLndTime, 
+			@RequestParam("flAirField") String flAirField,
+			@RequestParam("flRoute") String flRoute
+			) {
 //	Flight obj
 		Optional<Flight> optFlight = repository.findById(Long.parseLong(id));
 		Flight fl = new Flight();

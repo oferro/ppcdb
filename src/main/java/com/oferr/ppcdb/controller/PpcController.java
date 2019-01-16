@@ -22,14 +22,14 @@ public class PpcController {
 //	open addPpc.jsp form for new pilot   	--------------------------------------------
 	
 	@RequestMapping("/addPpc")
-	public String addPilot() {
+	public String openAddPpc() {
 		return "addPpc";
 	}
 	
 //	return from addPpc to the ppc list 	--------------------------------------------
 	
 	@RequestMapping(value = "/ppc/addPpc", method = RequestMethod.POST)
-	public String addFlight(@RequestParam("ppName") String ppName, 
+	public String addPpc(@RequestParam("ppName") String ppName, 
 			@RequestParam("ppManuf") String ppManuf,
 			@RequestParam("ppEnginType") String ppEnginType, 
 			@RequestParam("ppEngHourStart") String ppEngHourStart,
@@ -53,7 +53,7 @@ public class PpcController {
 //	Open ppc updateppc.jsp form 		-----------------------------------------------
 	
 	@RequestMapping("/ppcUpdate/{id}")
-	public ModelAndView updatePpc(@PathVariable("id") String id) {
+	public ModelAndView openUpdatePpc(@PathVariable("id") String id) {
 		Long lId = Long.parseLong(id);
 		System.out.println("ID for repository Update is : " + lId);
 		Optional<Ppc> optPpc = repository.findById(lId);
@@ -71,10 +71,14 @@ public class PpcController {
 //	return from updateppc.jsp form 		--------------------------------------------------------
 	
 	@RequestMapping(value = "/ppc/updateppc", method = RequestMethod.POST)
-	public String addFlight(@RequestParam("id") String id,
-			@RequestParam("ppName") String ppName, @RequestParam("ppManuf") String ppManuf,
-			@RequestParam("ppEnginType") String ppEnginType, @RequestParam("ppEngHourStart") String ppEngHourStart,
-			@RequestParam("ppFuelQt") String ppFuelQt) {
+	public String updatePpc(
+			@RequestParam("id") String id,
+			@RequestParam("ppName") String ppName, 
+			@RequestParam("ppManuf") String ppManuf,
+			@RequestParam("ppEnginType") String ppEnginType, 
+			@RequestParam("ppEngHourStart") String ppEngHourStart,
+			@RequestParam("ppFuelQt") String ppFuelQt
+			) {
 //	Ppc obj
 		Optional<Ppc> optPpc = repository.findById(Long.parseLong(id));
 		Ppc ppc = new Ppc();

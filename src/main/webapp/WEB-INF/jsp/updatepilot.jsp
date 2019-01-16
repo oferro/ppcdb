@@ -14,7 +14,7 @@
 </head>
 <body>
 <h1>Pilot update form</h1>
-	<form class="container" method="post" action="/pilot/updatepilot" >
+	<form class="container" method="post" action="/pilot/updatePilot" >
 		<div>
 			<label for="id">ID (readonly)</label> 
 			<input readonly	type="text" name="id" value="<c:out  value="${pilot.id}"/>" />

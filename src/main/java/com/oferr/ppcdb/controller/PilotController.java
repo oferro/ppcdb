@@ -15,7 +15,7 @@ import com.oferr.ppcdb.domain.PilotRepository;
 
 @Controller
 public class PilotController{
-
+	
 	@Autowired
 	PilotRepository repository;
 	
@@ -106,7 +106,7 @@ public class PilotController{
 //	Check if there is flights for this pilot befor delete ?
 		if (delPilot.getFlights().isEmpty()) {
 			System.out.println("pilot.Flights isEmpty() = " +delPilot.getFlights().isEmpty());
-//			repository.deleteById(lId);
+			repository.deleteById(lId);
 			String msg = "Pilot Deltle : " + delPilot.getFullName();
 			System.out.println("deleted Pilot id: " + lId);
 			System.out.println(msg);

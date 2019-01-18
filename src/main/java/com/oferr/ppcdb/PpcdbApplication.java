@@ -1,29 +1,11 @@
 package com.oferr.ppcdb;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
-import org.springframework.context.annotation.Bean;
-
-import com.oferr.ppcdb.domain.Flight;
-import com.oferr.ppcdb.domain.FlightRepository;
-import com.oferr.ppcdb.domain.Pilot;
-import com.oferr.ppcdb.domain.PilotRepository;
-import com.oferr.ppcdb.domain.Ppc;
-import com.oferr.ppcdb.domain.PpcRepository;
-
-import java.math.BigDecimal;
-import java.sql.Time;
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.util.Date;
-import java.util.Optional;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 
 @SpringBootApplication
@@ -35,14 +17,14 @@ public class PpcdbApplication extends SpringBootServletInitializer  {
 	}
 
 	
-	@Autowired
-	private PpcRepository ppRepository;
-	
-	@Autowired
-	private PilotRepository piRepository;
-	
-	@Autowired
-	private FlightRepository flRepository;
+//	@Autowired
+//	private PpcRepository ppRepository;
+//	
+//	@Autowired
+//	private PilotRepository piRepository;
+//	
+//	@Autowired
+//	private FlightRepository flRepository;
 	
 	private static final Logger logger = LoggerFactory.getLogger(PpcdbApplication.class);
 

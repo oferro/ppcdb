@@ -109,7 +109,7 @@ public class PpcController {
 //	Check if there is flights for this PPC befor delete ?
 		if (delPpc.getFlights().isEmpty()) {
 			System.out.println("ppc.Flights isEmpty() = " +delPpc.getFlights().isEmpty());
-//			repository.deleteById(lId);
+			repository.deleteById(lId);
 			String msg = "PPC Deltle : " + delPpc.getPpName();
 			System.out.println("deleted PPC id: " + lId);
 			System.out.println(msg);

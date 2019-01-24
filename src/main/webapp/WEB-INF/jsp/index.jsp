@@ -105,7 +105,7 @@
 			<H2>רשימת טיסות</H2>
 			<h3>
 				<a href="addflight">חדש</a> <a
-					href="/#services">רענן</a>
+					href="/">רענן</a>
 			</h3>
 			<table class=table>
 				<thead>
@@ -147,7 +147,7 @@
 			<H2>רשימת טייסים</H2>
 			<h3>
 				<a href="addpilot">חדש</a> <a
-					href="/#pilots">רענן</a>
+					href="/">רענן</a>
 			</h3>
 			<table class=table>
 				<thead>
@@ -182,7 +182,7 @@
 			<H2>רשימת כלי ממ"ג</H2>
 			<h3>
 				<a href="addPpc">חדש</a> <a
-					href="/#ppcs">רענן</a>
+					href="/">רענן</a>
 			</h3>
 			<table class=table>
 				<thead>

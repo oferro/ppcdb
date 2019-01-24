@@ -3,8 +3,10 @@ package com.oferr.ppcdb.controller;
 import java.util.List;
 import java.util.Optional;
 
+import org.apache.commons.logging.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -49,7 +51,7 @@ public class AndroidController {
 	
 //	return from updateflight.jsp form 		--------------------------------------------------------
 	
-	@RequestMapping(value = "and/flightUpdate", method = RequestMethod.POST)
+	@RequestMapping(value = "and/flightUpdate")
 	public Flight flightUpdate(@RequestBody Flight flight) { 
 //	Flight obj
 		Optional<Flight> optFlight = flightRepository.findById(flight.getId());
@@ -69,20 +71,24 @@ public class AndroidController {
 		return fl;
 	}
 
+//	return from addFlight.jsp form 		--------------------------------------------------------
+	
+	@RequestMapping(value = "and/flightAdd")
+	public HttpStatus flightAdd(@RequestBody Flight flight) { 
+//	repository insert
+		flightRepository.save(flight);
+		return HttpStatus.ACCEPTED;
+	}
+
 	
 //	Delete flight		--------------------------------------------------------------------
 	
-	@RequestMapping(value = "and/flightDelete")
-	public HttpStatus flightDelete(@RequestBody Flight flight) { 
-//		Flight obj
-			Optional<Flight> optFlight = flightRepository.findById(flight.getId());
-			Flight fl = new Flight();
-			if (optFlight.isPresent()) {
-				fl = optFlight.get();
-			}
-		System.out.println("ID for repository Delete is : " + flight.getId());
-		flightRepository.deleteById(fl.getId());
-		System.out.println("delete category id: " + fl.getId());
+	@RequestMapping(value = "and/flightDelete/{id}")
+	public HttpStatus flightDelete(@PathVariable ("id") int id) { 
+		long lId = (long) id;
+		System.out.println("ID for repository Delete is : " + lId);
+		flightRepository.deleteById(lId);
+		System.out.println("delete category id: " + lId);
 		return HttpStatus.ACCEPTED;
 	}
 }

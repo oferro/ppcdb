@@ -74,10 +74,10 @@ public class AndroidController {
 //	return from addFlight.jsp form 		--------------------------------------------------------
 	
 	@RequestMapping(value = "and/flightAdd")
-	public HttpStatus flightAdd(@RequestBody Flight flight) { 
+	public Flight flightAdd(@RequestBody Flight flight) { 
 //	repository insert
 		flightRepository.save(flight);
-		return HttpStatus.ACCEPTED;
+		return flight;
 	}
 
 	

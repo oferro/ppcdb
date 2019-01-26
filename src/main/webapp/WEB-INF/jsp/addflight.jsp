@@ -66,7 +66,7 @@
 		</div>
 
 
-		<input type="submit" value="update" name="frm" /> <a href="/">Cancel</a>
+		<input type="submit" value="Add" name="frm" /> <a href="/">Cancel</a>
 	</form>
 </body>
 </html>

@@ -32,7 +32,7 @@ public class AndroidController {
 	
 	@RequestMapping("and/flights")
 	public List<Flight> listFlights () {
-		Sort sort = Sort.by(Sort.Direction.DESC, "flDate");
+		Sort sort = Sort.by(Sort.Direction.DESC, "flDate").and(new Sort(Sort.Direction.DESC, "flToTime"));
 		List<Flight> listFlight = flightRepository.findAll(sort);
 		return listFlight;
 	}

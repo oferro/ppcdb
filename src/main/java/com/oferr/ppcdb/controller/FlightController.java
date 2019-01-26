@@ -37,7 +37,7 @@ public class FlightController {
 	
 	@RequestMapping("/")
 	public ModelAndView home() {
-		Sort sort = Sort.by(Sort.Direction.DESC, "flDate");
+		Sort sort = Sort.by(Sort.Direction.DESC, "flDate").and(new Sort(Sort.Direction.DESC, "flToTime"));
 		Iterable<Flight> tisot = repository.findAll(sort);
 		Iterable<Pilot> pilotList = pilotRepository.findAll();
 		Iterable<Ppc> ppcList = ppcRepository.findAll();

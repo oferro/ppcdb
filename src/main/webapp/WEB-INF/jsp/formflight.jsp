@@ -25,17 +25,17 @@
 		</div>
 
 		<div>
-			<label for="date_param">Flight Date</label> <input type="text"
+			<label for="date_param">Flight Date</label> <input type="date"
 				name="date_param"  placeholder="YYYY-MM-DD" value="<c:out  value="${tisa.flDate}"/>" />
 		</div>
 
 		<div>
-			<label for="toHour_param">Time Start</label> <input type="text"
+			<label for="toHour_param">Time Start</label> <input type="time"
 				name="toHour_param" value="<c:out  value="${tisa.flToTime}"/>" />
 		</div>
 
 		<div>
-			<label for="lndHour_param">Time Landing</label> <input type="text"
+			<label for="lndHour_param">Time Landing</label> <input type="time"
 				name="lndHour_param" value="<c:out  value="${tisa.flLndTime}"/>" />
 		</div>
 

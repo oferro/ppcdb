@@ -32,17 +32,17 @@
 
 		<div>
 			<label for="flDate">Flight Date</label> 
-			<input type="text"	name="flDate"  placeholder="YYYY-MM-DD" value="<c:out  value="${tisa.flDate}"/>" />
+			<input type="date"	name="flDate"  placeholder="YYYY-MM-DD" value="<c:out  value="${tisa.flDate}"/>" />
 		</div>
 
 		<div>
 			<label for="flToTime">Time Start</label> 
-			<input type="text"	name="flToTime" value="<c:out  value="${tisa.flToTime}"/>" />
+			<input type="time"	name="flToTime" value="<c:out  value="${tisa.flToTime}"/>" />
 		</div>
 
 		<div>
 			<label for="flLndTime">Time Landing</label> 
-			<input type="text"	name="flLndTime" value="<c:out  value="${tisa.flLndTime}"/>" />
+			<input type="time"	name="flLndTime" value="<c:out  value="${tisa.flLndTime}"/>" />
 		</div>
 
 		<div>

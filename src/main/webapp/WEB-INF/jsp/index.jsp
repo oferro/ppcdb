@@ -283,7 +283,7 @@
 				<br>
 				<div class="row">
 					<div class="col-sm-12 form-group">
-						<button class="btn btn-default pull-right" type="submit">Send</button>
+						<button class="btn btn-default pull-right" type="submit" onclick=sendMail()>Send</button>
 					</div>
 				</div>
 			</div>
@@ -376,6 +376,9 @@ Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
 								} // End if
 							});
 				})
+	</script>
+	<script>
+		
 	</script>
 </body>
 </html>

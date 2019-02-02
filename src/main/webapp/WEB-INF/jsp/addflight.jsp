@@ -42,17 +42,17 @@
 
 		<div>
 			<label for="flDate">Flight Date</label> 
-			<input type="text"	name="flDate"  placeholder="YYYY-MM-DD" value=<%=date%> />
+			<input type="date"	name="flDate"  placeholder="YYYY-MM-DD" value=<%=date%> />
 		</div>
 
 		<div>
 			<label for="flToTime">Time Start</label> 
-			<input type="text"	name="flToTime"  placeholder="HH:MM"/>
+			<input type="time"	name="flToTime"  placeholder="HH:MM"/>
 		</div>
 
 		<div>
 			<label for="flLndTime">Time Landing</label> 
-			<input type="text"	name="flLndTime" placeholder="HH:MM" />
+			<input type="time"	name="flLndTime" placeholder="HH:MM" />
 		</div>
 
 		<div>
@@ -66,7 +66,8 @@
 		</div>
 
 
-		<input type="submit" value="Add" name="frm" /> <a href="/">Cancel</a>
+		<input type="submit" value="Add" name="frm" /> 
+		<a href="/">Cancel</a>
 	</form>
 </body>
 </html>

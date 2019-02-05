@@ -55,7 +55,12 @@ public class Ppc {
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "created"})
 	private List<Flight> flights = new ArrayList<>();
 
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "ptPpc")
+	@JsonIgnore
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "created"})
+	private List<Partner> partners = new ArrayList<>();
 
+//	Constractors  --------------------------------------------------------------------------
 
 	public Ppc() {
 	}
@@ -166,5 +171,17 @@ public class Ppc {
        flights.remove(flight);
        flight.setFlPpc(null);
    }
+
+// Partner obj update from Pilot class
+	public void addPartner(Partner partner) {
+		partners.add(partner);
+		partner.setPtPpc(this);
+	}
+
+	public void removePartner(Partner partner) {
+		partners.remove(partner);
+		partner.setPtPpc(null);
+	}
+
 
 }

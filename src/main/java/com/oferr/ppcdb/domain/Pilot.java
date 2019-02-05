@@ -54,6 +54,13 @@ public class Pilot {
 	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler", "created" })
 	private List<Flight> flights = new ArrayList<>();
 
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "ptPilot")
+	@JsonIgnore
+	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler", "created" })
+	private List<Partner> partners = new ArrayList<>();
+
+//	Constractor  ---------------------------------------------------------------------------
+	
 	public Pilot() {
 	}
 
@@ -152,8 +159,16 @@ public class Pilot {
 	public void setFlights(List<Flight> flights) {
 		this.flights = flights;
 	}
+	
+	public List<Partner> getPartners() {
+		return partners;
+	}
 
-	// PPC obj udtade from Pilot class
+	public void setPartners(List<Partner> partners) {
+		this.partners = partners;
+	}
+
+	// PPC obj update from Pilot class
 	public void addPpc(Ppc ppc) {
 		ppcs.add(ppc);
 		ppc.setPpPilotMang(this);
@@ -164,7 +179,7 @@ public class Pilot {
 		ppc.setPpPilotMang(null);
 	}
 
-//   Flight obj udtade from Pilot class
+//   Flight obj update from Pilot class
 	public void addFlight(Flight flight) {
 		flights.add(flight);
 		flight.setFlPilot(this);
@@ -173,6 +188,17 @@ public class Pilot {
 	public void removeFlight(Flight flight) {
 		flights.remove(flight);
 		flight.setFlPilot(null);
+	}
+
+//  Partner obj update from Pilot class
+	public void addPartner(Partner partner) {
+		partners.add(partner);
+		partner.setPtPilot(this);
+	}
+
+	public void removePartner(Partner partner) {
+		partners.remove(partner);
+		partner.setPtPilot(null);
 	}
 
 // 	get Full name

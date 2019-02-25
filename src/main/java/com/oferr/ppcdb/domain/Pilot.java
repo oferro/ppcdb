@@ -6,10 +6,13 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -25,9 +28,6 @@ public class Pilot {
 
 	@Column(name = "EMAIL", nullable = false, unique = true, length = 20)
 	private String piEmail;
-
-	@Column(name = "PASSWORD", nullable = false)
-	private String piPw;
 
 	@Column(name = "FIRST_NAME", length = 15)
 	private String piFirstName;
@@ -59,16 +59,21 @@ public class Pilot {
 	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler", "created" })
 	private List<Partner> partners = new ArrayList<>();
 
+	@OneToOne(fetch=FetchType.EAGER)
+	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler", "created" })
+	@JoinColumn(name = "usPilot")
+	User piUser;
+
 //	Constractor  ---------------------------------------------------------------------------
-	
+
 	public Pilot() {
 	}
 
-	public Pilot(String piEmail, String piPw, String piFirstName, String piLastName, String piPhone, String piQuestion,
+	public Pilot(User user, String piEmail, String piFirstName, String piLastName, String piPhone, String piQuestion,
 			String piAnswer) {
 		super();
+		this.setUser(user);
 		this.setPiEmail(piEmail);
-		this.setPiPw(piPw);
 		this.setPiFirstName(piFirstName);
 		this.setPiLastName(piLastName);
 		this.setPiPhone(piPhone);
@@ -92,14 +97,6 @@ public class Pilot {
 
 	public void setPiEmail(String piEmail) {
 		this.piEmail = piEmail;
-	}
-
-	public String getPiPw() {
-		return piPw;
-	}
-
-	public void setPiPw(String piPw) {
-		this.piPw = piPw;
 	}
 
 	public String getPiFirstName() {
@@ -142,8 +139,6 @@ public class Pilot {
 		this.piAnswer = piAnswer;
 	}
 
-	
-	
 	public List<Ppc> getPpcs() {
 		return ppcs;
 	}
@@ -159,7 +154,7 @@ public class Pilot {
 	public void setFlights(List<Flight> flights) {
 		this.flights = flights;
 	}
-	
+
 	public List<Partner> getPartners() {
 		return partners;
 	}
@@ -179,7 +174,15 @@ public class Pilot {
 		ppc.setPpPilotMang(null);
 	}
 
-//   Flight obj update from Pilot class
+	public User getUser() {
+		return piUser;
+	}
+
+	public void setUser(User piUser) {
+		this.piUser = piUser;
+	}
+
+	// Flight obj update from Pilot class
 	public void addFlight(Flight flight) {
 		flights.add(flight);
 		flight.setFlPilot(this);
@@ -206,5 +209,5 @@ public class Pilot {
 		String fn = this.getPiFirstName() + " " + this.getPiLastName();
 		return fn;
 	}
-	
+
 }

@@ -33,7 +33,6 @@ public class PilotController{
 			@RequestParam("piFirstName") String piFirstName, 
 			@RequestParam("piLastName") String piLastName,
 			@RequestParam("piEmail") String piEmail, 
-			@RequestParam("piPw") String piPw,
 			@RequestParam("piPhone") String piPhone 
 			) {
 //	Flight obj
@@ -44,7 +43,6 @@ public class PilotController{
 		pi.setPiFirstName(piFirstName);
 		pi.setPiLastName(piLastName);
 		pi.setPiEmail(piEmail);
-		pi.setPiPw(piPw);
 		pi.setPiPhone(piPhone);
 //	repository insert
 		repository.save(pi);
@@ -77,7 +75,6 @@ public class PilotController{
 			@RequestParam("piFirstName") String piFirstName, 
 			@RequestParam("piLastName") String piLastName,
 			@RequestParam("piEmail") String piEmail, 
-			@RequestParam("piPw") String piPw,
 			@RequestParam("piPhone") String piPhone 
 			) {
 //	Flight obj
@@ -87,7 +84,6 @@ public class PilotController{
 		pi.setPiFirstName(piFirstName);
 		pi.setPiLastName(piLastName);
 		pi.setPiEmail(piEmail);
-		pi.setPiPw(piPw);
 		pi.setPiPhone(piPhone);
 //	repository insert
 		repository.save(pi);

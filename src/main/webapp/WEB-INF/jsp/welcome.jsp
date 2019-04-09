@@ -33,6 +33,10 @@
 
         <h2>Welcome ${pageContext.request.userPrincipal.name} | <a onclick="document.forms['logoutForm'].submit()">Logout</a></h2>
 
+		<h2>Go to Index</h2>
+		<a href="${contextPath}/index">Go to Index</a>
+
+
     </c:if>
 
 </div>

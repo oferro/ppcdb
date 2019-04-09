@@ -9,6 +9,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.oferr.ppcdb.domain.Role;
 import com.oferr.ppcdb.domain.User;
@@ -49,15 +50,26 @@ public class UserController {
         return "redirect:/welcome";
     }
 
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    @RequestMapping(value = "/login")
     public String login(Model model, String error, String logout) {
-        if (error != null)
+        if (error != null) {
             model.addAttribute("error", "Your username and password is invalid.");
+        }
 
-        if (logout != null)
+        if (logout != null) {
             model.addAttribute("message", "You have been logged out successfully.");
-
+        }
+        
+        
+//        String username = (String) model.asMap().get("username");
+//        String password = (String) model.asMap().get("password");
+        
+//        username =  "oferro";
+//        password = "magy3066";
+        
+//        securityService.autologin(username, password);
         return "login";
+        
     }
 
     @RequestMapping(value = {"/", "/welcome"}, method = RequestMethod.GET)

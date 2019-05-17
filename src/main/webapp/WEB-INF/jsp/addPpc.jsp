@@ -39,6 +39,8 @@
 			<label for="ppFuelQt">PPC Fuel Qt.</label> 
 			<input type="number"	name="ppFuelQt" pattern="^\d*(\.\d{0,1})?$" placeholder="000.0"/>
 		</div>
+		
+		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
 		<input type="submit" value="New" name="frm" /> <a href="/">Cancel</a>
 	</form>

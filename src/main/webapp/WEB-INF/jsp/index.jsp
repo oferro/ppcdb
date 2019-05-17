@@ -68,8 +68,8 @@
 		<br>
 		<div class="row">
 			<div class="col-sm-4">
-				<span class="glyphicon glyphicon-calendar logo-small"></span>
-				<a href=#flights><h4>FLIGHT</h4></a>
+				<span class="glyphicon glyphicon-calendar logo-small"></span> <a
+					href=#flights><h4>FLIGHT</h4></a>
 				<p>Flight Logbook</p>
 			</div>
 			<div class="col-sm-4">
@@ -78,16 +78,16 @@
 				<p>Maintenance Logbook</p>
 			</div>
 			<div class="col-sm-4">
-				<span class="glyphicon glyphicon-lock logo-small"></span>
-				<a href=#ppcs><h4>PPC</h4></a>
+				<span class="glyphicon glyphicon-lock logo-small"></span> <a
+					href=#ppcs><h4>PPC</h4></a>
 				<p>PPC Details</p>
 			</div>
 		</div>
 		<br> <br>
 		<div class="row">
 			<div class="col-sm-4">
-				<span class="glyphicon glyphicon-user logo-small"></span>
-				<a href=#pilots><h4>Owners</h4></a>
+				<span class="glyphicon glyphicon-user logo-small"></span> <a
+					href=#pilots><h4>Owners</h4></a>
 				<p>Pilots & Partners</p>
 			</div>
 			<div class="col-sm-4">
@@ -104,8 +104,7 @@
 		<div class="row" id="flights">
 			<H2>רשימת טיסות</H2>
 			<h3>
-				<a href="addflight">חדש</a> <a
-					href="/">רענן</a>
+				<a href="addflight">חדש</a> <a href="/">רענן</a>
 			</h3>
 			<table class=table>
 				<thead>
@@ -131,11 +130,8 @@
 							<td><c:out value="${t.flLndTime}" /></td>
 							<td><c:out value="${t.flAirField}" /></td>
 							<td><c:out value="${t.flRoute}" /></td>
-							<td><a
-								href="flightDel/<c:out  value="${t.id}"/>">מחיקה</a>
-								<a
-								href="flightUpdate/<c:out  value="${t.id}"/>">עדכון</a>
-							</td>
+							<td><a href="flightDel/<c:out  value="${t.id}"/>">מחיקה</a>
+								<a href="flightUpdate/<c:out  value="${t.id}"/>">עדכון</a></td>
 
 						</tr>
 					</c:forEach>
@@ -146,8 +142,7 @@
 		<div class="row" id="pilots">
 			<H2>רשימת טייסים</H2>
 			<h3>
-				<a href="addpilot">חדש</a> <a
-					href="/">רענן</a>
+				<a href="addpilot">חדש</a> <a href="/">רענן</a>
 			</h3>
 			<table class=table>
 				<thead>
@@ -162,27 +157,23 @@
 				<tbody>
 					<c:forEach items="${pilotList}" var="p">
 						<tr>
-							<td><c:out value="${p.id}" /></td>
-							<td><c:out value="${p.piFirstName}" /></td>
-							<td><c:out value="${p.piLastName}" /></td>
-							<td><c:out value="${p.piEmail}" /></td>
-							<td><c:out value="${p.piPhone}" /></td>
-							<td><a
-								href="pilotDel/<c:out  value="${p.id}"/>">מחיקה</a>
-								<a
-								href="pilotUpdate/<c:out  value="${p.id}"/>">עדכון</a>
-							</td>
+							<td><c:out value="${p.ptPilot.id}" /></td>
+							<td><c:out value="${p.ptPilot.piFirstName}" /></td>
+							<td><c:out value="${p.ptPilot.piLastName}" /></td>
+							<td><c:out value="${p.ptPilot.piEmail}" /></td>
+							<td><c:out value="${p.ptPilot.piPhone}" /></td>
+							<td><a href="pilotDel/<c:out  value="${p.ptPilot.id}"/>">מחיקה</a> <a
+								href="pilotUpdate/<c:out  value="${p.ptPilot.id}"/>">עדכון</a></td>
 
 						</tr>
 					</c:forEach>
 				</tbody>
 			</table>
-		</div>	
+		</div>
 		<div class="row bg-grey" id="ppcs">
 			<H2>רשימת כלי ממ"ג</H2>
 			<h3>
-				<a href="addPpc">חדש</a> <a
-					href="/">רענן</a>
+				<a href="addPpc">חדש</a> <a href="/">רענן</a>
 			</h3>
 			<table class=table>
 				<thead>
@@ -196,27 +187,24 @@
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach items="${ppcList}" var="pp">
+					<c:forEach items="${pilotList}" var="pp">
 						<tr>
-							<td><c:out value="${pp.id}" /></td>
-							<td><c:out value="${pp.ppName}" /></td>
-							<td><c:out value="${pp.ppManuf}" /></td>
-							<td><c:out value="${pp.ppEnginType}" /></td>
-							<td><c:out value="${pp.ppEngHourStart}" /></td>
-							<td><c:out value="${pp.ppFuelQt}" /></td>
-							<td><a
-								href="ppcDel/<c:out  value="${pp.id}"/>">מחיקה</a>
-								<a
-								href="ppcUpdate/<c:out  value="${pp.id}"/>">עדכון</a>
-							</td>
+							<td><c:out value="${pp.ptPpc.id}" /></td>
+							<td><c:out value="${pp.ptPpc.ppName}" /></td>
+							<td><c:out value="${pp.ptPpc.ppManuf}" /></td>
+							<td><c:out value="${pp.ptPpc.ppEnginType}" /></td>
+							<td><c:out value="${pp.ptPpc.ppEngHourStart}" /></td>
+							<td><c:out value="${pp.ptPpc.ppFuelQt}" /></td>
+							<td><a href="ppcDel/<c:out  value="${pp.ptPpc.id}"/>">מחיקה</a> <a
+								href="ppcUpdate/<c:out  value="${pp.ptPpc.id}"/>">עדכון</a></td>
 
 						</tr>
 					</c:forEach>
 				</tbody>
 			</table>
-		</div>	
+		</div>
 	</div>
-<!-- 
+	<!-- 
 	<div id="portfolio" class="container-fluid text-center bg-grey">
 		<h2>Portfolio</h2>
 		<h4>What we have created</h4>
@@ -263,8 +251,8 @@
 					<span class="glyphicon glyphicon-phone"></span> +972 54-255-5137
 				</p>
 				<p>
-					<span class="glyphicon glyphicon-envelope"></span>
-					<a href="mailto:ofer_ro@yahoo.com?subject=PPC Logbook site">ofer_ro@yahoo.com</a>
+					<span class="glyphicon glyphicon-envelope"></span> <a
+						href="mailto:ofer_ro@yahoo.com?subject=PPC Logbook site">ofer_ro@yahoo.com</a>
 				</p>
 			</div>
 			<div class="col-sm-7">
@@ -283,15 +271,16 @@
 				<br>
 				<div class="row">
 					<div class="col-sm-12 form-group">
-						<button class="btn btn-default pull-right" type="submit" onclick=sendMail()>Send</button>
+						<button class="btn btn-default pull-right" type="submit"
+							onclick=sendMail()>Send</button>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 	<!-- Add Google Maps -->
-	
-<!-- Till I have a user key for google map
+
+	<!-- Till I have a user key for google map
 		<div id="googleMap" style="height: 400px; width: 100%;"></div>
 		<script>
 			function myMap() {
@@ -327,7 +316,16 @@ Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
 				<span class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="#">Logo</a>
+			<form id="logoutForm" method="POST" action="${contextPath}/logout">
+				<input type="hidden" name="${_csrf.parameterName}"
+					value="${_csrf.token}" />
+			</form>
+<!--				<img alt="Logo" src="pilot.jpg" width="10%">
+-->
+			<div class="navbar-brand">
+				<a onclick="document.forms['logoutForm'].submit()">Logout -
+					${pilot} (${pageContext.request.userPrincipal.name})</a> 
+			</div>
 		</div>
 		<div class="collapse navbar-collapse" id="myNavbar">
 			<ul class="nav navbar-nav navbar-right">

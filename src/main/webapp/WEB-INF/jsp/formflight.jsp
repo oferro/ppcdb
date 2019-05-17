@@ -49,6 +49,7 @@
 				name="fltRoute_param" value="<c:out  value="${tisa.flRoute}"/>" />
 		</div>
 
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
 		<input type="submit" value="update" name="myaction" />
 	</form:form>

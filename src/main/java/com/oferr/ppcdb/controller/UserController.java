@@ -1,17 +1,20 @@
 package com.oferr.ppcdb.controller;
 
-import java.util.Set;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.xml.ws.Response;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseCookie;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
-import com.oferr.ppcdb.domain.Role;
+import com.oferr.ppcdb.domain.Pilot;
 import com.oferr.ppcdb.domain.User;
 import com.oferr.ppcdb.service.SecurityService;
 import com.oferr.ppcdb.service.UserService;
@@ -36,7 +39,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
-    public String registration(@ModelAttribute("userForm") User userForm, BindingResult bindingResult, Model model) {
+    public String registration(@ModelAttribute("userForm") User userForm, BindingResult bindingResult, Model model, HttpServletResponse response) {
         userValidator.validate(userForm, bindingResult);
 
         if (bindingResult.hasErrors()) {
@@ -46,8 +49,11 @@ public class UserController {
         userService.save(userForm);
 
         securityService.autologin(userForm.getUsername(), userForm.getPasswordConfirm());
-
-        return "redirect:/welcome";
+        
+        Cookie uiUsername =  new Cookie("userlogin", userForm.getUsername());
+        response.addCookie(uiUsername);
+        
+        return "redirect:/index";
     }
 
     @RequestMapping(value = "/login")
@@ -74,6 +80,7 @@ public class UserController {
 
     @RequestMapping(value = {"/", "/welcome"}, method = RequestMethod.GET)
     public String welcome(Model model) {
-        return "welcome";
+      return "welcome";
     }
+    
 }

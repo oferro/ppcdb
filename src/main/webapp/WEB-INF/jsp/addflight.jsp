@@ -35,7 +35,7 @@
 			<label for="ppcId">PPC ID : </label> 
 			<select name=ppcId>
 				<c:forEach var="p" items="${ppcList}">
-					<option value="${p.id}">${p.ppName}</option>
+					<option value="${p.ptPpc.id}">${p.ptPpc.ppName}</option>
 				</c:forEach>
 			</select>
 		</div>
@@ -65,6 +65,7 @@
 			<input type="text"	name="flRoute"  />
 		</div>
 
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
 		<input type="submit" value="Add" name="frm" /> 
 		<a href="/">Cancel</a>

@@ -51,6 +51,8 @@
 				value="<c:out  value="${ppc.ppFuelQt}"/>" />
 		</div>
 
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+
 		<input type="submit" value="update" name="myaction" /> <a
 			href="/#ppcs">Cancel</a>
 	</form>

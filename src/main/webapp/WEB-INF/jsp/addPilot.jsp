@@ -41,6 +41,8 @@
 			<input type="text"	name="piPhone" length=15 />
 		</div>
 
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+
 		<input type="submit" value="New" name="frm" /> <a href="/">Cancel</a>
 	</form>
 </body>

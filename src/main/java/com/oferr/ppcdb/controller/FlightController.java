@@ -1,7 +1,12 @@
 package com.oferr.ppcdb.controller;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.eclipse.persistence.annotations.AdditionalCriteria;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
@@ -13,14 +18,21 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.oferr.ppcdb.domain.Flight;
 import com.oferr.ppcdb.domain.FlightRepository;
+import com.oferr.ppcdb.domain.Partner;
+import com.oferr.ppcdb.domain.PartnerRepository;
 import com.oferr.ppcdb.domain.Pilot;
 import com.oferr.ppcdb.domain.PilotRepository;
 import com.oferr.ppcdb.domain.Ppc;
 import com.oferr.ppcdb.domain.PpcRepository;
+import com.oferr.ppcdb.domain.User;
+import com.oferr.ppcdb.domain.UserRepository;
 
 @Controller
 public class FlightController {
 
+	@Autowired
+	UserRepository userRepository;
+	
 	@Autowired
 	FlightRepository repository;
 
@@ -30,17 +42,32 @@ public class FlightController {
 	@Autowired
 	PilotRepository pilotRepository;
 
+	@Autowired
+	PartnerRepository partnerRepository;
+	
+	
+	// User/Pilot from user request --------------------------------------------------------
+	
+	Pilot reqPilot (String usrReq) {
+		User user = userRepository.findByUsername(usrReq);
+		Pilot pilot = user.getUsPilot();
+		return pilot;
+	}
+
 	
 //	fill up the flight list in index.jsp	------------------------------------------------
 	
-	@RequestMapping("/")
-	public ModelAndView home() {
-		Sort sort = Sort.by(Sort.Direction.DESC, "flDate").and(new Sort(Sort.Direction.DESC, "flToTime"));
-		Iterable<Flight> tisot = repository.findAll(sort);
-		Iterable<Pilot> pilotList = pilotRepository.findAll();
-		Iterable<Ppc> ppcList = ppcRepository.findAll();
+	
+	@RequestMapping("/index")
+	public ModelAndView home(HttpServletRequest request) {
+		String userReq = request.getUserPrincipal().getName();
+		Pilot pilot = reqPilot(userReq);
+		Sort sortFlight = Sort.by(Sort.Direction.DESC, "flDate").and(new Sort(Sort.Direction.DESC, "flToTime"));
+		Iterable<Flight> tisot = repository.findByFlPilot(pilot, sortFlight);
+		Iterable<Partner> pilotList =  partnerRepository.findByPtPilot(pilot); //pilot.getPartners(); //pilotRepository.findAll();
+//		Iterable<Ppc> ppcList = pilot.getPpcs(); //ppcRepository.findAll();
 		ModelAndView mav = new ModelAndView("index");
-		mav.addObject("tisot", tisot).addObject("pilotList", pilotList).addObject("ppcList", ppcList);
+		mav.addObject("tisot", tisot).addObject("pilotList", pilotList).addObject("pilot", pilot.getFullName());
 		return mav;
 	}
 
@@ -67,9 +94,13 @@ public class FlightController {
 //	open addflight.jsp form for new flight   	--------------------------------------------
 	
 	@RequestMapping("/addflight")
-	public ModelAndView openAddFlight() {
-		Iterable<Pilot> pilotList = pilotRepository.findAll();
-		Iterable<Ppc> ppcList = ppcRepository.findAll();
+	public ModelAndView openAddFlight(HttpServletRequest request) {
+		String userReq = request.getUserPrincipal().getName();
+		Pilot pilot = reqPilot(userReq);
+		List<Pilot> pilotList = new ArrayList<Pilot>(); //pilotRepository.findAll();
+		pilotList.add(pilot);
+		Iterable<Partner> ppcList =  partnerRepository.findByPtPilot(pilot);
+//		Iterable<Ppc> ppcList = ppcRepository.findAll();
 		ModelAndView mav = new ModelAndView("addflight");
 		mav.addObject("pilotList", pilotList).addObject("ppcList", ppcList);
 		return mav;

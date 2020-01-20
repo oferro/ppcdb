@@ -146,7 +146,7 @@ public class FlightController {
 		fl.setFlRoute(flRoute);
 //	repository insert
 		repository.save(fl);
-		return "redirect:/";
+		return "redirect:/index";
 	}
 
 	
@@ -176,7 +176,7 @@ public class FlightController {
 		fl.setFlRoute(flRoute);
 //	repository insert
 		repository.save(fl);
-		return "redirect:/";
+		return "redirect:/index";
 	}
 
 	
@@ -188,7 +188,7 @@ public class FlightController {
 		System.out.println("ID for repository Delete is : " + lId);
 		repository.deleteById(lId);
 		System.out.println("delete category id: " + lId);
-		return "redirect:/";
+		return "redirect:/index";
 	}
 
 }

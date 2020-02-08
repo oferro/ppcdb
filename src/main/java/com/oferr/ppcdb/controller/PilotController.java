@@ -46,7 +46,7 @@ public class PilotController{
 		pi.setPiPhone(piPhone);
 //	repository insert
 		repository.save(pi);
-		return "redirect:/";
+		return "redirect:/index#pilots";
 	}
 	
 //	Open pilot updatepilot.jsp form 		-----------------------------------------------
@@ -87,7 +87,7 @@ public class PilotController{
 		pi.setPiPhone(piPhone);
 //	repository insert
 		repository.save(pi);
-		return "redirect:/";
+		return "redirect:/index#pilots";
 	}
 
 //	Delete Pilot		--------------------------------------------------------------------
@@ -106,7 +106,7 @@ public class PilotController{
 			String msg = "Pilot Deltle : " + delPilot.getFullName();
 			System.out.println("deleted Pilot id: " + lId);
 			System.out.println(msg);
-			mav.setViewName("redirect:/#flights");
+			mav.setViewName("redirect:/index#flights");
 		} else {
 			String msgError = "Pilot " +delPilot.getFullName() +" - can't delete. there is Flight records for this pilot";
 			System.out.println(msgError);

@@ -30,57 +30,56 @@
 							<td><input readonly type="text" name="id" class="col-lg-6"
 								value="<c:out  value="${tisa.id}"/>" /></td>
 						</tr>
-						
+
 
 						<tr>
-							<th><label for="ppcId">PPC name (readonly)</label></th> 
-							<td><input readonly
-								type="text" value="<c:out  value="${tisa.flPpc.ppName}"/>" /></th>
+							<th><label for="ppcId">PPC name (readonly)</label></th>
+							<td><input readonly type="text"
+								value="<c:out  value="${tisa.flPpc.ppName}"/>" />
+							</th>
 						</tr>
 
 						<tr>
-							<td><label for="pilotName">Pilot name (readonly)</label></td> 
-							<td><input
-								readonly type="text"
+							<td><label for="pilotName">Pilot name (readonly)</label></td>
+							<td><input readonly type="text"
 								value="<c:out  value="${tisa.flPilot.piFirstName}"/>" /></td>
 						</tr>
 
 						<tr>
-							<td><label for="flDate">Flight Date</label></td> 
-							<td><input type="date"
-								name="flDate" placeholder="YYYY-MM-DD"
+							<td><label for="flDate">Flight Date</label></td>
+							<td><input type="date" name="flDate"
+								placeholder="YYYY-MM-DD"
 								value="<c:out  value="${tisa.flDate}"/>" /></td>
 						</tr>
 
 						<tr>
-							<td><label for="flToTime">Time Start</label></td> 
-							<td><input type="time"
-								name="flToTime" value="<c:out  value="${tisa.flToTime}"/>" /></td>
+							<td><label for="flToTime">Time Start</label></td>
+							<td><input type="time" name="flToTime"
+								value="<c:out  value="${tisa.flToTime}"/>" /></td>
 						</tr>
 
 						<tr>
-							<td><label for="flLndTime">Time Landing</label></td> 
-							<td><input type="time"
-								name="flLndTime" value="<c:out  value="${tisa.flLndTime}"/>" /></td>
+							<td><label for="flLndTime">Time Landing</label></td>
+							<td><input type="time" name="flLndTime"
+								value="<c:out  value="${tisa.flLndTime}"/>" /></td>
 						</tr>
 
 						<tr>
-							<td><label for="flAirField">Air Field</label></td> 
-							<td><input type="text"
-								name="flAirField" value="<c:out  value="${tisa.flAirField}"/>" /></td>
+							<td><label for="flAirField">Air Field</label></td>
+							<td><input type="text" name="flAirField"
+								value="<c:out  value="${tisa.flAirField}"/>" /></td>
 						</tr>
 
 						<tr>
-							<td><label for="flRoute">Flight Route</label></td> 
-							<td><input type="text"
-								name="flRoute" value="<c:out  value="${tisa.flRoute}"/>" /></td>
+							<td><label for="flRoute">Flight Route</label></td>
+							<td><input type="text" name="flRoute"
+								value="<c:out  value="${tisa.flRoute}"/>" /></td>
 						</tr>
 					</table>
-						<input type="hidden" name="${_csrf.parameterName}"
-							value="${_csrf.token}" />
-
-						<input type="submit" value="update" name="myaction" />
-						<a href="/#services">Cancel</a>
-						</form>
+					<input type="hidden" name="${_csrf.parameterName}"
+						value="${_csrf.token}" /> 
+						<input class="btn btn-primary btn-lg btn-block" type="submit" value="update"	name="myaction" /> 
+						<a class="btn btn-outline-secondary btn-lg btn-block" href="/index#flights">Cancel</a>
+	</form>
 </body>
 </html>

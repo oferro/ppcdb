@@ -34,6 +34,7 @@
 		</form>
 	</div>
 	<div class="container-fluid" id="about">
+	<p>---</p>
 		<h2>About PPC Logbook</h2>
 		<h4>Flights Logbook</h4>
 		<p>
@@ -63,6 +64,7 @@
 	</div>
 
 	<div id="services" class="container-fluid text-center">
+	<p>---</p>
 		<h2>SERVICES</h2>
 		<h4>What we offer</h4>
 		<br>
@@ -80,6 +82,7 @@
 			<div class="col-sm-4">
 				<span class="glyphicon glyphicon-lock logo-small"></span> <a
 					href=#ppcs><h4>PPC</h4></a>
+					<p>---</p>
 				<p>PPC Details</p>
 			</div>
 		</div>
@@ -102,6 +105,7 @@
 			</div>
 		</div>
 		<div class="row" id="flights">
+		<p>---</p>
 			<H2>רשימת טיסות</H2>
 			<h3>
 				<a href="addflight">חדש</a> <a href="/">רענן</a>
@@ -140,6 +144,7 @@
 
 		</div>
 		<div class="row" id="pilots">
+		<p>---</p>		
 			<H2>רשימת טייסים</H2>
 			<h3>
 				<a href="addpilot">חדש</a> <a href="/">רענן</a>
@@ -160,8 +165,8 @@
 							<td><c:out value="${p.ptPilot.id}" /></td>
 							<td><c:out value="${p.ptPilot.piFirstName}" /></td>
 							<td><c:out value="${p.ptPilot.piLastName}" /></td>
-							<td><c:out value="${p.ptPilot.piEmail}" /></td>
-							<td><c:out value="${p.ptPilot.piPhone}" /></td>
+							<td><a href="mailto:<c:out value="${p.ptPilot.piEmail}" />"><c:out value="${p.ptPilot.piEmail}" /></a></td>
+							<td><a href="tel:<c:out value="${p.ptPilot.piPhone}"/>"><c:out value="${p.ptPilot.piPhone}"/></a></td>
 							<td><a href="pilotDel/<c:out  value="${p.ptPilot.id}"/>">מחיקה</a> <a
 								href="pilotUpdate/<c:out  value="${p.ptPilot.id}"/>">עדכון</a></td>
 
@@ -171,6 +176,7 @@
 			</table>
 		</div>
 		<div class="row bg-grey" id="ppcs">
+		<p>---</p>		
 			<H2>רשימת כלי ממ"ג</H2>
 			<h3>
 				<a href="addPpc">חדש</a> <a href="/">רענן</a>
@@ -240,7 +246,8 @@
 	</div>
 	 -->
 	<div id="contact" class="container-fluid bg-grey">
-		<h2 class="text-center">CONTACT</h2>
+		<h3><strong>CONTACT</strong></h3>  
+ 
 		<div class="row">
 			<div class="col-sm-5 text-left">
 				<p>Contact us and we'll get back to you within 24 hours.</p>
@@ -248,13 +255,14 @@
 					<span class="glyphicon glyphicon-map-marker"></span> Israel
 				</p>
 				<p>
-					<span class="glyphicon glyphicon-phone"></span> +972 54-255-5137
+					<span class="glyphicon glyphicon-phone"></span> <a href="tel:+972 54-255-5137">+972 54-255-5137</a>
 				</p>
 				<p>
 					<span class="glyphicon glyphicon-envelope"></span> <a
-						href="mailto:ofer_ro@yahoo.com?subject=PPC Logbook site">ofer_ro@yahoo.com</a>
+						href="mailto:ofer_ro@yahoo.com?subject=PPC Logbook site" target=_blank>ofer_ro@yahoo.com</a>
 				</p>
 			</div>
+<!-- //form to send mail
 			<div class="col-sm-7">
 				<div class="row">
 					<div class="col-sm-6 form-group">
@@ -276,6 +284,7 @@
 					</div>
 				</div>
 			</div>
+-->			
 		</div>
 	</div>
 	<!-- Add Google Maps -->
@@ -333,6 +342,7 @@ Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
 				<li><a href="#services">SERVICES</a></li>
 				<li><a href="#flights">FLIGHTS</a></li>
 				<li><a href="#pilots">PILOTS</a></li>
+				<li><a href="#ppcs">PPCS</a></li>
 				<li><a href="#contact">CONTACT</a></li>
 			</ul>
 		</div>
@@ -343,14 +353,14 @@ Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
 	</a>
 	<p>
 		Bootstrap Theme Made By <a href="https://www.w3schools.com"
-			title="Visit w3schools">www.w3schools.com</a>
+			title="Visit w3schools" target="_blank">www.w3schools.com</a>
 	</p>
 	</footer>
 	<script>
 		$(document).ready(
 				function() {
 					// Add smooth scrolling to all links in navbar + footer link
-					$(".navbar a, footer a[href='#myPage'],a[href='#flights'],a[href='#pilots']").on('click',
+					$(".navbar a, footer a[href='#myPage'],a[href='#flights'],a[href='#pilots'],a[href='#ppcs']").on('click',
 							function(event) {
 
 								// Make sure this.hash has a value before overriding default behavior

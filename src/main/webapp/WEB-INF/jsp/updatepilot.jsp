@@ -13,41 +13,51 @@
 
 </head>
 <body>
-<h1>Pilot update form</h1>
-	<form class="container" method="post" action="/pilot/updatePilot" >
-		<div>
-			<label for="id">ID (readonly)</label> 
-			<input readonly	type="text" name="id" value="<c:out  value="${pilot.id}"/>" />
+	<h1>Pilot update form</h1>
+	<form class="container-fluid" method="post" action="/pilot/updatePilot">
+		<div class="row">
+			<div class="col-lg-4">
+				<div class="table-responsive">
+					<table class="table">
+
+						<tr>
+							<td><label for="id">ID (readonly)</label></td>
+							<td><input readonly type="text" name="id"
+								value="<c:out  value="${pilot.id}"/>" /></td>
+						</tr>
+
+						<tr>
+							<td><label for="piFirstName">Pilot first name</label></td>
+							<td><input type="text" name="piFirstName"
+								value="<c:out  value="${pilot.piFirstName}"/>" /></td>
+						</tr>
+
+						<tr>
+							<td><label for="piLastName">Pilot last name</label></td>
+							<td><input type="text" name="piLastName"
+								value="<c:out  value="${pilot.piLastName}"/>" /></td>
+						</tr>
+
+						<tr>
+							<td><label for="piEmail">Pilot email</label></td>
+							<td><input type="email" name="piEmail"
+								value="<c:out  value="${pilot.piEmail}"/>" /></td>
+						</tr>
+
+						<tr>
+							<td><label for="piPhone">Pilot phone no.</label></td>
+							<td><input type="text" name="piPhone"
+								value="<c:out  value="${pilot.piPhone}"/>" /></td>
+						</tr>
+					</table>
+
+					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> 
+					<input class="btn btn-primary btn-lg btn-block" type="submit" value="update" name="myaction" /> 
+					<a class="btn btn-outline-secondary btn-lg btn-block" href="/index#pilots">Cancel</a>
+
+				</div>
+			</div>
 		</div>
-
-		<div>
-			<label for="piFirstName">Pilot first name</label> 
-			<input type="text" name="piFirstName" value="<c:out  value="${pilot.piFirstName}"/>" />
-		</div>
-
-		<div>
-			<label for="piLastName">Pilot last name</label> 
-			<input type="text" name="piLastName" value="<c:out  value="${pilot.piLastName}"/>" />
-		</div>
-
-		<div>
-			<label for="piEmail">Pilot email</label> 
-			<input type="email" name="piEmail" value="<c:out  value="${pilot.piEmail}"/>" />
-		</div>
-
-		<div>
-			<label for="piPw">Pilot login passwoed</label> 
-			<input type="password" name="piPw" value="<c:out  value="${pilot.piPw}"/>" />
-		</div>
-
-		<div>
-			<label for="piPhone">Pilot phone no.</label> 
-			<input type="text"	name="piPhone"  value="<c:out  value="${pilot.piPhone}"/>" />
-		</div>
-
-        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-
-		<input type="submit" value="update" name="myaction" /> <a href="/#ppcs">Cancel</a>
 	</form>
 </body>
 </html>

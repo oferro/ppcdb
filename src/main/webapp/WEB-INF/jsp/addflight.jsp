@@ -21,54 +21,57 @@
 </head>
 <body>
 <h1>Flight Add Form</h1>
-	<form action="/flight/addFlight"  method="post" name="frm" class="container">
-		<div class="row">
-			<label class="col-1" for="pilotId">Pilot ID : </label> 
-			<select class="col-2" name=pilotId>
+	<form action="/flight/addFlight"  method="post" name="frm" class="container-fluid">
+		<div class="row col-lg-4 table-responsive">
+		<table class="table">
+			<tr>
+			<td><label class="col-1" for="pilotId">Pilot ID : </label></td> 
+			<td><select class="col-2" name=pilotId>
 				<c:forEach var="p" items="${pilotList}">
 					<option value="${p.id}">${p.piFirstName}</option>
 				</c:forEach>
-			</select>
-		</div>
+			</select></td>
+		</tr>
 
-		<div>
-			<label for="ppcId">PPC ID : </label> 
-			<select name=ppcId>
+		<tr>
+			<td><label for="ppcId">PPC ID : </label></td> 
+			<td><select name=ppcId>
 				<c:forEach var="p" items="${ppcList}">
 					<option value="${p.ptPpc.id}">${p.ptPpc.ppName}</option>
-				</c:forEach>
+				</c:forEach></td>
 			</select>
-		</div>
+		</tr>
 
-		<div>
-			<label for="flDate">Flight Date</label> 
-			<input type="date"	name="flDate"  placeholder="YYYY-MM-DD" value=<%=date%> />
-		</div>
+		<tr>
+			<td><label for="flDate">Flight Date</label></td> 
+			<td><input type="date"	name="flDate"  placeholder="YYYY-MM-DD" value=<%=date%> /></td>
+		</tr>
 
-		<div>
-			<label for="flToTime">Time Start</label> 
-			<input type="time"	name="flToTime"  placeholder="HH:MM"/>
-		</div>
+		<tr>
+			<td><label for="flToTime">Time Start</label></td> 
+			<td><input type="time"	name="flToTime"  placeholder="HH:MM"/></td>
+		</tr>
 
-		<div>
-			<label for="flLndTime">Time Landing</label> 
-			<input type="time"	name="flLndTime" placeholder="HH:MM" />
-		</div>
+		<tr>
+			<td><label for="flLndTime">Time Landing</label> </td>
+			<td><input type="time"	name="flLndTime" placeholder="HH:MM" /></td>
+		</tr>
 
-		<div>
-			<label for="flAirField">Air Field</label> 
-			<input type="text"	name="flAirField"/>
-		</div>
+		<tr>
+			<td><label for="flAirField">Air Field</label> </td>
+			<td><input type="text"	name="flAirField"/></td>
+		</tr>
 
-		<div>
-			<label for="flRoute">Flight Route</label> 
-			<input type="text"	name="flRoute"  />
-		</div>
-
+		<tr>
+			<td><label for="flRoute">Flight Route</label> </td>
+			<td><input type="text"	name="flRoute"  /></td>
+		</tr>
+	</table>
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
-		<input type="submit" value="Add" name="frm" /> 
-		<a href="/">Cancel</a>
+		<input type="submit" class="btn btn-lg" value="Add" name="frm" /> 
+		<a class="btn btn-lg" href="/index#flights">Cancel</a>
+		</div>
 	</form>
 </body>
 </html>

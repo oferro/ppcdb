@@ -146,7 +146,7 @@ public class FlightController {
 		fl.setFlRoute(flRoute);
 //	repository insert
 		repository.save(fl);
-		return "redirect:/index";
+		return "redirect:/index#flights";
 	}
 
 	

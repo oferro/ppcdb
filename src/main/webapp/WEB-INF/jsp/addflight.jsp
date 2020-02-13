@@ -70,7 +70,7 @@
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
 		<input type="submit" class="btn btn-lg" value="Add" name="frm" /> 
-		<a class="btn btn-lg" href="/index#flights">Cancel</a>
+		<a class="btn btn-lg" href="/welcome#flights">Cancel</a>
 		</div>
 	</form>
 </body>

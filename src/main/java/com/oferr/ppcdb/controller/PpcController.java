@@ -94,7 +94,7 @@ public class PpcController {
 		ppc.setPpFuelQt(ppFuelQt);
 //	repository insert
 		repository.save(ppc);
-		return "redirect:/";
+		return "redirect:/flights#ppcs";
 	}
 
 //	Delete Ppc		--------------------------------------------------------------------

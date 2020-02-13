@@ -53,7 +53,7 @@
 
 					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> 
 					<input class="btn btn-primary btn-lg btn-block" type="submit" value="update" name="myaction" /> 
-					<a class="btn btn-outline-secondary btn-lg btn-block" href="/index#pilots">Cancel</a>
+					<a class="btn btn-outline-secondary btn-lg btn-block" href="/flights#pilots">Cancel</a>
 
 				</div>
 			</div>

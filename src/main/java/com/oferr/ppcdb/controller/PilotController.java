@@ -87,7 +87,7 @@ public class PilotController{
 		pi.setPiPhone(piPhone);
 //	repository insert
 		repository.save(pi);
-		return "redirect:/index#pilots";
+		return "redirect:/flights#pilots";
 	}
 
 //	Delete Pilot		--------------------------------------------------------------------

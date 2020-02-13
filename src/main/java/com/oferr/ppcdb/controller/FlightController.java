@@ -6,7 +6,6 @@ import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.eclipse.persistence.annotations.AdditionalCriteria;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
@@ -55,10 +54,10 @@ public class FlightController {
 	}
 
 	
-//	fill up the flight list in index.jsp	------------------------------------------------
+//	fill up the flight list in welcome.jsp	------------------------------------------------
 	
 	
-	@RequestMapping("/index")
+	@RequestMapping(value = {"/flights", "/"})
 	public ModelAndView home(HttpServletRequest request) {
 		String userReq = request.getUserPrincipal().getName();
 		Pilot pilot = reqPilot(userReq);
@@ -66,7 +65,7 @@ public class FlightController {
 		Iterable<Flight> tisot = repository.findByFlPilot(pilot, sortFlight);
 		Iterable<Partner> pilotList =  partnerRepository.findByPtPilot(pilot); //pilot.getPartners(); //pilotRepository.findAll();
 //		Iterable<Ppc> ppcList = pilot.getPpcs(); //ppcRepository.findAll();
-		ModelAndView mav = new ModelAndView("index");
+		ModelAndView mav = new ModelAndView("welcome");
 		mav.addObject("tisot", tisot).addObject("pilotList", pilotList).addObject("pilot", pilot.getFullName());
 		return mav;
 	}
@@ -146,7 +145,7 @@ public class FlightController {
 		fl.setFlRoute(flRoute);
 //	repository insert
 		repository.save(fl);
-		return "redirect:/index#flights";
+		return "redirect:/welcome#flights";
 	}
 
 	
@@ -176,7 +175,7 @@ public class FlightController {
 		fl.setFlRoute(flRoute);
 //	repository insert
 		repository.save(fl);
-		return "redirect:/index#flights";
+		return "redirect:/welcome#flights";
 	}
 
 	
@@ -188,7 +187,7 @@ public class FlightController {
 		System.out.println("ID for repository Delete is : " + lId);
 		repository.deleteById(lId);
 		System.out.println("delete category id: " + lId);
-		return "redirect:/index";
+		return "redirect:/welcome";
 	}
 
 }

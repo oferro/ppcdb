@@ -1,48 +1,51 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
-<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
+<c:set var="contextPath" value="${pageContext.request.contextPath}" />
 
 <html lang="he" dir="ltr">
+
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="">
-    <meta name="author" content="">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<meta name="description" content="">
+<meta name="author" content="">
 
-    <title>PPC Logbook Welcome</title>
-    
-    <link rel="stylesheet"
+<title>PPC Logbook Welcome</title>
+
+<link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    
 
-     <link href="${contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
-     <link href="${contextPath}/resources/css/common.css" rel="stylesheet">
+<link rel="stylesheet" href="${contextPath}/resources/css/common.css">
+<link rel="stylesheet"
+	href="${contextPath}/resources/css/bootstrap.min.css">
 
- 
- 
- <script
+
+
+<script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
- 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
+
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+
 </head>
 
-<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+<body id="myPage" data-spy="scroll" data-target=".navbar"
+	data-offset="60">
 
 	<div class="jumbotron text-center">
 		<h1>PPC (Power Parashut) Menagement</h1>
 		<p>Flight Logbook, Maintenance Logbook</p>
-		<form class="form-inline">
+		<!-- 		<form class="form-inline">
 			<div class="input-group">
 				<input type="email" class="form-control" size="50"
 					placeholder="Email Address" required>
@@ -51,39 +54,47 @@
 				</div>
 			</div>
 		</form>
+		-->
 	</div>
 	<div class="container-fluid" id="about">
-	<p>---</p>
-		<h2>About PPC Logbook</h2>
-		<h4>Flights Logbook</h4>
-		<p>
-			PPC flights record specilaize for PPC. <br> Fuel, Oil
-			consamption, Engine hour, Remarks on things to maintain that raize in
-			the flight. <br> Pilot, Passenger, Airfield, Description of
-			flight route.
-		</p>
-		<br>
-		<h4>Maintenance Logbook</h4>
-		<p>
-			PPC maintenance record. <br> What, When, Who, Cost ...
-		</p>
-
+		<p>---</p>
+				<h2><storng>About PPC Logbook</storng></h2>
+				<h3>
+					<u>Flights Logbook</u>
+				</h3>
+				<p class="lead text-primary">
+					<strong> PPC flights record specilaize for PPC. <br>
+						Fuel, Oil consamption, Engine hour, Remarks on things to maintain
+						that raize in the flight. <br> Pilot, Passenger, Airfield,
+						Description of flight route.
+					</strong>
+				</p>
+			<br>
+				<h3>
+					<u>Maintenance Logbook</u>
+				</h3>
+				<p class="lead text-primary">
+					PPC maintenance record. <br> What, When, Who, Cost ...
+				</p>
+	<!-- 
 		<button class="btn btn-default btn-lg">Get in Touch</button>
+		-->
 	</div>
 
 	<div class="container-fluid bg-grey">
 		<h2>Our Values</h2>
-		<h4>
+		<h3>
 			<strong>MISSION:</strong> "One Stop Shop" for all the PPC activity
 			recording.
-		</h4>
-		<p>
+		</h3>
+		<p class="lead text-primary">
 			<strong>VISION:</strong> To give the PPC owner\s a packadge for full
 			life cycle of the PPC.
+		</p>
 	</div>
 
 	<div id="services" class="container-fluid text-center">
-	<p>---</p>
+		<p>---</p>
 		<h2>SERVICES</h2>
 		<h4>What we offer</h4>
 		<br>
@@ -116,16 +127,16 @@
 				<h4>Reports</h4>
 				<p>Flight & log Reports</p>
 			</div>
-<!-- 
+			<!-- 
 			<div class="col-sm-4">
 				<span class="glyphicon glyphicon-plus logo-small"></span>
 				<h4>HARD WORK</h4>
 				<p>Lorem ipsum dolor sit amet..</p>
 			</div>
--->			
+-->
 		</div>
 	</div>
-<!--
+	<!--
 	<div id="portfolio" class="container-fluid text-center bg-grey">
 		<h2>Portfolio</h2>
 		<h4>What we have created</h4>
@@ -161,8 +172,10 @@
 	</div>
 -->
 	<div id="contact" class="container-fluid bg-grey">
-		<h3><strong>CONTACT</strong></h3>  
- 
+		<h3>
+			<strong>CONTACT</strong>
+		</h3>
+
 		<div class="row">
 			<div class="col-sm-5 text-left">
 				<p>Contact us and we'll get back to you within 24 hours.</p>
@@ -170,21 +183,21 @@
 					<span class="glyphicon glyphicon-map-marker"></span> Israel
 				</p>
 				<p>
-					<span class="glyphicon glyphicon-phone"></span> <a href="tel:+972 54-255-5137">+972 54-255-5137</a>
+					<span class="glyphicon glyphicon-phone"></span> <a
+						href="tel:+972 54-255-5137">+972 54-255-5137</a>
 				</p>
 				<p>
 					<span class="glyphicon glyphicon-envelope"></span> <a
-						href="mailto:ofer_ro@yahoo.com?subject=PPC Logbook site" target=_blank>ofer_ro@yahoo.com</a>
+						href="mailto:ofer_ro@yahoo.com?subject=PPC Logbook site"
+						target=_blank>ofer_ro@yahoo.com</a>
 				</p>
 			</div>
 		</div>
-	</div>		
+	</div>
 
 
-<div class="container">
-
-</div>
-<!-- /container -->
+	<div class="container"></div>
+	<!-- /container -->
 
 	<nav class="navbar navbar-default navbar-fixed-top">
 	<div class="container">
@@ -195,36 +208,40 @@
 					class="icon-bar"></span>
 			</button>
 
-	<div class="navbar-brand">
+			<div class="navbar-brand">
 
-   <form method="POST" action="${contextPath}/login" class="form-signin">
-<!--        <h2 class="form-heading">Log in</h2>  -->
+				<form method="POST" action="${contextPath}/login"
+					class="form-signin">
+					<!--        <h2 class="form-heading">Log in</h2>  -->
 
-        <div class="form-group form-group-sm form-inline ${error != null ? 'has-error' : ''}">
-<!--           <span>${message}</span> -->
-            <input name="username" type="text" class="form-control" placeholder="Username"
-                   autofocus="true"/>
-            <input name="password" type="password" class="form-control" placeholder="Password"/>
-            <span>${error}</span>
-            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+					<div
+						class="form-group form-group-sm form-inline ${error != null ? 'has-error' : ''}">
+						<!--           <span>${message}</span> -->
+						<input name="username" type="text" class="form-control"
+							placeholder="Username" autofocus="true" /> <input name="password"
+							type="password" class="form-control" placeholder="Password" /> <span>${error}</span>
+						<input type="hidden" name="${_csrf.parameterName}"
+							value="${_csrf.token}" />
 
-            <button class="btn btn-sm btn-primary" type="submit">Log In</button>
-            <a class="small" href="${contextPath}/registration">Create an account</a>
-        </div>
-         <span>${message}</span>
+						<button class="btn btn-sm btn-primary" type="submit">Log
+							In</button>
+						<a class="small" href="${contextPath}/registration">Create an
+							account</a>
+					</div>
+					<span>${message}</span>
 
-    </form>
-    </div>
+				</form>
+			</div>
 
-<!-- Logout Form			
+			<!-- Logout Form			
 			<form id="logoutForm" method="POST" action="${contextPath}/logout">
 				<input type="hidden" name="${_csrf.parameterName}"
 					value="${_csrf.token}" />
 			</form>
-		-->			
-<!-- 				<img alt="Logo" src="pilot.jpg" width="10%">
 		-->
-<!-- 
+			<!-- 				<img alt="Logo" src="pilot.jpg" width="10%">
+		-->
+			<!-- 
 			<div class="navbar-brand">
 				<a onclick="document.forms['logoutForm'].submit()">Logout -
 					${pilot} (${pageContext.request.userPrincipal.name})</a> 
@@ -235,9 +252,10 @@
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="#about">ABOUT</a></li>
 				<li><a href="#services">SERVICES</a></li>
-				<li><a href="#flights">FLIGHTS</a></li>
+				<!-- 			<li><a href="#flights">FLIGHTS</a></li>
 				<li><a href="#pilots">PILOTS</a></li>
 				<li><a href="#ppcs">PPCS</a></li>
+				-->
 				<li><a href="#contact">CONTACT</a></li>
 			</ul>
 		</div>
@@ -252,36 +270,47 @@
 	</p>
 	</footer>
 	<script>
-		$(document).ready(
-				function() {
-					// Add smooth scrolling to all links in navbar + footer link
-					$(".navbar a, footer a[href='#myPage'],a[href='#flights'],a[href='#pilots'],a[href='#ppcs']").on('click',
-							function(event) {
+		$(document)
+				.ready(
+						function() {
+							// Add smooth scrolling to all links in navbar + footer link
+							$(
+									".navbar a, footer a[href='#myPage'],a[href='#flights'],a[href='#pilots'],a[href='#ppcs']")
+									.on(
+											'click',
+											function(event) {
 
-								// Make sure this.hash has a value before overriding default behavior
-								if (this.hash !== "") {
+												// Make sure this.hash has a value before overriding default behavior
+												if (this.hash !== "") {
 
-									// Prevent default anchor click behavior
-									event.preventDefault();
+													// Prevent default anchor click behavior
+													event.preventDefault();
 
-									// Store hash
-									var hash = this.hash;
+													// Store hash
+													var hash = this.hash;
 
-									// Using jQuery's animate() method to add smooth page scroll
-									// The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
-									$('html, body').animate({
-										scrollTop : $(hash).offset().top
-									}, 1200, function() {
+													// Using jQuery's animate() method to add smooth page scroll
+													// The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
+													$('html, body')
+															.animate(
+																	{
+																		scrollTop : $(
+																				hash)
+																				.offset().top
+																	},
+																	1200,
+																	function() {
 
-										// Add hash (#) to URL when done scrolling (default click behavior)
-										window.location.hash = hash;
-									});
-								} // End if
-							});
-				})
+																		// Add hash (#) to URL when done scrolling (default click behavior)
+																		window.location.hash = hash;
+																	});
+												} // End if
+											});
+						})
 	</script>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script src="${contextPath}/resources/js/bootstrap.min.js"></script>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script src="${contextPath}/resources/js/bootstrap.min.js"></script>
 </body>
 </html>

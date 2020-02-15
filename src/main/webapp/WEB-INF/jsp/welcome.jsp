@@ -9,7 +9,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link href="style.css">
+
+<link  rel="stylesheet" href="/resources/css/common.css">
+<link  rel="stylesheet" href="style.css">
 
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -36,77 +38,40 @@
 		</form>
 		-->
 	</div>
-	<div class="container-fluid" id="about">
-	<p>---</p>
-		<h2>About PPC Logbook</h2>
-		<h4>Flights Logbook</h4>
-		<p>
-			PPC flights record specilaize for PPC. <br> Fuel, Oil
-			consamption, Engine hour, Remarks on things to maintain that raize in
-			the flight. <br> Pilot, Passenger, Airfield, Description of
-			flight route.
-		</p>
-		<br>
-		<h4>Maintenance Logbook</h4>
-		<p>
-			PPC maintenance record. <br> What, When, Who, Cost ...
-		</p>
-
-		<button class="btn btn-default btn-lg">Get in Touch</button>
-	</div>
-
-	<div class="container-fluid bg-grey">
-		<h2>Our Values</h2>
-		<h4>
-			<strong>MISSION:</strong> "One Stop Shop" for all the PPC activity
-			recording.
-		</h4>
-		<p>
-			<strong>VISION:</strong> To give the PPC owner\s a packadge for full
-			life cycle of the PPC.
-	</div>
 
 	<div id="services" class="container-fluid text-center">
 	<p>---</p>
 		<h2>SERVICES</h2>
-		<h4>What we offer</h4>
+		<h4>Sellect one</h4>
 		<br>
 		<div class="row">
-			<div class="col-sm-4">
+			<div class="col-sm-3">
 				<span class="glyphicon glyphicon-calendar logo-small"></span> <a
 					href=#flights><h4>FLIGHT</h4></a>
 				<p>Flight Logbook</p>
 			</div>
-			<div class="col-sm-4">
+			<div class="col-sm-3">
 				<span class="glyphicon glyphicon-wrench logo-small"></span>
 				<h4>Maintain</h4>
 				<p>Maintenance Logbook</p>
 			</div>
-			<div class="col-sm-4">
+			<div class="col-sm-3">
 				<span class="glyphicon glyphicon-lock logo-small"></span> <a
 					href=#ppcs><h4>PPC</h4></a>
-					<p>---</p>
 				<p>PPC Details</p>
 			</div>
-		</div>
-		<br> <br>
-		<div class="row">
-			<div class="col-sm-4">
+			<div class="col-sm-3">
 				<span class="glyphicon glyphicon-user logo-small"></span> <a
 					href=#pilots><h4>Owners</h4></a>
 				<p>Pilots & Partners</p>
 			</div>
-			<div class="col-sm-4">
-				<span class="glyphicon glyphicon-print logo-small"></span>
-				<h4>Reports</h4>
-				<p>Flight & log Reports</p>
-			</div>
-			<div class="col-sm-4">
-				<span class="glyphicon glyphicon-plus logo-small"></span>
-				<h4>HARD WORK</h4>
-				<p>Lorem ipsum dolor sit amet..</p>
-			</div>
 		</div>
+		
+					<h3>
+				<a href="addflight">חדש</a> <a href="/flights">רענן</a>
+			</h3>
+		
+<!--
 		<div class="row" id="flights">
 		<p>---</p>
 			<H2>רשימת טיסות</H2>
@@ -213,6 +178,7 @@
 			</table>
 		</div>
 	</div>
+	-->
 	<!-- 
 	<div id="portfolio" class="container-fluid text-center bg-grey">
 		<h2>Portfolio</h2>

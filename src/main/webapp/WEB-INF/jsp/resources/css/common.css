@@ -46,3 +46,8 @@ body {
 .has-error {
     color: red
 }
+
+#desc {
+	font-size: 18px;
+	color: blou;
+}

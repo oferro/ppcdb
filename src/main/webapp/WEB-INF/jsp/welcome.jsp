@@ -46,8 +46,8 @@
 		<br>
 		<div class="row">
 			<div class="col-sm-3">
-				<span class="glyphicon glyphicon-calendar logo-small"></span> <a
-					href=#flights><h4>FLIGHT</h4></a>
+				<span class="glyphicon glyphicon-calendar logo-small"></span>
+				 <a	href=/userflights><h4>FLIGHT</h4></a>
 				<p>Flight Logbook</p>
 			</div>
 			<div class="col-sm-3">
@@ -71,7 +71,7 @@
 				<a href="addflight">חדש</a> <a href="/flights">רענן</a>
 			</h3>
 		
-<!--
+
 		<div class="row" id="flights">
 		<p>---</p>
 			<H2>רשימת טיסות</H2>
@@ -178,15 +178,14 @@
 			</table>
 		</div>
 	</div>
-	-->
-	<!-- 
+
 	<div id="portfolio" class="container-fluid text-center bg-grey">
 		<h2>Portfolio</h2>
 		<h4>What we have created</h4>
 		<div class="row text-center">
 			<div class="col-sm-4">
 				<div class="thumbnail">
-					<img src="shokeda.jpg" alt="Shokeda">
+					<img src="/resources/static/shokeda.jpg" alt="Shokeda">
 					<p>
 						<strong>Shokeda</strong>
 					</p>
@@ -195,7 +194,7 @@
 			</div>
 			<div class="col-sm-4">
 				<div class="thumbnail">
-					<img src="kfarMaimon.jpg" alt="Kfar Maimon">
+					<img src="/resources/static/kfarMaimon.jpg" alt="Kfar Maimon">
 					<p>
 						<strong>Kfar Maimon</strong>
 					</p>
@@ -204,7 +203,7 @@
 			</div>
 			<div class="col-sm-4">
 				<div class="thumbnail">
-					<img src="myPPC.jpg" alt="My PPC">
+					<img src="/resources/static/myPPC.jpg" alt="My PPC">
 					<p>
 						<strong>My PPC</strong>
 					</p>
@@ -213,7 +212,7 @@
 			</div>
 		</div>
 	</div>
-	 -->
+
 	<div id="contact" class="container-fluid bg-grey">
 		<h3><strong>CONTACT</strong></h3>  
  
@@ -298,8 +297,7 @@ Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
 				<input type="hidden" name="${_csrf.parameterName}"
 					value="${_csrf.token}" />
 			</form>
-<!--				<img alt="Logo" src="pilot.jpg" width="10%">
--->
+				<img alt="Logo" src="/resources/static/pilot.jpg" width="10%">
 			<div class="navbar-brand">
 				<a onclick="document.forms['logoutForm'].submit()">Logout -
 					${pilot} (${pageContext.request.userPrincipal.name})</a> 
@@ -309,7 +307,7 @@ Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="/flights#about">ABOUT</a></li>
 				<li><a href="/flights#services">SERVICES</a></li>
-				<li><a href="/flights#flights">FLIGHTS</a></li>
+				<li><a href="/userflights">FLIGHTS</a></li>
 				<li><a href="/flights#pilots">PILOTS</a></li>
 				<li><a href="/flights#ppcs">PPCS</a></li>
 				<li><a href="/flights#contact">CONTACT</a></li>

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import javax.security.auth.message.callback.SecretKeyCallback.Request;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,20 +53,38 @@ public class FlightController {
 		Pilot pilot = user.getUsPilot();
 		return pilot;
 	}
-
+	
 	
 //	fill up the flight list in welcome.jsp	------------------------------------------------
 	
 	
-	@RequestMapping(value = {"/flights", "/"})
+	@RequestMapping(value = {"/flights"})
 	public ModelAndView home(HttpServletRequest request) {
+		String userReq = request.getUserPrincipal().getName();
+		String uriName = request.getPathInfo();
+		System.out.println("PathInfo: " + uriName);
+		if(uriName==null) {
+			uriName = "welcome";
+		};
+		Pilot pilot = reqPilot(userReq);
+		Sort sortFlight = Sort.by(Sort.Direction.DESC, "flDate").and(new Sort(Sort.Direction.DESC, "flToTime"));
+		Iterable<Flight> tisot = repository.findByFlPilot(pilot, sortFlight);
+		Iterable<Partner> pilotList =  partnerRepository.findByPtPilot(pilot); //pilot.getPartners(); //pilotRepository.findAll();
+//		Iterable<Ppc> ppcList = pilot.getPpcs(); //ppcRepository.findAll();
+		ModelAndView mav = new ModelAndView(uriName);
+		mav.addObject("tisot", tisot).addObject("pilotList", pilotList).addObject("pilot", pilot.getFullName());
+		return mav;
+	}
+
+	@RequestMapping(value = {"/userflights"})
+	public ModelAndView home2(HttpServletRequest request) {
 		String userReq = request.getUserPrincipal().getName();
 		Pilot pilot = reqPilot(userReq);
 		Sort sortFlight = Sort.by(Sort.Direction.DESC, "flDate").and(new Sort(Sort.Direction.DESC, "flToTime"));
 		Iterable<Flight> tisot = repository.findByFlPilot(pilot, sortFlight);
 		Iterable<Partner> pilotList =  partnerRepository.findByPtPilot(pilot); //pilot.getPartners(); //pilotRepository.findAll();
 //		Iterable<Ppc> ppcList = pilot.getPpcs(); //ppcRepository.findAll();
-		ModelAndView mav = new ModelAndView("welcome");
+		ModelAndView mav = new ModelAndView("userflights");
 		mav.addObject("tisot", tisot).addObject("pilotList", pilotList).addObject("pilot", pilot.getFullName());
 		return mav;
 	}
@@ -95,6 +114,8 @@ public class FlightController {
 	@RequestMapping("/addflight")
 	public ModelAndView openAddFlight(HttpServletRequest request) {
 		String userReq = request.getUserPrincipal().getName();
+		String uriName = request.getPathInfo();
+		System.out.println("PathInfo: " + uriName);
 		Pilot pilot = reqPilot(userReq);
 		List<Pilot> pilotList = new ArrayList<Pilot>(); //pilotRepository.findAll();
 		pilotList.add(pilot);
@@ -110,6 +131,7 @@ public class FlightController {
 	
 	@RequestMapping(value = "/flight/addFlight", method = RequestMethod.POST)
 	public String addFlight(
+			@RequestParam("pathName") String pathName,
 			@RequestParam("pilotId") String pilotId, 
 			@RequestParam("ppcId") String ppcId,
 			@RequestParam("flDate") String flDate, 
@@ -145,7 +167,10 @@ public class FlightController {
 		fl.setFlRoute(flRoute);
 //	repository insert
 		repository.save(fl);
-		return "redirect:/welcome#flights";
+
+		System.out.println("Update Flight - PathInfo: " + pathName);
+		
+		return "redirect:/"+pathName;
 	}
 
 	
@@ -153,6 +178,7 @@ public class FlightController {
 	
 	@RequestMapping(value = "/flight/updateflight", method = RequestMethod.POST)
 	public String updateFlight(
+			@RequestParam("pathName") String pathName,
 			@RequestParam("id") String id,
 			@RequestParam("flDate") String flDate, 
 			@RequestParam("flToTime") String flToTime,
@@ -175,7 +201,10 @@ public class FlightController {
 		fl.setFlRoute(flRoute);
 //	repository insert
 		repository.save(fl);
-		return "redirect:/welcome#flights";
+
+		System.out.println("Update Flight - PathInfo: " + pathName);
+		
+		return "redirect:/"+pathName;
 	}
 
 	

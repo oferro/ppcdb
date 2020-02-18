@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+
+
 <html dir="ltr">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -78,8 +82,9 @@
 					</table>
 					<input type="hidden" name="${_csrf.parameterName}"
 						value="${_csrf.token}" /> 
+						<input type="hidden" name="pathName" value=userflights>
 						<input class="btn btn-primary btn-lg btn-block" type="submit" value="update"	name="myaction" /> 
-						<a class="btn btn-outline-secondary btn-lg btn-block" href="/welcome#flights">Cancel</a>
+						<a class="btn btn-outline-secondary btn-lg btn-block" path="/">Cancel</a>
 	</form>
 </body>
 </html>

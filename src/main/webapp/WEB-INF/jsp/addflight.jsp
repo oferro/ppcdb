@@ -3,6 +3,10 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ page import = "java.util.Date" %>
 <%@ page import = "java.text.SimpleDateFormat" %>
+
+
+<c:set var="contextPath" value="${pageContext.request.contextPath}" />
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html dir="ltr">
 <head>
@@ -68,9 +72,9 @@
 		</tr>
 	</table>
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-
+		<input type="hidden" name="pathName" value=userflights>
 		<input type="submit" class="btn btn-lg" value="Add" name="frm" /> 
-		<a class="btn btn-lg" href="/welcome#flights">Cancel</a>
+		<a class="btn btn-lg" href="userflights">Cancel</a>
 		</div>
 	</form>
 </body>

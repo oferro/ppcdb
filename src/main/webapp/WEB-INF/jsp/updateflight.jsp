@@ -79,6 +79,38 @@
 							<td><input type="text" name="flRoute"
 								value="<c:out  value="${tisa.flRoute}"/>" /></td>
 						</tr>
+		<tr>
+			<td><label for="flPassengerName">Passenger Name</label> </td>
+			<td><input type="text"	name="flPassengerName" value="<c:out  value="${tisa.flRoute}"/>" /></td>
+		</tr>
+		<tr>
+			<td><label for="flEngHourStart">Eng Start Hour (0000.0)</label> </td>
+			<td><input type="number" min="0" max="9999" step="0.1"	name="flEngHourStart" value="<c:out  value="${tisa.flEngHourStart}"/>" /></td>
+		</tr>
+		<tr>
+			<td><label for="flEngHourEnd">Eng End Hour (0000.0)</label> </td>
+			<td><input type="number" min="0" max="9999" step="0.1"	name="flEngHourEnd" value="<c:out  value="${tisa.flEngHourEnd}"/>" /></td>
+		</tr>
+		<tr>
+			<td><label for="flFuelQt">Fuel Consumption (000.0)</label> </td>
+			<td><input type="number" min="0" max="999" step="0.1" name="flFuelQt" value="<c:out  value="${tisa.flFuelQt}"/>" /></td>
+		</tr>
+		<tr>
+			<td><label for="flOilQt">Oil Consumption (000.0)</label> </td>
+			<td><input type="number" min="0" max="999" step="0.1" name="flOilQt" value="<c:out  value="${tisa.flOilQt}"/>" /></td>
+		</tr>
+		<tr>
+			<td><label for="flOtherExp">Other Exp.(000,000.00)</label> </td>
+			<td><input type="number" min="0" max="999999" step="0.01" name="flOtherExp" value="<c:out  value="${tisa.flOtherExp}"/>" /></td>
+		</tr>
+		<tr>
+			<td><label for="flMaitenance">Maitenance nided</label> </td>
+			<td><input type="text"	name="flMaitenance" value="<c:out  value="${tisa.flMaitenance}"/>" /></td>
+		</tr>
+		<tr>
+			<td><label for="flRemark">Remarks</label> </td>
+			<td><input type="text"	name="flRemark" value="<c:out  value="${tisa.flRemark}"/>" /></td>
+		</tr>
 					</table>
 					<input type="hidden" name="${_csrf.parameterName}"
 						value="${_csrf.token}" /> 

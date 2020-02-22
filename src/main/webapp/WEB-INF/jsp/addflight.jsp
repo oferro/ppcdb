@@ -70,9 +70,41 @@
 			<td><label for="flRoute">Flight Route</label> </td>
 			<td><input type="text"	name="flRoute"  /></td>
 		</tr>
+		<tr>
+			<td><label for="flPassengerName">Passenger Name</label> </td>
+			<td><input type="text"	name="flPassengerName"  /></td>
+		</tr>
+		<tr>
+			<td><label for="flEngHourStart">Eng Start Hour (0000.0)</label> </td>
+			<td><input type="number" min="0.0" max="9999.9" step="0.1"	name="flEngHourStart"  /></td>
+		</tr>
+		<tr>
+			<td><label for="flEngHourEnd">Eng End Hour (0000.0)</label> </td>
+			<td><input type="number" min="0.0" max="9999.9"	name="flEngHourEnd"  /></td>
+		</tr>
+		<tr>
+			<td><label for="flFuelQt">Fuel Consumption (000.0)</label> </td>
+			<td><input type="number" min="0.0" max="999.9" step="0.1" name="flFuelQt"  /></td>
+		</tr>
+		<tr>
+			<td><label for="flOilQt">Oil Consumption (000.0)</label> </td>
+			<td><input type="number" min="0.0" max="999.9" step="0.1" name="flOilQt"  /></td>
+		</tr>
+		<tr>
+			<td><label for="flOtherExp">Other Exp.(000,000.00)</label> </td>
+			<td><input type="number" min="0.00" max="999999.99" step="0.01" name="flOtherExp"  /></td>
+		</tr>
+		<tr>
+			<td><label for="flMaitenance">Maitenance nided</label> </td>
+			<td><input type="text"	name="flMaitenance"  /></td>
+		</tr>
+		<tr>
+			<td><label for="flRemark">Remarks</label> </td>
+			<td><input type="text"	name="flRemark"  /></td>
+		</tr>
 	</table>
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-		<input type="hidden" name="pathName" value=userflights>
+		<input type="hidden" name="pathName" value="${uriName}">
 		<input type="submit" class="btn btn-lg" value="Add" name="frm" /> 
 		<a class="btn btn-lg" href="userflights">Cancel</a>
 		</div>

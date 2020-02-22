@@ -45,22 +45,22 @@
 		<h4>Sellect one</h4>
 		<br>
 		<div class="row">
-			<div class="col-sm-3">
+			<div class="col-sm-3 well">
 				<span class="glyphicon glyphicon-calendar logo-small"></span>
 				 <a	href=/userflights><h4>FLIGHT</h4></a>
 				<p>Flight Logbook</p>
 			</div>
-			<div class="col-sm-3">
+			<div class="col-sm-3 well">
 				<span class="glyphicon glyphicon-wrench logo-small"></span>
 				<h4>Maintain</h4>
 				<p>Maintenance Logbook</p>
 			</div>
-			<div class="col-sm-3">
+			<div class="col-sm-3 well">
 				<span class="glyphicon glyphicon-lock logo-small"></span> <a
 					href=#ppcs><h4>PPC</h4></a>
 				<p>PPC Details</p>
 			</div>
-			<div class="col-sm-3">
+			<div class="col-sm-3 well">
 				<span class="glyphicon glyphicon-user logo-small"></span> <a
 					href=#pilots><h4>Owners</h4></a>
 				<p>Pilots & Partners</p>
@@ -68,117 +68,11 @@
 		</div>
 		
 					<h3>
-				<a href="addflight">חדש</a> <a href="/flights">רענן</a>
+<!-- 				<a href="addflight">חדש</a>
+	--> 
+				<a href="/flights">רענן</a>
 			</h3>
 		
-
-		<div class="row" id="flights">
-		<p>---</p>
-			<H2>רשימת טיסות</H2>
-			<h3>
-				<a href="addflight">חדש</a> <a href="/flights">רענן</a>
-			</h3>
-			<table class=table>
-				<thead>
-					<tr>
-						<TH>ID</TH>
-						<TH>שם ממג</TH>
-						<TH>שם טיס</TH>
-						<TH>תאריך טיסה</TH>
-						<TH>שעת המראה</TH>
-						<TH>שעת נחיתה</TH>
-						<TH>שם מנחת</TH>
-						<TH>נתיב טיסה</TH>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach items="${tisot}" var="t">
-						<tr>
-							<td><c:out value="${t.id}" /></td>
-							<td><c:out value="${t.flPpc.ppName}" /></td>
-							<td><c:out value="${t.flPilot.piFirstName}" /></td>
-							<td><c:out value="${t.flDate}" /></td>
-							<td><c:out value="${t.flToTime}" /></td>
-							<td><c:out value="${t.flLndTime}" /></td>
-							<td><c:out value="${t.flAirField}" /></td>
-							<td><c:out value="${t.flRoute}" /></td>
-							<td><a href="flightDel/<c:out  value="${t.id}"/>">מחיקה</a>
-								<a href="flightUpdate/<c:out  value="${t.id}"/>">עדכון</a></td>
-
-						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
-
-		</div>
-		<div class="row" id="pilots">
-		<p>---</p>		
-			<H2>רשימת טייסים</H2>
-			<h3>
-				<a href="addpilot">חדש</a> <a href="/flights">רענן</a>
-			</h3>
-			<table class=table>
-				<thead>
-					<tr>
-						<TH>ID</TH>
-						<TH>שם פרטי</TH>
-						<TH>שם משפחה</TH>
-						<TH>מייל</TH>
-						<TH>טלפון</TH>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach items="${pilotList}" var="p">
-						<tr>
-							<td><c:out value="${p.ptPilot.id}" /></td>
-							<td><c:out value="${p.ptPilot.piFirstName}" /></td>
-							<td><c:out value="${p.ptPilot.piLastName}" /></td>
-							<td><a href="mailto:<c:out value="${p.ptPilot.piEmail}" />"><c:out value="${p.ptPilot.piEmail}" /></a></td>
-							<td><a href="tel:<c:out value="${p.ptPilot.piPhone}"/>"><c:out value="${p.ptPilot.piPhone}"/></a></td>
-							<td><a href="pilotDel/<c:out  value="${p.ptPilot.id}"/>">מחיקה</a> <a
-								href="pilotUpdate/<c:out  value="${p.ptPilot.id}"/>">עדכון</a></td>
-
-						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
-		</div>
-		<div class="row bg-grey" id="ppcs">
-		<p>---</p>		
-			<H2>רשימת כלי ממ"ג</H2>
-			<h3>
-				<a href="addPpc">חדש</a> <a href="/flights#ppcs">רענן</a>
-			</h3>
-			<table class=table>
-				<thead>
-					<tr>
-						<TH>ID</TH>
-						<TH>שם ממג</TH>
-						<TH>שם יצרן</TH>
-						<TH>סוג מנוע</TH>
-						<TH>שעמ התחלתי</TH>
-						<TH>נפח מיכל דלק</TH>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach items="${pilotList}" var="pp">
-						<tr>
-							<td><c:out value="${pp.ptPpc.id}" /></td>
-							<td><c:out value="${pp.ptPpc.ppName}" /></td>
-							<td><c:out value="${pp.ptPpc.ppManuf}" /></td>
-							<td><c:out value="${pp.ptPpc.ppEnginType}" /></td>
-							<td><c:out value="${pp.ptPpc.ppEngHourStart}" /></td>
-							<td><c:out value="${pp.ptPpc.ppFuelQt}" /></td>
-							<td><a href="ppcDel/<c:out  value="${pp.ptPpc.id}"/>">מחיקה</a> <a
-								href="ppcUpdate/<c:out  value="${pp.ptPpc.id}"/>">עדכון</a></td>
-
-						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
-		</div>
-	</div>
-
 	<div id="portfolio" class="container-fluid text-center bg-grey">
 		<h2>Portfolio</h2>
 		<h4>What we have created</h4>
@@ -222,9 +116,11 @@
 				<p>
 					<span class="glyphicon glyphicon-map-marker"></span> Israel
 				</p>
+<!--
 				<p>
 					<span class="glyphicon glyphicon-phone"></span> <a href="tel:+972 54-255-5137">+972 54-255-5137</a>
 				</p>
+		-->
 				<p>
 					<span class="glyphicon glyphicon-envelope"></span> <a
 						href="mailto:ofer_ro@yahoo.com?subject=PPC Logbook site" target=_blank>ofer_ro@yahoo.com</a>
@@ -305,8 +201,9 @@ Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
 		</div>
 		<div class="collapse navbar-collapse" id="myNavbar">
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="/flights#about">ABOUT</a></li>
-				<li><a href="/flights#services">SERVICES</a></li>
+<!-- 				<li><a href="#myPage">ABOUT</a></li>
+	-->
+				<li><a href="#myPage">SERVICES</a></li>
 				<li><a href="/userflights">FLIGHTS</a></li>
 				<li><a href="/flights#pilots">PILOTS</a></li>
 				<li><a href="/flights#ppcs">PPCS</a></li>

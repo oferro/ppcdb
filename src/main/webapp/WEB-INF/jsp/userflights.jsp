@@ -29,20 +29,13 @@
 		<p>Pilot Flight Logbook</p>
 	</div>
 
-	<div id="services" class="container-fluid text-center">
-
-	<h3>
-		<a href="addflight">חדש</a> <a href="/flights">רענן</a>
-	</h3>
-
-	</div>
+	<div class="container-fluid text-center">
 	<div class="row" id="flights">
-		<p>---</p>
 		<H2>רשימת טיסות</H2>
 		<h3>
 			<a href="addflight">חדש</a> <a href="/flights">רענן</a>
 		</h3>
-		<table class=table>
+		<table class="table table-hover">
 			<thead>
 				<tr>
 					<TH>ID</TH>
@@ -53,6 +46,14 @@
 					<TH>שעת נחיתה</TH>
 					<TH>שם מנחת</TH>
 					<TH>נתיב טיסה</TH>
+					<th>נוסע</th>
+					<TH>שע"מ מנוע התחלה</TH>
+					<TH>שע"מ מנוע סיום</TH>
+					<TH>צריכת דלק</TH>
+					<TH>צריכת שמן</TH>
+					<TH>עלויות נוספות</TH>					
+					<TH>הערות לתחזוקה</TH>
+					<TH>הערות כלליות</TH>					
 				</tr>
 			</thead>
 	 		<tbody>
@@ -66,7 +67,14 @@
 						<td><c:out value="${t.flLndTime}" /></td>
 						<td><c:out value="${t.flAirField}" /></td>
 						<td><c:out value="${t.flRoute}" /></td>
-						<td><a href="flightDel/<c:out  value="${t.id}"/>">מחיקה</a> <a
+						<td><c:out value="${t.flPassengerName}" /></td>
+						<td><c:out value="${t.flEngHourStart}" /></td>
+						<td><c:out value="${t.flEngHourEnd}" /></td>
+						<td><c:out value="${t.flFuelQt}" /></td>
+						<td><c:out value="${t.flOilQt}" /></td>
+						<td><c:out value="${t.flOtherExp}" /></td>
+						<td><c:out value="${t.flMaitenance}" /></td>
+						<td><c:out value="${t.flRemark}" /></td>						<td><a href="flightDel/<c:out  value="${t.id}"/>">מחיקה</a> <a
 							href="flightUpdate/<c:out  value="${t.id}"/>">עדכון</a></td>
 
 					</tr>
@@ -74,6 +82,7 @@
 			</tbody>
 		</table>
 
+	</div>
 	</div>
 	<div id="contact" class="container-fluid bg-grey">
 		<h3>
@@ -121,7 +130,7 @@
 		<div class="collapse navbar-collapse" id="myNavbar">
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="userflights/flights#about">ABOUT</a></li>
-				<li><a href="welcome/flights#myPage">SERVICES</a></li>
+				<li><a href="/">SERVICES</a></li>
 				<li><a href="userflights/flights#flights">FLIGHTS</a></li>
 				<li><a href="userflights/flights#pilots">PILOTS</a></li>
 				<li><a href="userflights/flights#ppcs">PPCS</a></li>

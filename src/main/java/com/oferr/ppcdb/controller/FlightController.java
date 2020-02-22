@@ -7,6 +7,7 @@ import java.util.Optional;
 import javax.security.auth.message.callback.SecretKeyCallback.Request;
 import javax.servlet.http.HttpServletRequest;
 
+import org.eclipse.persistence.jpa.jpql.parser.SubstringExpression;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
@@ -111,10 +112,14 @@ public class FlightController {
 	
 //	open addflight.jsp form for new flight   	--------------------------------------------
 	
-	@RequestMapping("/addflight")
+	@RequestMapping(value= {"/addflight"}, method = RequestMethod.GET)
 	public ModelAndView openAddFlight(HttpServletRequest request) {
 		String userReq = request.getUserPrincipal().getName();
-		String uriName = request.getPathInfo();
+		String uriName = request.getServletPath();
+		uriName = uriName.substring(1);
+		if(uriName=="addflight") {
+			uriName = "userflights";
+		}
 		System.out.println("PathInfo: " + uriName);
 		Pilot pilot = reqPilot(userReq);
 		List<Pilot> pilotList = new ArrayList<Pilot>(); //pilotRepository.findAll();
@@ -122,7 +127,9 @@ public class FlightController {
 		Iterable<Partner> ppcList =  partnerRepository.findByPtPilot(pilot);
 //		Iterable<Ppc> ppcList = ppcRepository.findAll();
 		ModelAndView mav = new ModelAndView("addflight");
-		mav.addObject("pilotList", pilotList).addObject("ppcList", ppcList);
+		mav.addObject("pilotList", pilotList)
+			.addObject("ppcList", ppcList)
+			.addObject("uriName", "userflights");
 		return mav;
 	}
 
@@ -138,8 +145,15 @@ public class FlightController {
 			@RequestParam("flToTime") String flToTime,
 			@RequestParam("flLndTime") String flLndTime, 
 			@RequestParam("flAirField") String flAirField,
-			@RequestParam("flRoute") String flRoute
-			) {
+			@RequestParam("flRoute") String flRoute,
+			@RequestParam("flPassengerName") String flPassengerName,
+			@RequestParam("flEngHourStart") double flEngHourStart,
+			@RequestParam("flEngHourEnd") double flEngHourEnd,
+			@RequestParam("flFuelQt") double flFuelQt,
+			@RequestParam("flOilQt") double flOilQt,
+			@RequestParam("flOtherExp") double flOtherExp,
+			@RequestParam("flMaitenance") String flMaitenance,
+			@RequestParam("flRemark") String flRemark			) {
 //	Flight obj
 		Flight fl = new Flight();
 
@@ -165,6 +179,15 @@ public class FlightController {
 		fl.setFlLndTime(flLndTime);
 		fl.setFlAirField(flAirField);
 		fl.setFlRoute(flRoute);
+		fl.setFlPassengerName(flPassengerName);
+		fl.setFlEngHourStart(flEngHourStart);
+		fl.setFlEngHourEnd(flEngHourEnd);
+		fl.setFlFuelQt(flFuelQt);
+		fl.setFlOilQt(flOilQt);
+		fl.setFlOtherExp(flOtherExp);
+		fl.setFlMaitenance(flMaitenance);
+		fl.setFlRemark(flRemark);
+		
 //	repository insert
 		repository.save(fl);
 

@@ -45,6 +45,7 @@
 	<div class="jumbotron text-center">
 		<h1>PPC (Power Parashut) Menagement</h1>
 		<p>Flight Logbook, Maintenance Logbook</p>
+		<p>Log in or Create an account</p>
 		<!-- 		<form class="form-inline">
 			<div class="input-group">
 				<input type="email" class="form-control" size="50"
@@ -56,8 +57,9 @@
 		</form>
 		-->
 	</div>
-	<div class="container-fluid" id="about">
-		<p>---</p>
+	<div class="container" id="about">
+	<div class="d-inline-block">
+<div class="alert alert-dismissible alert-success">
 				<h2><storng>About PPC Logbook</storng></h2>
 				<h3>
 					<u>Flights Logbook</u>
@@ -70,18 +72,22 @@
 					</strong>
 				</p>
 			<br>
+	</div>
+	
+	<div class="alert alert-dismissible alert-success">
 				<h3>
 					<u>Maintenance Logbook</u>
 				</h3>
 				<p class="lead text-primary">
 					PPC maintenance record. <br> What, When, Who, Cost ...
 				</p>
+</div>
 	<!-- 
 		<button class="btn btn-default btn-lg">Get in Touch</button>
 		-->
-	</div>
+	
 
-	<div class="container-fluid bg-grey">
+<div class="alert alert-dismissible alert-success">
 		<h2>Our Values</h2>
 		<h3>
 			<strong>MISSION:</strong> "One Stop Shop" for all the PPC activity
@@ -92,7 +98,8 @@
 			life cycle of the PPC.
 		</p>
 	</div>
-
+	</div>
+</div>
 	<div id="services" class="container-fluid text-center">
 		<p>---</p>
 		<h2>SERVICES</h2>
@@ -182,10 +189,12 @@
 				<p>
 					<span class="glyphicon glyphicon-map-marker"></span> Israel
 				</p>
+<!-- 
 				<p>
 					<span class="glyphicon glyphicon-phone"></span> <a
 						href="tel:+972 54-255-5137">+972 54-255-5137</a>
 				</p>
+	-->
 				<p>
 					<span class="glyphicon glyphicon-envelope"></span> <a
 						href="mailto:ofer_ro@yahoo.com?subject=PPC Logbook site"
@@ -250,7 +259,7 @@
 		</div>
 		<div class="collapse navbar-collapse" id="myNavbar">
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="#about">ABOUT</a></li>
+				<li><a href="#myPage">ABOUT</a></li>
 				<li><a href="#services">SERVICES</a></li>
 				<!-- 			<li><a href="#flights">FLIGHTS</a></li>
 				<li><a href="#pilots">PILOTS</a></li>

@@ -29,62 +29,68 @@
 		<p>Pilot Flight Logbook</p>
 	</div>
 
-	<div class="container-fluid text-center">
-	<div class="row" id="flights">
-		<H2>רשימת טיסות</H2>
-		<h3>
-			<a href="addflight">חדש</a> <a href="/flights">רענן</a>
-		</h3>
-		<table class="table table-hover">
-			<thead>
-				<tr>
-					<TH>ID</TH>
-					<TH>שם ממג</TH>
-					<TH>שם טיס</TH>
-					<TH>תאריך טיסה</TH>
-					<TH>שעת המראה</TH>
-					<TH>שעת נחיתה</TH>
-					<TH>שם מנחת</TH>
-					<TH>נתיב טיסה</TH>
-					<th>נוסע</th>
-					<TH>שע"מ מנוע התחלה</TH>
-					<TH>שע"מ מנוע סיום</TH>
-					<TH>צריכת דלק</TH>
-					<TH>צריכת שמן</TH>
-					<TH>עלויות נוספות</TH>					
-					<TH>הערות לתחזוקה</TH>
-					<TH>הערות כלליות</TH>					
-				</tr>
-			</thead>
-	 		<tbody>
-				<c:forEach items="${tisot}" var="t">
+	<div class="container-fluid">
+		<div id="flights">
+		<div class="text-center">
+			<H2>רשימת טיסות</H2>
+			<h3>
+				<a href="addflight">חדש</a> <a href="/flights">רענן</a>
+			</h3>
+
+			<input id="myInput" type="text"	placeholder="Search..">
+		</div>
+
+			<table class="table table-hover">
+				<thead>
 					<tr>
-						<td><c:out value="${t.id}" /></td>
-						<td><c:out value="${t.flPpc.ppName}" /></td>
-						<td><c:out value="${t.flPilot.piFirstName}" /></td>
-						<td><c:out value="${t.flDate}" /></td>
-						<td><c:out value="${t.flToTime}" /></td>
-						<td><c:out value="${t.flLndTime}" /></td>
-						<td><c:out value="${t.flAirField}" /></td>
-						<td><c:out value="${t.flRoute}" /></td>
-						<td><c:out value="${t.flPassengerName}" /></td>
-						<td><c:out value="${t.flEngHourStart}" /></td>
-						<td><c:out value="${t.flEngHourEnd}" /></td>
-						<td><c:out value="${t.flFuelQt}" /></td>
-						<td><c:out value="${t.flOilQt}" /></td>
-						<td><c:out value="${t.flOtherExp}" /></td>
-						<td><c:out value="${t.flMaitenance}" /></td>
-						<td><c:out value="${t.flRemark}" /></td>						<td><a href="flightDel/<c:out  value="${t.id}"/>">מחיקה</a> <a
-							href="flightUpdate/<c:out  value="${t.id}"/>">עדכון</a></td>
-
+						<TH>ID</TH>
+						<TH>שם ממג</TH>
+						<TH>שם טיס</TH>
+						<TH>תאריך טיסה</TH>
+						<TH>שעת המראה</TH>
+						<TH>שעת נחיתה</TH>
+						<TH>שם מנחת</TH>
+						<TH>נתיב טיסה</TH>
+						<th>נוסע</th>
+						<TH>שע"מ מנוע התחלה</TH>
+						<TH>שע"מ מנוע סיום</TH>
+						<TH>צריכת דלק</TH>
+						<TH>צריכת שמן</TH>
+						<TH>עלויות נוספות</TH>
+						<TH>הערות לתחזוקה</TH>
+						<TH>הערות כלליות</TH>
 					</tr>
-				</c:forEach>
-			</tbody>
-		</table>
+				</thead>
+				<tbody id="myTable">
+					<c:forEach items="${tisot}" var="t">
+						<tr>
+							<td><c:out value="${t.id}" /></td>
+							<td><c:out value="${t.flPpc.ppName}" /></td>
+							<td><c:out value="${t.flPilot.piFirstName}" /></td>
+							<td><c:out value="${t.flDate}" /></td>
+							<td><c:out value="${t.flToTime}" /></td>
+							<td><c:out value="${t.flLndTime}" /></td>
+							<td><c:out value="${t.flAirField}" /></td>
+							<td><c:out value="${t.flRoute}" /></td>
+							<td><c:out value="${t.flPassengerName}" /></td>
+							<td><c:out value="${t.flEngHourStart}" /></td>
+							<td><c:out value="${t.flEngHourEnd}" /></td>
+							<td><c:out value="${t.flFuelQt}" /></td>
+							<td><c:out value="${t.flOilQt}" /></td>
+							<td><c:out value="${t.flOtherExp}" /></td>
+							<td><c:out value="${t.flMaitenance}" /></td>
+							<td><c:out value="${t.flRemark}" /></td>
+							<td><a href="flightDel/<c:out  value="${t.id}"/>">מחיקה</a>
+								<a href="flightUpdate/<c:out  value="${t.id}"/>">עדכון</a></td>
 
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+
+		</div>
 	</div>
-	</div>
-	<div id="contact" class="container-fluid bg-grey">
+	<div id="contact" class="container-fluid bg-grey text-left">
 		<h3>
 			<strong>CONTACT</strong>
 		</h3>
@@ -187,7 +193,29 @@
 						})
 	</script>
 	<script>
-		
+		$(document)
+				.ready(
+						function() {
+							$("#myInput")
+									.on(
+											"keyup",
+											function() {
+												var value = $(this).val()
+														.toLowerCase();
+												$("#myTable tr")
+														.filter(
+																function() {
+																	$(this)
+																			.toggle(
+																					$(
+																							this)
+																							.text()
+																							.toLowerCase()
+																							.indexOf(
+																									value) > -1)
+																});
+											});
+						});
 	</script>
 </body>
 </html>

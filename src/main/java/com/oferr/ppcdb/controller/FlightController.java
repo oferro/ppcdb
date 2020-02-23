@@ -207,8 +207,17 @@ public class FlightController {
 			@RequestParam("flToTime") String flToTime,
 			@RequestParam("flLndTime") String flLndTime, 
 			@RequestParam("flAirField") String flAirField,
-			@RequestParam("flRoute") String flRoute
+			@RequestParam("flRoute") String flRoute,
+			@RequestParam("flPassengerName") String flPassengerName,
+			@RequestParam("flEngHourStart") double flEngHourStart,
+			@RequestParam("flEngHourEnd") double flEngHourEnd,
+			@RequestParam("flFuelQt") double flFuelQt,
+			@RequestParam("flOilQt") double flOilQt,
+			@RequestParam("flOtherExp") double flOtherExp,
+			@RequestParam("flMaitenance") String flMaitenance,
+			@RequestParam("flRemark") String flRemark
 			) {
+
 //	Flight obj
 		Optional<Flight> optFlight = repository.findById(Long.parseLong(id));
 		Flight fl = new Flight();
@@ -222,6 +231,15 @@ public class FlightController {
 		fl.setFlLndTime(flLndTime);
 		fl.setFlAirField(flAirField);
 		fl.setFlRoute(flRoute);
+		fl.setFlPassengerName(flPassengerName);
+		fl.setFlEngHourStart(flEngHourStart);
+		fl.setFlEngHourEnd(flEngHourEnd);
+		fl.setFlFuelQt(flFuelQt);
+		fl.setFlOilQt(flOilQt);
+		fl.setFlOtherExp(flOtherExp);
+		fl.setFlMaitenance(flMaitenance);
+		fl.setFlRemark(flRemark);
+		
 //	repository insert
 		repository.save(fl);
 

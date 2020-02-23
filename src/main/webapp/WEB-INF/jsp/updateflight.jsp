@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 
@@ -79,44 +79,63 @@
 							<td><input type="text" name="flRoute"
 								value="<c:out  value="${tisa.flRoute}"/>" /></td>
 						</tr>
-		<tr>
-			<td><label for="flPassengerName">Passenger Name</label> </td>
-			<td><input type="text"	name="flPassengerName" value="<c:out  value="${tisa.flRoute}"/>" /></td>
-		</tr>
-		<tr>
-			<td><label for="flEngHourStart">Eng Start Hour (0000.0)</label> </td>
-			<td><input type="number" min="0" max="9999" step="0.1"	name="flEngHourStart" value="<c:out  value="${tisa.flEngHourStart}"/>" /></td>
-		</tr>
-		<tr>
-			<td><label for="flEngHourEnd">Eng End Hour (0000.0)</label> </td>
-			<td><input type="number" min="0" max="9999" step="0.1"	name="flEngHourEnd" value="<c:out  value="${tisa.flEngHourEnd}"/>" /></td>
-		</tr>
-		<tr>
-			<td><label for="flFuelQt">Fuel Consumption (000.0)</label> </td>
-			<td><input type="number" min="0" max="999" step="0.1" name="flFuelQt" value="<c:out  value="${tisa.flFuelQt}"/>" /></td>
-		</tr>
-		<tr>
-			<td><label for="flOilQt">Oil Consumption (000.0)</label> </td>
-			<td><input type="number" min="0" max="999" step="0.1" name="flOilQt" value="<c:out  value="${tisa.flOilQt}"/>" /></td>
-		</tr>
-		<tr>
-			<td><label for="flOtherExp">Other Exp.(000,000.00)</label> </td>
-			<td><input type="number" min="0" max="999999" step="0.01" name="flOtherExp" value="<c:out  value="${tisa.flOtherExp}"/>" /></td>
-		</tr>
-		<tr>
-			<td><label for="flMaitenance">Maitenance nided</label> </td>
-			<td><input type="text"	name="flMaitenance" value="<c:out  value="${tisa.flMaitenance}"/>" /></td>
-		</tr>
-		<tr>
-			<td><label for="flRemark">Remarks</label> </td>
-			<td><input type="text"	name="flRemark" value="<c:out  value="${tisa.flRemark}"/>" /></td>
-		</tr>
+						<tr>
+							<td><label for="flPassengerName">Passenger Name</label></td>
+							<td><input type="text" name="flPassengerName"
+								value="<c:out  value="${tisa.flPassengerName}"/>" /></td>
+						</tr>
+						<tr>
+							<td><label for="flEngHourStart">Eng Start Hour
+									(0000.0)</label></td>
+							<td><input type="number" min="0" max="9999" step="0.1"
+								name="flEngHourStart"
+								value="<c:out  value="${tisa.flEngHourStart}"/>" /></td>
+						</tr>
+						<tr>
+							<td><label for="flEngHourEnd">Eng End Hour (0000.0)</label>
+							</td>
+							<td><input type="number" min="0" max="9999" step="0.1"
+								name="flEngHourEnd"
+								value="<c:out  value="${tisa.flEngHourEnd}"/>" /></td>
+						</tr>
+						<tr>
+							<td><label for="flFuelQt">Fuel Consumption (000.0)</label></td>
+							<td><input type="number" min="0" max="999" step="0.1"
+								name="flFuelQt" value="<c:out  value="${tisa.flFuelQt}"/>" /></td>
+						</tr>
+						<tr>
+							<td><label for="flOilQt">Oil Consumption (000.0)</label></td>
+							<td><input type="number" min="0" max="999" step="0.1"
+								name="flOilQt" value="<c:out  value="${tisa.flOilQt}"/>" /></td>
+						</tr>
+						<tr>
+							<td><label for="flOtherExp">Other Exp.(000,000.00)</label></td>
+							<td><input type="number" min="0" max="999999" step="0.01"
+								name="flOtherExp" value="<c:out  value="${tisa.flOtherExp}"/>" /></td>
+						</tr>
+						<tr>
+							<td><label for="flMaitenance">Maitenance nided</label></td>
+							<td><input type="text" name="flMaitenance"
+								value="<c:out  value="${tisa.flMaitenance}"/>" /></td>
+						</tr>
+						<tr>
+							<td><label for="flRemark">Remarks</label></td>
+							<td><input type="text" name="flRemark"
+								value="<c:out  value="${tisa.flRemark}"/>" /></td>
+						</tr>
 					</table>
 					<input type="hidden" name="${_csrf.parameterName}"
-						value="${_csrf.token}" /> 
-						<input type="hidden" name="pathName" value=userflights>
-						<input class="btn btn-primary btn-lg btn-block" type="submit" value="update"	name="myaction" /> 
-						<a class="btn btn-outline-secondary btn-lg btn-block" path="/">Cancel</a>
+						value="${_csrf.token}" /> <input type="hidden" name="pathName"
+						value=userflights> <input
+						class="btn btn-primary btn-lg btn-block" type="submit"
+						value="update" name="myaction" /> <input
+						class="btn btn-lg btn-block" type="button" value="Cancel"
+						onclick="cancel()" />
 	</form>
 </body>
+<script type="text/javascript">
+	var cancel = function() {
+		window.location.href = document.referrer;
+	};
+</script>
 </html>

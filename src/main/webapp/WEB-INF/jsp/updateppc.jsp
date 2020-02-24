@@ -14,47 +14,78 @@
 </head>
 <body>
 	<h1>PPC update form</h1>
-	<form class="container" method="post" action="/ppc/updateppc">
-		<div>
-			<label for="id">ID (readonly)</label> <input readonly type="text"
-				name="id" value="<c:out  value="${ppc.id}"/>" />
-		</div>
+	<form class="container-fluid" method="post" action="/ppc/updateppc">
+		<div class="row">
+			<div class="col-lg-4">
+				<div class="table-responsive">
+					<table class="table">
+						<tr>
+							<td><label for="id">ID (readonly)</label></td>
+							<td>
+						<input readonly type="text" name="id"
+								value="<c:out  value="${ppc.id}"/>" />
+							</td>
+							</tr>
 
-		<div>
-			<label for="ppName">PPC name</label> <input type="text"
-				name="ppName" length=15 value="<c:out  value="${ppc.ppName}"/>" />
-		</div>
+						<tr>
+							<td><label for="ppNotActive">PPC Not Active</label></td>
+							<td>
+						<input type="checkbox" name="ppNotActive" 
+								value="<c:out  value="${ppc.ppNotActive}"/>" />
+							</td>
+							</tr>
 
-		<div>
-			<label for="ppManuf">PPC Manufactoey</label> <input type="text"
-				name="ppManuf" length=15 value="<c:out  value="${ppc.ppManuf}"/>" />
-		</div>
+						<tr>
 
-		<div>
-			<label for="ppEnginType">PPC Engin Type</label> <input type="text"
-				name="ppEnginType" length=15
-				value="<c:out  value="${ppc.ppEnginType}"/>" />
-		</div>
+						<tr>
+							<td><label for="ppName">PPC name</label></td>
+							<td>
+						<input type="text" name="ppName" length=15
+								value="<c:out  value="${ppc.ppName}"/>" />
+							</td>
+							</tr>
 
-		<div>
-			<label for="ppEngHourStart">PPC Engin Start Hour</label> 
-			<input type="number"
-				name="ppEngHourStart"
-				pattern="^\d*(\.\d{0,1})?$" placeholder="0000.0"
-				value="<c:out  value="${ppc.ppEngHourStart}"/>" />
-		</div>
+						<tr>
+							<td><label for="ppManuf">PPC Manufactoey</label></td>
+							<td>
+						<input type="text" name="ppManuf" length=15
+								value="<c:out  value="${ppc.ppManuf}"/>" />
+							</td>
+							</tr>
 
-		<div>
-			<label for="ppFuelQt">PPC Fuel Qt.</label> <input
-				type="number" name="ppFuelQt"
-				pattern="^\d*(\.\d{0,1})?$" placeholder="000.0"
-				value="<c:out  value="${ppc.ppFuelQt}"/>" />
-		</div>
+						<tr>
+							<td><label for="ppEnginType">PPC Engin Type</label></td>
+							<td>
+						<input type="text" name="ppEnginType" length=15
+								value="<c:out  value="${ppc.ppEnginType}"/>" />
+							</td>
+							</tr>
 
-        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+						<tr>
+							<td><label for="ppEngHourStart">PPC Engin Start Hour (0000.0)</label>
+							</td>
+							<td>
+						<input type="number" name="ppEngHourStart"
+								min="0" max="9999" step="0.1"
+								pattern="^\d*(\.\d{0,1})?$" placeholder="0000.0"
+								value="<c:out  value="${ppc.ppEngHourStart}"/>" />
+							</td>
+							</tr>
 
-		<input type="submit" value="update" name="myaction" /> <a
-			href="/flights#ppcs">Cancel</a>
+						<tr>
+							<td><label for="ppFuelQt">PPC Fuel Qt.</label></td>
+							<td>
+						<input type="number" name="ppFuelQt" pattern="^\d*(\.\d{0,1})?$"
+								placeholder="000.0" value="<c:out  value="${ppc.ppFuelQt}"/>" />
+							</td>
+							</tr>
+					</table>
+
+					<input type="hidden" name="${_csrf.parameterName}"
+						value="${_csrf.token}" /> <input class="btn btn-primary btn-lg btn-block" type="submit" value="update"
+						name="myaction" /> 
+						<input class="btn btn-lg btn-block" type="button" value="Cancel"
+						onclick="cancel()"/>
 	</form>
 
 	<script type="text/javascript">
@@ -70,6 +101,9 @@
 				}
 			}, 0);
 		});
+		var cancel = function() {
+			window.location.href = document.referrer;
+		};
 	</script>
 
 </body>

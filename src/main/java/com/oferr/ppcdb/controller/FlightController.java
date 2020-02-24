@@ -62,12 +62,12 @@ public class FlightController {
 	@RequestMapping(value = {"/flights"})
 	public ModelAndView home(HttpServletRequest request) {
 		String userReq = request.getUserPrincipal().getName();
+		Pilot pilot = reqPilot(userReq);
 		String uriName = request.getPathInfo();
 		System.out.println("PathInfo: " + uriName);
 		if(uriName==null) {
 			uriName = "welcome";
 		};
-		Pilot pilot = reqPilot(userReq);
 		Sort sortFlight = Sort.by(Sort.Direction.DESC, "flDate").and(new Sort(Sort.Direction.DESC, "flToTime"));
 		Iterable<Flight> tisot = repository.findByFlPilot(pilot, sortFlight);
 		Iterable<Partner> pilotList =  partnerRepository.findByPtPilot(pilot); //pilot.getPartners(); //pilotRepository.findAll();

@@ -57,7 +57,7 @@
 			</div>
 			<div class="col-sm-3 well">
 				<span class="glyphicon glyphicon-lock logo-small"></span> <a
-					href=#ppcs><h4>PPC</h4></a>
+					href=/userppcs><h4>PPC</h4></a>
 				<p>PPC Details</p>
 			</div>
 			<div class="col-sm-3 well">
@@ -206,7 +206,7 @@ Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
 				<li><a href="#myPage">SERVICES</a></li>
 				<li><a href="/userflights">FLIGHTS</a></li>
 				<li><a href="/flights#pilots">PILOTS</a></li>
-				<li><a href="/flights#ppcs">PPCS</a></li>
+				<li><a href="/userppcs">PPCS</a></li>
 				<li><a href="/flights#contact">CONTACT</a></li>
 			</ul>
 		</div>

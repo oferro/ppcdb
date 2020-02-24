@@ -1,6 +1,11 @@
 package com.oferr.ppcdb.controller;
 
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,8 +15,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.oferr.ppcdb.domain.Pilot;
 import com.oferr.ppcdb.domain.Ppc;
 import com.oferr.ppcdb.domain.PpcRepository;
+import com.oferr.ppcdb.domain.User;
+import com.oferr.ppcdb.domain.UserRepository;
 
 @Controller
 public class PpcController {
@@ -19,23 +27,68 @@ public class PpcController {
 	@Autowired
 	PpcRepository repository;
 	
+	@Autowired
+	UserRepository userRepository;
+	
+	
+// User/Pilot from user request --------------------------------------------------------
+	
+	Pilot reqPilot (String usrReq) {
+		User user = userRepository.findByUsername(usrReq);
+		Pilot pilot = user.getUsPilot();
+		return pilot;
+	}
+
+//	fill up the ppc list in userppcs.jsp    	--------------------------------------------
+	
+	@RequestMapping(value = {"/userppcs"})
+	public ModelAndView home(HttpServletRequest request) {
+		String userReq = request.getUserPrincipal().getName();
+		Pilot pilot = reqPilot(userReq);
+//		String uriName = request.getPathInfo();
+//		System.out.println("PathInfo: " + uriName);
+//		if(uriName==null) {
+//			uriName = "welcome";
+//		};
+		String uriName = "userppcs";
+//		Sort sortFlight = Sort.by(Sort.Direction.DESC, "flDate").and(new Sort(Sort.Direction.DESC, "flToTime"));
+//		Iterable<Flight> tisot = repository.findByFlPilot(pilot, sortFlight);
+//		Iterable<Partner> pilotList =  partnerRepository.findByPtPilot(pilot); //pilot.getPartners(); //pilotRepository.findAll();
+		Iterable<Ppc> ppcList = pilot.getPpcs(); //ppcRepository.findAll();
+//		Collections.sort((List<Ppc>) ppcList,null);
+		ModelAndView mav = new ModelAndView(uriName);
+		mav.addObject("ppcList", ppcList).addObject("pilot", pilot.getFullName());
+		return mav;
+	}
+	
+	
 //	open addPpc.jsp form for new pilot   	--------------------------------------------
 	
 	@RequestMapping("/addPpc")
-	public String openAddPpc() {
-		return "addPpc";
+	public ModelAndView openAddPpc(HttpServletRequest request) {
+		String userReq = request.getUserPrincipal().getName();
+		Pilot pilot = reqPilot(userReq);
+		ModelAndView mav = new ModelAndView("addPpc");
+		mav.addObject("pilotName", pilot.getFullName());
+		return mav;
 	}
 	
 //	return from addPpc to the ppc list 	--------------------------------------------
 	
 	@RequestMapping(value = "/ppc/addPpc", method = RequestMethod.POST)
-	public String addPpc(@RequestParam("ppName") String ppName, 
+	public ModelAndView addPpc(HttpServletRequest request,
+			@RequestParam("ppName") String ppName, 
 			@RequestParam("ppManuf") String ppManuf,
 			@RequestParam("ppEnginType") String ppEnginType, 
 			@RequestParam("ppEngHourStart") String ppEngHourStart,
-			@RequestParam("ppFuelQt") String ppFuelQt 
+			@RequestParam("ppFuelQt") String ppFuelQt, 
+			@RequestParam("ppNotActive") boolean ppNotActive
 			) {
 //	Ppc obj
+
+		String userReq = request.getUserPrincipal().getName();
+		Pilot pilot = reqPilot(userReq);
+		
 		Ppc ppc = new Ppc();
 
 
@@ -45,14 +98,18 @@ public class PpcController {
 		ppc.setPpEnginType(ppEnginType);
 		ppc.setPpEnginType(ppEnginType);
 		ppc.setPpFuelQt(ppFuelQt);
+		ppc.setPpNotActive(ppNotActive);
+		ppc.setPpPilotMang(pilot);
 //	repository insert
 		repository.save(ppc);
-		return "redirect:/";
+		ModelAndView mav = new ModelAndView("userppcs");
+
+		return mav;
 	}
 
 //	Open ppc updateppc.jsp form 		-----------------------------------------------
 	
-	@RequestMapping("/ppcUpdate/{id}")
+	@RequestMapping("/ppc/ppcUpdate/{id}")
 	public ModelAndView openUpdatePpc(@PathVariable("id") String id) {
 		Long lId = Long.parseLong(id);
 		System.out.println("ID for repository Update is : " + lId);
@@ -76,8 +133,9 @@ public class PpcController {
 			@RequestParam("ppName") String ppName, 
 			@RequestParam("ppManuf") String ppManuf,
 			@RequestParam("ppEnginType") String ppEnginType, 
-			@RequestParam("ppEngHourStart") String ppEngHourStart,
-			@RequestParam("ppFuelQt") String ppFuelQt
+			@RequestParam("ppEngHourStart") double ppEngHourStart,
+			@RequestParam("ppFuelQt") double ppFuelQt,
+			@RequestParam("ppNotActive") boolean ppNotActive
 			) {
 //	Ppc obj
 		Optional<Ppc> optPpc = repository.findById(Long.parseLong(id));
@@ -92,9 +150,10 @@ public class PpcController {
 		ppc.setPpEnginType(ppEnginType);
 		ppc.setPpEngHourStart(ppEngHourStart);
 		ppc.setPpFuelQt(ppFuelQt);
+		ppc.setPpNotActive(ppNotActive);
 //	repository insert
 		repository.save(ppc);
-		return "redirect:/flights#ppcs";
+		return "redirect:/userppcs";
 	}
 
 //	Delete Ppc		--------------------------------------------------------------------
@@ -113,7 +172,7 @@ public class PpcController {
 			String msg = "PPC Deltle : " + delPpc.getPpName();
 			System.out.println("deleted PPC id: " + lId);
 			System.out.println(msg);
-			mav.setViewName("redirect:/#ppcs");
+			mav.setViewName("redirect:/userppcs");
 		} else {
 			String msgError = "PPC " +delPpc.getPpName() +" - can't delete. there is Flight records for this PPC";
 			System.out.println(msgError);

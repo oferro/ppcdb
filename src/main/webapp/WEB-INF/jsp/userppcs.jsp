@@ -25,63 +25,47 @@
 	data-offset="60">
 
 	<div class="jumbotron text-center">
-		<h2>PPC (Power Parashut) Menagement - User Flights</h2>
-		<p>Pilot Flight Logbook</p>
+		<h2>PPC (Power Parashut) Menagement - User PPCs</h2>
+		<p>PPC registerd and Menage</p>
 	</div>
 
 	<div class="container-fluid">
-		<div id="flights">
+		<div id="ppcs">
 		<div class="text-center">
-			<H2>רשימת טיסות</H2>
+			<H2>רשימת ממגים</H2>
 			<h3>
-				<a href="addflight">חדש</a> <a href="/flights">רענן</a>
+				<a href="addPpc">חדש</a> <a href="/ppcs">רענן</a>
 			</h3>
 
 			<input id="myInput" type="text"	placeholder="Search..">
 		</div>
 
 			<table class="table table-hover">
-				<thead>
+				<thead class=>
 					<tr>
 						<TH>ID</TH>
 						<TH  class="text-right">שם ממג</TH>
-						<TH  class="text-right">שם טיס</TH>
-						<TH  class="text-right">תאריך טיסה</TH>
-						<TH  class="text-right">שעת המראה</TH>
-						<TH  class="text-right">שעת נחיתה</TH>
-						<TH  class="text-right">שם מנחת</TH>
-						<TH  class="text-right">נתיב טיסה</TH>
-						<th  class="text-right">נוסע</th>
-						<TH  class="text-right">שע"מ מנוע התחלה</TH>
-						<TH  class="text-right">שע"מ מנוע סיום</TH>
-						<TH  class="text-right">צריכת דלק</TH>
-						<TH  class="text-right">צריכת שמן</TH>
-						<TH  class="text-right">עלויות נוספות</TH>
-						<TH  class="text-right">הערות לתחזוקה</TH>
-						<TH  class="text-right">הערות כלליות</TH>
+						<TH  class="text-right">שם יצרן</TH>
+						<TH  class="text-right">סוג מנוע</TH>
+						<TH  class="text-right">שעמ מנוע התחלתי</TH>
+						<TH  class="text-right">גודל מיכל דלק (ל)</TH>
+						<TH  class="text-right">טיס מנהל</TH>
+						<TH  class="text-right">ממג לא פעיל</TH>
 					</tr>
 				</thead>
 				<tbody id="myTable">
-					<c:forEach items="${tisot}" var="t">
+					<c:forEach items="${ppcList}" var="t">
 						<tr>
 							<td><c:out value="${t.id}" /></td>
-							<td><c:out value="${t.flPpc.ppName}" /></td>
-							<td><c:out value="${t.flPilot.piFirstName}" /></td>
-							<td><c:out value="${t.flDate}" /></td>
-							<td><c:out value="${t.flToTime}" /></td>
-							<td><c:out value="${t.flLndTime}" /></td>
-							<td><c:out value="${t.flAirField}" /></td>
-							<td><c:out value="${t.flRoute}" /></td>
-							<td><c:out value="${t.flPassengerName}" /></td>
-							<td><c:out value="${t.flEngHourStart}" /></td>
-							<td><c:out value="${t.flEngHourEnd}" /></td>
-							<td><c:out value="${t.flFuelQt}" /></td>
-							<td><c:out value="${t.flOilQt}" /></td>
-							<td><c:out value="${t.flOtherExp}" /></td>
-							<td><c:out value="${t.flMaitenance}" /></td>
-							<td><c:out value="${t.flRemark}" /></td>
-							<td><a href="flightDel/<c:out  value="${t.id}"/>">מחיקה</a>
-								<a href="flightUpdate/<c:out  value="${t.id}"/>">עדכון</a></td>
+							<td><c:out value="${t.ppName}" /></td>
+							<td><c:out value="${t.ppManuf}" /></td>
+							<td><c:out value="${t.ppEnginType}" /></td>
+							<td><c:out value="${t.ppEngHourStart}" /></td>
+							<td><c:out value="${t.ppFuelQt}" /></td>
+							<td><c:out value="${t.ppPilotMang.piFirstName} ${t.ppPilotMang.piLastName}" /></td>
+							<td><c:out value="${t.ppNotActive}" /></td>
+							<td><a href="ppcDel/<c:out  value="${t.id}"/>">מחיקה</a>
+								<a href="ppc/ppcUpdate/<c:out  value="${t.id}"/>">עדכון</a></td>
 
 						</tr>
 					</c:forEach>
@@ -137,9 +121,9 @@
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="userflights/flights#about">ABOUT</a></li>
 				<li><a href="/">SERVICES</a></li>
-				<li><a href="userflights/flights#myPage">FLIGHTS</a></li>
+				<li><a href="userflights">FLIGHTS</a></li>
 				<li><a href="userflights/flights#pilots">PILOTS</a></li>
-				<li><a href="userppcs">PPCS</a></li>
+				<li><a href="userflights/flights#ppcs">PPCS</a></li>
 				<li><a href="userflights/flights#contact">CONTACT</a></li>
 			</ul>
 		</div>

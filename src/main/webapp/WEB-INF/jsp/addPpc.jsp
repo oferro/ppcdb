@@ -14,6 +14,7 @@
 </head>
 <body>
 <h1>Ppc Add Form</h1>
+<h2>Menage by: <span>${pilotName}</span></h2>
 	<form action="/ppc/addPpc"  method="post" name="frm" class="container">
 		<div>
 			<label for="ppName">PPC Name</label> 
@@ -40,9 +41,15 @@
 			<input type="number"	name="ppFuelQt" pattern="^\d*(\.\d{0,1})?$" placeholder="000.0"/>
 		</div>
 		
+		<div>
+			<label for="ppNotActive">PPC not active</label> 
+			<input type="checkbox" name="ppNotActive" value=false readonly>
+		</div>
+		
 		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
-		<input type="submit" value="New" name="frm" /> <a href="/">Cancel</a>
+		<input type="submit" value="New" name="frm" />
+		<input type="button" onclick="cancel()" value="Cancel"/>
 	</form>
 	
 	<script type="text/javascript">
@@ -58,6 +65,11 @@
 		    }
 		  }, 0);
 		});
+
+	var cancel = function() {
+		window.location.href = document.referrer;
+	};
+
 	</script>
 </body>
 </html>

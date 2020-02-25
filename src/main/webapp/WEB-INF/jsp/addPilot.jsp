@@ -32,18 +32,13 @@
 <!--  ToDo = Checking on existing eMail allredy -->
 
 		<div>
-			<label for="piPw">Pilot Login Password</label> 
-			<input type="password"	name="piPw" length=20 required/>
-		</div>
-
-		<div>
 			<label for="piPhone">Pilot Phone No.</label> 
 			<input type="text"	name="piPhone" length=15 />
 		</div>
 
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
-		<input type="submit" value="New" name="frm" /> <a href="/">Cancel</a>
+		<input type="submit" value="New" name="frm" />
 	</form>
 </body>
 </html>

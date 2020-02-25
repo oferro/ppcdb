@@ -26,7 +26,7 @@ public class Pilot {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 
-	@Column(name = "EMAIL", nullable = false, unique = true, length = 35)
+	@Column(name = "EMAIL", nullable = false, length = 35)
 	private String piEmail;
 
 	@Column(name = "FIRST_NAME", length = 15)

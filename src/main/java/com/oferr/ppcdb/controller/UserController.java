@@ -53,7 +53,7 @@ public class UserController {
         Cookie uiUsername =  new Cookie("userlogin", userForm.getUsername());
         response.addCookie(uiUsername);
         
-        return "redirect:/index";
+        return "redirect:/addpilot";
     }
 
     @RequestMapping(value = "/login")

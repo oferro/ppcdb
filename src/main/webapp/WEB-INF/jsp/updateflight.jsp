@@ -130,12 +130,7 @@
 						class="btn btn-primary btn-lg btn-block" type="submit"
 						value="update" name="myaction" /> <input
 						class="btn btn-lg btn-block" type="button" value="Cancel"
-						onclick="cancel()" />
+						onclick="history.back()" />
 	</form>
 </body>
-<script type="text/javascript">
-	var cancel = function() {
-		window.location.href = document.referrer;
-	};
-</script>
 </html>

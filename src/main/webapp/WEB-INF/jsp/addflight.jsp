@@ -76,23 +76,23 @@
 		</tr>
 		<tr>
 			<td><label for="flEngHourStart">Eng Start Hour (0000.0)</label> </td>
-			<td><input type="number" min="0.0" max="9999.9" step="0.1"	name="flEngHourStart"  /></td>
+			<td><input type="number" value=0 min="0.0" max="9999.9" step="0.1"	name="flEngHourStart"  /></td>
 		</tr>
 		<tr>
 			<td><label for="flEngHourEnd">Eng End Hour (0000.0)</label> </td>
-			<td><input type="number" min="0.0" max="9999.9"	name="flEngHourEnd"  /></td>
+			<td><input type="number" value=0 min="0.0" max="9999.9"	name="flEngHourEnd"  /></td>
 		</tr>
 		<tr>
 			<td><label for="flFuelQt">Fuel Consumption (000.0)</label> </td>
-			<td><input type="number" min="0.0" max="999.9" step="0.1" name="flFuelQt"  /></td>
+			<td><input type="number" value=0 min="0.0" max="999.9" step="0.1" name="flFuelQt"  /></td>
 		</tr>
 		<tr>
 			<td><label for="flOilQt">Oil Consumption (000.0)</label> </td>
-			<td><input type="number" min="0.0" max="999.9" step="0.1" name="flOilQt"  /></td>
+			<td><input type="number" value=0 min="0.0" max="999.9" step="0.1" name="flOilQt"  /></td>
 		</tr>
 		<tr>
 			<td><label for="flOtherExp">Other Exp.(000,000.00)</label> </td>
-			<td><input type="number" min="0.00" max="999999.99" step="0.01" name="flOtherExp"  /></td>
+			<td><input type="number" value=0 min="0.00" max="999999.99" step="0.01" name="flOtherExp"  /></td>
 		</tr>
 		<tr>
 			<td><label for="flMaitenance">Maitenance nided</label> </td>
@@ -105,9 +105,9 @@
 	</table>
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 		<input type="hidden" name="pathName" value="${uriName}">
-		<input type="submit" class="btn btn-lg" value="Add" name="frm" /> 
-		<a class="btn btn-lg" href="userflights">Cancel</a>
-		</div>
+		<input type="submit" class="btn btn-lg btn-block" value="Add" name="frm" /> 
+		<input class="btn btn-lg btn-block" type="button" value="Cancel"
+			onclick="history.back()" />
 	</form>
 </body>
 </html>

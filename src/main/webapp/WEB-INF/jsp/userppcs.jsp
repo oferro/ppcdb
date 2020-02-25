@@ -68,6 +68,7 @@
 								<a href="ppc/ppcUpdate/<c:out  value="${t.id}"/>">עדכון</a></td>
 
 						</tr>
+						
 					</c:forEach>
 				</tbody>
 			</table>

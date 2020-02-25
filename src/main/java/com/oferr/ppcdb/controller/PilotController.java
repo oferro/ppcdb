@@ -2,6 +2,8 @@ package com.oferr.ppcdb.controller;
 
 import java.util.Optional;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,12 +14,17 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.oferr.ppcdb.domain.Pilot;
 import com.oferr.ppcdb.domain.PilotRepository;
+import com.oferr.ppcdb.domain.User;
+import com.oferr.ppcdb.domain.UserRepository;
 
 @Controller
 public class PilotController{
 	
 	@Autowired
 	PilotRepository repository;
+	
+	@Autowired
+	UserRepository userRepository;
 	
 //	open addPilot.jsp form for new pilot   	--------------------------------------------
 	
@@ -29,24 +36,27 @@ public class PilotController{
 //	return from addpilot to the pilot list 	--------------------------------------------
 	
 	@RequestMapping(value = "/pilot/addPilot", method = RequestMethod.POST)
-	public String addPilot(
+	public String addPilot(HttpServletRequest request,
 			@RequestParam("piFirstName") String piFirstName, 
 			@RequestParam("piLastName") String piLastName,
 			@RequestParam("piEmail") String piEmail, 
 			@RequestParam("piPhone") String piPhone 
 			) {
 //	Flight obj
+		String userReq = request.getUserPrincipal().getName();
+		User user = userRepository.findByUsername(userReq);
+		
 		Pilot pi = new Pilot();
-
 
 //	Fill up pilot pi obj
 		pi.setPiFirstName(piFirstName);
 		pi.setPiLastName(piLastName);
 		pi.setPiEmail(piEmail);
 		pi.setPiPhone(piPhone);
+		pi.setUser(user);
 //	repository insert
-		repository.save(pi);
-		return "redirect:/index#pilots";
+		repository.saveAndFlush(pi);
+		return "redirect:/";
 	}
 	
 //	Open pilot updatepilot.jsp form 		-----------------------------------------------

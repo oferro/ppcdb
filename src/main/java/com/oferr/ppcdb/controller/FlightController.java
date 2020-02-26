@@ -73,7 +73,7 @@ public class FlightController {
 		Iterable<Partner> pilotList =  partnerRepository.findByPtPilot(pilot); //pilot.getPartners(); //pilotRepository.findAll();
 //		Iterable<Ppc> ppcList = pilot.getPpcs(); //ppcRepository.findAll();
 		ModelAndView mav = new ModelAndView(uriName);
-		mav.addObject("tisot", tisot).addObject("pilotList", pilotList).addObject("pilot", pilot.getFullName());
+		mav.addObject("tisot", tisot).addObject("pilotList", pilotList).addObject("pilot",  pilot.getFullName());
 		return mav;
 	}
 
@@ -86,7 +86,7 @@ public class FlightController {
 		Iterable<Partner> pilotList =  partnerRepository.findByPtPilot(pilot); //pilot.getPartners(); //pilotRepository.findAll();
 //		Iterable<Ppc> ppcList = pilot.getPpcs(); //ppcRepository.findAll();
 		ModelAndView mav = new ModelAndView("userflights");
-		mav.addObject("tisot", tisot).addObject("pilotList", pilotList).addObject("pilot", pilot.getFullName());
+		mav.addObject("tisot", tisot).addObject("pilotList", pilotList).addObject("pilot", pilot);
 		return mav;
 	}
 

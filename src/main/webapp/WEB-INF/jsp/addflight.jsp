@@ -105,7 +105,7 @@
 	</table>
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 		<input type="hidden" name="pathName" value="${uriName}">
-		<input type="submit" class="btn btn-lg btn-block" value="Add" name="frm" /> 
+		<input type="submit" class="btn btn-primary btn-lg btn-block" value="Add" name="frm" /> 
 		<input class="btn btn-lg btn-block" type="button" value="Cancel"
 			onclick="history.back()" />
 	</form>

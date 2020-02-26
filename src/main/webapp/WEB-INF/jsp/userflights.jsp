@@ -32,7 +32,7 @@
 	<div class="container-fluid">
 		<div id="flights">
 		<div class="text-center">
-			<H2>רשימת טיסות</H2>
+			<H2>רשימת טיסות - ${pilot.piFirstName}</H2>
 			<h3>
 				<a href="addflight">חדש</a> <a href="/flights">רענן</a>
 			</h3>
@@ -80,9 +80,14 @@
 							<td><c:out value="${t.flOtherExp}" /></td>
 							<td><c:out value="${t.flMaitenance}" /></td>
 							<td><c:out value="${t.flRemark}" /></td>
-							<td><a href="flightDel/<c:out  value="${t.id}"/>">מחיקה</a>
-								<a href="flightUpdate/<c:out  value="${t.id}"/>">עדכון</a></td>
-
+							<td><a class="btn btn-md btn-primary btn-inline" 
+									<c:if test="${t.flPilot.id != pilot.id}">disabled="disabled"</c:if>
+									href="flightUpdate/<c:out  value="${t.id}"/>"> עדכון </a>
+								<a
+									<c:if test="${t.flPilot.id != pilot.id}">disabled="disabled"</c:if>
+									href="flightDel/<c:out  value="${t.id}"/>">מחיקה</a>
+								</td>
+								
 						</tr>
 					</c:forEach>
 				</tbody>
@@ -130,12 +135,11 @@
 -->
 			<div class="navbar-brand">
 				<a onclick="document.forms['logoutForm'].submit()">Logout -
-					${pilot} (${pageContext.request.userPrincipal.name})</a>
+					${pilot.piFirstName} ${pilot.piLastName}  (${pageContext.request.userPrincipal.name})</a>
 			</div>
 		</div>
 		<div class="collapse navbar-collapse" id="myNavbar">
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="userflights/flights#about">ABOUT</a></li>
 				<li><a href="/">SERVICES</a></li>
 				<li><a href="userflights/flights#myPage">FLIGHTS</a></li>
 				<li><a href="userflights/flights#pilots">PILOTS</a></li>

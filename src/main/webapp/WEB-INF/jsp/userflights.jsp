@@ -32,7 +32,9 @@
 	<div class="container-fluid">
 		<div id="flights">
 		<div class="text-center">
-			<H2>רשימת טיסות - ${pilot.piFirstName}</H2>
+			<H2>רשימת טיסות - ${pilot.piFirstName}
+			<c:if test="${ppc != null }"> - ${ppc.ppName}</c:if>
+			</H2>
 			<h3>
 				<a href="addflight">חדש</a> <a href="/flights">רענן</a>
 			</h3>

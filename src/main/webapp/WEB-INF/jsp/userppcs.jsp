@@ -64,8 +64,16 @@
 							<td><c:out value="${t.ppFuelQt}" /></td>
 							<td><c:out value="${t.ppPilotMang.piFirstName} ${t.ppPilotMang.piLastName}" /></td>
 							<td><c:out value="${t.ppNotActive}" /></td>
-							<td><a href="ppcDel/<c:out  value="${t.id}"/>">מחיקה</a>
-								<a href="ppc/ppcUpdate/<c:out  value="${t.id}"/>">עדכון</a></td>
+							<td><a class="btn btn-md btn-primary btn-inline" 
+									<c:if test="${t.ppPilotMang.id != pilot.id}">disabled="disabled"</c:if>
+									href="flightUpdate/<c:out  value="${t.id}"/>"> עדכון </a>
+								<a
+									<c:if test="${t.ppPilotMang.id != pilot.id}">disabled="disabled"</c:if>
+									href="flightDel/<c:out  value="${t.id}"/>">מחיקה</a>
+								<a class="btn btn-md btn-primary btn-inline" 
+									<c:if test="${t.ppPilotMang.id != pilot.id}">disabled="disabled"</c:if>
+									href="ppcflights/<c:out  value="${t.id}"/>"> טיסות </a>	
+								</td>
 
 						</tr>
 						

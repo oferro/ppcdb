@@ -1,8 +1,5 @@
 package com.oferr.ppcdb.controller;
 
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
 import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
@@ -57,7 +54,10 @@ public class PpcController {
 		Iterable<Ppc> ppcList = pilot.getPpcs(); //ppcRepository.findAll();
 //		Collections.sort((List<Ppc>) ppcList,null);
 		ModelAndView mav = new ModelAndView(uriName);
-		mav.addObject("ppcList", ppcList).addObject("pilot", pilot.getFullName());
+		mav
+			.addObject("ppcList", ppcList)
+			.addObject("pilotName", pilot.getFullName())
+			.addObject("pilot", pilot);
 		return mav;
 	}
 	

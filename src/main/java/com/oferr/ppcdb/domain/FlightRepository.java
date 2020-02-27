@@ -12,4 +12,7 @@ public interface FlightRepository extends JpaRepository<Flight, Long> {
 		@Query("select f from Flight f where f.flPilot = ?1")
 		List<Flight> findByFlPilot(Pilot flPilot, Sort sort);
 
+		//Fetch flights by PPC
+		Iterable<Flight> findByFlPpc(Ppc ppc, Sort sortFlight);
+
 }

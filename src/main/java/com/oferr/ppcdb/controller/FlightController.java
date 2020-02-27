@@ -4,10 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import javax.security.auth.message.callback.SecretKeyCallback.Request;
 import javax.servlet.http.HttpServletRequest;
 
-import org.eclipse.persistence.jpa.jpql.parser.SubstringExpression;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
@@ -78,7 +76,7 @@ public class FlightController {
 	}
 
 	@RequestMapping(value = {"/userflights"})
-	public ModelAndView home2(HttpServletRequest request) {
+	public ModelAndView userFlights(HttpServletRequest request) {
 		String userReq = request.getUserPrincipal().getName();
 		Pilot pilot = reqPilot(userReq);
 		Sort sortFlight = Sort.by(Sort.Direction.DESC, "flDate").and(new Sort(Sort.Direction.DESC, "flToTime"));
@@ -86,7 +84,32 @@ public class FlightController {
 		Iterable<Partner> pilotList =  partnerRepository.findByPtPilot(pilot); //pilot.getPartners(); //pilotRepository.findAll();
 //		Iterable<Ppc> ppcList = pilot.getPpcs(); //ppcRepository.findAll();
 		ModelAndView mav = new ModelAndView("userflights");
-		mav.addObject("tisot", tisot).addObject("pilotList", pilotList).addObject("pilot", pilot);
+		mav
+			.addObject("tisot", tisot)
+			.addObject("pilotList", pilotList)
+			.addObject("pilot", pilot);
+		return mav;
+	}
+
+	@RequestMapping(value = {"/ppcflights/{ppcid}"})
+	public ModelAndView ppcFlights(HttpServletRequest request, 
+				@PathVariable("ppcid") Long ppcId) {
+		String userReq = request.getUserPrincipal().getName();
+		Pilot pilot = reqPilot(userReq);
+		Optional<Ppc> optPpc = ppcRepository.findById(ppcId);
+		Ppc ppc = new Ppc();
+			if(optPpc.isPresent()) {
+				ppc = optPpc.get();
+			}
+		Sort sortFlight = Sort.by(Sort.Direction.DESC, "flDate").and(new Sort(Sort.Direction.DESC, "flToTime"));
+		Iterable<Flight> tisot = repository.findByFlPpc(ppc, sortFlight);
+		List<Partner> pilotList =  partnerRepository.findByPtPpc(ppc); //pilot.getPartners(); //pilotRepository.findAll();
+//		Iterable<Ppc> ppcList = pilot.getPpcs(); //ppcRepository.findAll();
+		ModelAndView mav = new ModelAndView("userflights");
+		mav.addObject("tisot", tisot)
+			.addObject("pilotList", pilotList)
+			.addObject("pilot", pilot)
+			.addObject("ppc", ppc);
 		return mav;
 	}
 

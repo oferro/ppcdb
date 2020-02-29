@@ -126,9 +126,11 @@
 					</table>
 					<input type="hidden" name="${_csrf.parameterName}"
 						value="${_csrf.token}" /> <input type="hidden" name="pathName"
-						value=userflights> <input
+						value=userflights> 
+					<input	
 						class="btn btn-primary btn-lg btn-block" type="submit"
-						value="update" name="myaction" /> <input
+						value="update" name="myaction" /> 
+					<input
 						class="btn btn-lg btn-block" type="button" value="Cancel"
 						onclick="history.back()" />
 	</form>

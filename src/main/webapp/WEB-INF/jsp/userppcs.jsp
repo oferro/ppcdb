@@ -56,31 +56,28 @@
 				<tbody id="myTable">
 					<c:forEach items="${ppcList}" var="t">
 						<tr>
-							<td><c:out value="${t.id}" /></td>
-							<td><c:out value="${t.ppName}" /></td>
-							<td><c:out value="${t.ppManuf}" /></td>
-							<td><c:out value="${t.ppEnginType}" /></td>
-							<td><c:out value="${t.ppEngHourStart}" /></td>
-							<td><c:out value="${t.ppFuelQt}" /></td>
-							<td><c:out value="${t.ppPilotMang.piFirstName} ${t.ppPilotMang.piLastName}" /></td>
-							<td><c:out value="${t.ppNotActive}" /></td>
+							<td><c:out value="${t.ptPpc.id}" /></td>
+							<td><c:out value="${t.ptPpc.ppName}" /></td>
+							<td><c:out value="${t.ptPpc.ppManuf}" /></td>
+							<td><c:out value="${t.ptPpc.ppEnginType}" /></td>
+							<td><c:out value="${t.ptPpc.ppEngHourStart}" /></td>
+							<td><c:out value="${t.ptPpc.ppFuelQt}" /></td>
+							<td><c:out value="${t.ptPpc.ppPilotMang.piFirstName} ${t.ptPpc.ppPilotMang.piLastName}" /></td>
+							<td><c:out value="${t.ptPpc.ppNotActive}" /></td>
 							<td><a class="btn btn-md btn-primary btn-inline" 
-									<c:if test="${t.ppPilotMang.id != pilot.id}">disabled="disabled"</c:if>
-									href="flightUpdate/<c:out  value="${t.id}"/>"> עדכון </a>
-								<a
-									<c:if test="${t.ppPilotMang.id != pilot.id}">disabled="disabled"</c:if>
-									href="flightDel/<c:out  value="${t.id}"/>">מחיקה</a>
-								<a class="btn btn-md btn-primary btn-inline" 
-									<c:if test="${t.ppPilotMang.id != pilot.id}">disabled="disabled"</c:if>
-									href="ppcflights/<c:out  value="${t.id}"/>"> טיסות </a>	
+									<c:if test="${t.ptPpc.ppPilotMang.id != pilot.id}">disabled="disabled"</c:if>
+									href="${contextPath}/ppc/ppcUpdate/<c:out  value="${t.ptPpc.id}"/>"> עדכון </a>
+								<a class="btn btn-md btn-danger btn-inline"
+									<c:if test="${t.ptPpc.ppPilotMang.id != pilot.id}">disabled="disabled"</c:if>
+									href="${contextPath}/ppcDel/<c:out  value="${t.ptPpc.id}"/>">מחיקה</a>
+								<a class="btn btn-md btn-info btn-inline" 
+									href="${contextPath}/ppcflights/<c:out  value="${t.ptPpc.id}"/>"> טיסות </a>	
 								</td>
 
 						</tr>
-						
 					</c:forEach>
-				</tbody>
-			</table>
-
+					</tbody>
+				</table>
 		</div>
 	</div>
 	<div id="contact" class="container-fluid bg-grey text-left">
@@ -123,17 +120,15 @@
 -->
 			<div class="navbar-brand">
 				<a onclick="document.forms['logoutForm'].submit()">Logout -
-					${pilot} (${pageContext.request.userPrincipal.name})</a>
+					${pilot.piFirstName} ${pilot.piLastName} (${pageContext.request.userPrincipal.name})</a>
 			</div>
 		</div>
 		<div class="collapse navbar-collapse" id="myNavbar">
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="userflights/flights#about">ABOUT</a></li>
 				<li><a href="/">SERVICES</a></li>
-				<li><a href="userflights">FLIGHTS</a></li>
-				<li><a href="userflights/flights#pilots">PILOTS</a></li>
-				<li><a href="userflights/flights#ppcs">PPCS</a></li>
-				<li><a href="userflights/flights#contact">CONTACT</a></li>
+				<li><a href="${contextPath}/userflights">USER FLIGHTS</a></li>
+				<li><a href="${contextPath}/userppcs">PPCS</a></li>
+				<li><a href="#contact">CONTACT</a></li>
 			</ul>
 		</div>
 	</div>

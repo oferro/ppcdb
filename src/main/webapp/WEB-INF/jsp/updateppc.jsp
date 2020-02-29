@@ -82,10 +82,11 @@
 					</table>
 
 					<input type="hidden" name="${_csrf.parameterName}"
-						value="${_csrf.token}" /> <input class="btn btn-primary btn-lg btn-block" type="submit" value="update"
+						value="${_csrf.token}" /> 
+					<input class="btn btn-primary btn-lg btn-block" type="submit" value="update"
 						name="myaction" /> 
-						<input class="btn btn-lg btn-block" type="button" value="Cancel"
-						onclick="cancel()"/>
+					<input class="btn btn-lg btn-block" type="button" value="Cancel"
+						onclick="history.back()"/>
 	</form>
 
 	<script type="text/javascript">
@@ -101,9 +102,6 @@
 				}
 			}, 0);
 		});
-		var cancel = function() {
-			window.location.href = document.referrer;
-		};
 	</script>
 
 </body>

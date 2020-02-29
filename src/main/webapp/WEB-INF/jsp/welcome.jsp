@@ -61,8 +61,8 @@
 				<p>PPC Details</p>
 			</div>
 			<div class="col-sm-3 well">
-				<span class="glyphicon glyphicon-user logo-small"></span> <a
-					href=#pilots><h4>Owners</h4></a>
+				<span class="glyphicon glyphicon-user logo-small"></span> 
+				<h4>Owners</h4>
 				<p>Pilots & Partners</p>
 			</div>
 		</div>
@@ -75,7 +75,6 @@
 		
 	<div id="portfolio" class="container-fluid text-center bg-grey">
 		<h2>Portfolio</h2>
-		<h4>What we have created</h4>
 		<div class="row text-center">
 			<div class="col-sm-4">
 				<div class="thumbnail">
@@ -193,7 +192,8 @@ Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
 				<input type="hidden" name="${_csrf.parameterName}"
 					value="${_csrf.token}" />
 			</form>
-				<img alt="Logo" src="/resources/static/pilot.jpg" width="10%">
+<!-- 				<img alt="Logo" src="/resources/static/pilot.jpg" width="10%">
+ 	-->
 			<div class="navbar-brand">
 				<a onclick="document.forms['logoutForm'].submit()">Logout -
 					${pilot} (${pageContext.request.userPrincipal.name})</a> 
@@ -204,9 +204,9 @@ Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
 <!-- 				<li><a href="#myPage">ABOUT</a></li>
 	-->
 				<li><a href="#myPage">SERVICES</a></li>
-				<li><a href="/userflights">FLIGHTS</a></li>
-				<li><a href="/flights#pilots">PILOTS</a></li>
-				<li><a href="/userppcs">PPCS</a></li>
+				<li><a href="${contextPath}/userflights">USER FLIGHTS</a></li>
+				<li><a href="${contextPath}/pilotUpdate">PILOT USER DETAIL</a></li>
+				<li><a href="${contextPath}/userppcs">PPCS</a></li>
 				<li><a href="/flights#contact">CONTACT</a></li>
 			</ul>
 		</div>

@@ -1,5 +1,7 @@
 package com.oferr.ppcdb.controller;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.oferr.ppcdb.domain.Partner;
+import com.oferr.ppcdb.domain.PartnerRepository;
 import com.oferr.ppcdb.domain.Pilot;
 import com.oferr.ppcdb.domain.Ppc;
 import com.oferr.ppcdb.domain.PpcRepository;
@@ -26,7 +30,10 @@ public class PpcController {
 	
 	@Autowired
 	UserRepository userRepository;
-	
+
+	@Autowired
+	PartnerRepository partnerRepository;
+
 	
 // User/Pilot from user request --------------------------------------------------------
 	
@@ -38,20 +45,32 @@ public class PpcController {
 
 //	fill up the ppc list in userppcs.jsp    	--------------------------------------------
 	
+	@SuppressWarnings("null")
 	@RequestMapping(value = {"/userppcs"})
 	public ModelAndView home(HttpServletRequest request) {
 		String userReq = request.getUserPrincipal().getName();
 		Pilot pilot = reqPilot(userReq);
-//		String uriName = request.getPathInfo();
-//		System.out.println("PathInfo: " + uriName);
-//		if(uriName==null) {
-//			uriName = "welcome";
-//		};
-		String uriName = "userppcs";
+		String uriName = request.getPathInfo();
+		System.out.println("PathInfo: " + uriName);
+		if(uriName==null) {
+			uriName = "welcome";
+		};
+		uriName = "userppcs";
 //		Sort sortFlight = Sort.by(Sort.Direction.DESC, "flDate").and(new Sort(Sort.Direction.DESC, "flToTime"));
 //		Iterable<Flight> tisot = repository.findByFlPilot(pilot, sortFlight);
 //		Iterable<Partner> pilotList =  partnerRepository.findByPtPilot(pilot); //pilot.getPartners(); //pilotRepository.findAll();
-		Iterable<Ppc> ppcList = pilot.getPpcs(); //ppcRepository.findAll();
+		List<Partner> ppcListPartner = partnerRepository.findByPtPilot(pilot);
+		List<Partner> ppcList = new ArrayList<Partner>();
+		for(Partner ppc : ppcListPartner) {
+			if(ppc.isPtActive()) {
+				ppcList.add(ppc) ;
+			}
+			else {
+				if(ppc.getPtPilot() == pilot) {
+					ppcList.add(ppc);
+				}
+			}
+		}
 //		Collections.sort((List<Ppc>) ppcList,null);
 		ModelAndView mav = new ModelAndView(uriName);
 		mav

@@ -26,6 +26,17 @@ public class PilotController{
 	@Autowired
 	UserRepository userRepository;
 	
+
+	// User/Pilot from user request --------------------------------------------------------
+	
+		Pilot reqPilot (String usrReq) {
+			User user = userRepository.findByUsername(usrReq);
+			Pilot pilot = user.getUsPilot();
+			return pilot;
+		}
+
+	
+	
 //	open addPilot.jsp form for new pilot   	--------------------------------------------
 	
 	@RequestMapping("/addpilot")
@@ -70,8 +81,15 @@ public class PilotController{
 			if(optPilot.isPresent()) {
 				pi = optPilot.get();
 			}
-			System.out.println("List of Pilot: "+pi);
-			System.out.println("List of Pilot: "+optPilot);		
+			ModelAndView mav = new ModelAndView("updatepilot");
+		mav.addObject("pilot" ,pi);
+		return mav;
+	}
+
+	@RequestMapping("/pilotUpdate")
+	public ModelAndView openUpdatePilot2(HttpServletRequest request) {
+		String userReq = request.getUserPrincipal().getName();
+		Pilot pi = reqPilot(userReq);
 			ModelAndView mav = new ModelAndView("updatepilot");
 		mav.addObject("pilot" ,pi);
 		return mav;

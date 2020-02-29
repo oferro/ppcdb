@@ -9,4 +9,8 @@ public interface PpcRepository extends JpaRepository<Ppc, Long> {
 	// Fetch ppc by name
 	List<Ppc> findByPpName(String ppName);
 
+//	// Fetch ppc by pilot
+//	List<Ppc> findByPtPpc(Partner partner);
+	
+
 }

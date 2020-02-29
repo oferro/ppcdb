@@ -36,7 +36,7 @@
 			<c:if test="${ppc != null }"> - ${ppc.ppName}</c:if>
 			</H2>
 			<h3>
-				<a href="addflight">חדש</a> <a href="/flights">רענן</a>
+				<a href="${contextPath}/addflight">חדש</a> <a href="/flights">רענן</a>
 			</h3>
 
 			<input id="myInput" type="text"	placeholder="Search..">
@@ -82,11 +82,11 @@
 							<td><c:out value="${t.flOtherExp}" /></td>
 							<td><c:out value="${t.flMaitenance}" /></td>
 							<td><c:out value="${t.flRemark}" /></td>
-							<td><a class="btn btn-md btn-primary btn-inline" 
+							<td><a class="btn btn-md btn-primary" 
 									<c:if test="${t.flPilot.id != pilot.id}">disabled="disabled"</c:if>
 									href="flightUpdate/<c:out  value="${t.id}"/>"> עדכון </a>
-								<a
-									<c:if test="${t.flPilot.id != pilot.id}">disabled="disabled"</c:if>
+								<a class="btn btn-xs btn-danger"
+									<c:if test="${t.flPilot.id != pilot.id}"> disabled="disabled"</c:if>
 									href="flightDel/<c:out  value="${t.id}"/>">מחיקה</a>
 								</td>
 								
@@ -142,11 +142,10 @@
 		</div>
 		<div class="collapse navbar-collapse" id="myNavbar">
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="/">SERVICES</a></li>
-				<li><a href="userflights/flights#myPage">FLIGHTS</a></li>
-				<li><a href="userflights/flights#pilots">PILOTS</a></li>
-				<li><a href="userppcs">PPCS</a></li>
-				<li><a href="userflights/flights#contact">CONTACT</a></li>
+				<li><a href="${contextPath}/">SERVICES</a></li>
+				<li><a href="${contextPath}/userflights">USER FLIGHTS</a></li>
+				<li><a href="${contextPath}/userppcs">PPCS</a></li>
+				<li><a href="#contact">CONTACT</a></li>
 			</ul>
 		</div>
 	</div>

@@ -7,11 +7,11 @@ import org.springframework.data.jpa.repository.Query;
 
 public interface PartnerRepository extends JpaRepository<Partner, Long> {
 	
-	// Fetch ppcs by pilot using SQL
+	// Fetch partners by pilot using SQL
 	@Query("select p from Partner p where p.ptPilot = ?1")
 	List<Partner> findByPtPilot(Pilot ptPilot);
 
 	//Fetch pilot on ppc by ppcId as String
 	List<Partner> findByPtPpc(Ppc ptPpc);
-
+	
 }

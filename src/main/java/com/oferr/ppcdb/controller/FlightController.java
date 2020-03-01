@@ -138,12 +138,6 @@ public class FlightController {
 	@RequestMapping(value= {"/addflight"}, method = RequestMethod.GET)
 	public ModelAndView openAddFlight(HttpServletRequest request) {
 		String userReq = request.getUserPrincipal().getName();
-		String uriName = request.getServletPath();
-		uriName = uriName.substring(1);
-		if(uriName=="addflight") {
-			uriName = "userflights";
-		}
-		System.out.println("PathInfo: " + uriName);
 		Pilot pilot = reqPilot(userReq);
 		List<Pilot> pilotList = new ArrayList<Pilot>(); //pilotRepository.findAll();
 		pilotList.add(pilot);
@@ -213,8 +207,6 @@ public class FlightController {
 		
 //	repository insert
 		repository.save(fl);
-
-		System.out.println("Update Flight - PathInfo: " + pathName);
 		
 		return "redirect:/"+pathName;
 	}

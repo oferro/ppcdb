@@ -40,16 +40,16 @@
 			<label for="ppFuelQt">PPC Fuel Qt.</label> 
 			<input type="number"	name="ppFuelQt" pattern="^\d*(\.\d{0,1})?$" placeholder="000.0"/>
 		</div>
-		
+<!--  		
 		<div>
 			<label for="ppNotActive">PPC not active</label> 
 			<input type="checkbox" name="ppNotActive" value=false readonly>
 		</div>
-		
+	-->	
 		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
 		<input type="submit" value="New" name="frm" />
-		<input type="button" onclick="cancel()" value="Cancel"/>
+		<input type="button" onclick="history.back()" value="Cancel"/>
 	</form>
 	
 	<script type="text/javascript">
@@ -65,10 +65,6 @@
 		    }
 		  }, 0);
 		});
-
-	var cancel = function() {
-		window.location.href = document.referrer;
-	};
 
 	</script>
 </body>

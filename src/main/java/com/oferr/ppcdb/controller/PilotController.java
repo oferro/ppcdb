@@ -106,8 +106,13 @@ public class PilotController{
 			@RequestParam("piPhone") String piPhone 
 			) {
 //	Flight obj
-		Pilot pi = repository.getOne(Long.parseLong(id));
 
+		Pilot pi = new Pilot();
+
+		if(repository.existsById(Long.parseLong(id))) {
+			pi = repository.getOne(Long.parseLong(id));
+			}
+	
 //	Fill up pilot pi obj
 		pi.setPiFirstName(piFirstName);
 		pi.setPiLastName(piLastName);

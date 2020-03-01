@@ -27,7 +27,7 @@ public class Ppc {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 
-	@Column(name = "PPC_NAME", nullable = false, length = 15)
+	@Column(name = "PPC_NAME", nullable = false, unique = true, length = 15)
 	private String ppName;
 
 	@Column(name = "MANUF_NAME", length = 15)

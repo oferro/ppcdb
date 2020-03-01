@@ -1,5 +1,6 @@
 package com.oferr.ppcdb.controller;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -100,11 +101,12 @@ public class PpcController {
 			@RequestParam("ppManuf") String ppManuf,
 			@RequestParam("ppEnginType") String ppEnginType, 
 			@RequestParam("ppEngHourStart") String ppEngHourStart,
-			@RequestParam("ppFuelQt") String ppFuelQt, 
-			@RequestParam("ppNotActive") boolean ppNotActive
+			@RequestParam("ppFuelQt") String ppFuelQt 
+//			@RequestParam("ppNotActive") boolean ppNotActive
 			) {
 //	Ppc obj
 
+			
 		String userReq = request.getUserPrincipal().getName();
 		Pilot pilot = reqPilot(userReq);
 		
@@ -115,12 +117,23 @@ public class PpcController {
 		ppc.setPpName(ppName);
 		ppc.setPpManuf(ppManuf);
 		ppc.setPpEnginType(ppEnginType);
-		ppc.setPpEnginType(ppEnginType);
+		ppc.setPpEngHourStart(ppEngHourStart);
 		ppc.setPpFuelQt(ppFuelQt);
-		ppc.setPpNotActive(ppNotActive);
+//		ppc.setPpNotActive(ppNotActive);
 		ppc.setPpPilotMang(pilot);
 //	repository insert
 		repository.save(ppc);
+		
+		Partner partner = new Partner();
+		
+		partner.setPtPpc(ppc);
+		partner.setPtPilot(pilot);
+		partner.setPtDateIn(LocalDate.now());
+		partner.setPtDefPpc(true);
+		partner.setPtPercent(100);
+		
+		partnerRepository.save(partner);
+		
 		ModelAndView mav = new ModelAndView("userppcs");
 
 		return mav;

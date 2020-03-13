@@ -39,7 +39,7 @@
 
 		<tr>
 			<td><label for="ppcId">PPC ID : </label></td> 
-			<td><select name=ppcId>
+			<td><select id="ppcid" name=ppcId>
 				<c:forEach var="p" items="${ppcList}">
 					<option value="${p.ptPpc.id}">${p.ptPpc.ppName}</option>
 				</c:forEach></td>
@@ -76,7 +76,7 @@
 		</tr>
 		<tr>
 			<td><label for="flEngHourStart">Eng Start Hour (0000.0)</label> </td>
-			<td><input type="number" value=0 min="0.0" max="9999.9" step="0.1"	name="flEngHourStart"  /></td>
+			<td><input id="engStrHur" onfocus="engineStartHour()" type="number" value=0 min="0.0" max="9999.9" step="0.1"	name="flEngHourStart"  /></td>
 		</tr>
 		<tr>
 			<td><label for="flEngHourEnd">Eng End Hour (0000.0)</label> </td>
@@ -111,4 +111,18 @@
 	</form>
 	
 </body>
+<script type="text/javascript">
+function engineStartHour() {
+    	var x = document.getElementById("ppcid").value;
+	  	var xhttp;
+	  	xhttp = new XMLHttpRequest();
+	  	xhttp.onreadystatechange = function() {
+	    if (this.readyState == 4 && this.status == 200) {
+	    	document.getElementById("engStrHur").value = this.responseText;
+	    }
+	  };
+	  xhttp.open("GET", "/addflight/esh/"+x, true);
+	  xhttp.send();
+	}
+</script>
 </html>

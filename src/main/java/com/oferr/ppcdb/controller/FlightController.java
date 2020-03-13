@@ -1,5 +1,6 @@
 package com.oferr.ppcdb.controller;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.oferr.ppcdb.domain.Flight;
@@ -150,6 +152,21 @@ public class FlightController {
 		return mav;
 	}
 
+//  get async engineStartHour for add flight    --------------------------------------------	
+	
+	@RequestMapping(value= "/addflight/esh/{id}", method = RequestMethod.GET)
+	@ResponseBody 
+	public String esh(@PathVariable ("id") String id) {
+		Long lId = Long.parseLong(id);
+		Ppc ppc = ppcRepository.getOne(lId);
+		Sort sortFlight = Sort.by(Sort.Direction.DESC, "flDate").and(new Sort(Sort.Direction.DESC, "flToTime"));
+		Iterable<Flight> flights = repository.findByFlPpc(ppc, sortFlight);
+		Flight flight = flights.iterator().next();
+		String ppcEsh = flight.getFlEngHourEnd().toString();
+		return ppcEsh;
+	}
+
+	
 	
 //	return from addflight to the flight list 	--------------------------------------------
 	

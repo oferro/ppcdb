@@ -23,7 +23,7 @@
 %>
 
 </head>
-<body>
+<body  onload="engineStartHour()">
 <h1>Flight Add Form</h1>
 	<form action="/flight/addFlight"  method="post" name="frm" class="container-fluid">
 		<div class="row col-lg-4 table-responsive">
@@ -39,7 +39,7 @@
 
 		<tr>
 			<td><label for="ppcId">PPC ID : </label></td> 
-			<td><select id="ppcid" name=ppcId>
+			<td><select id="ppcid" name=ppcId  onblur="engineStartHour()">
 				<c:forEach var="p" items="${ppcList}">
 					<option value="${p.ptPpc.id}">${p.ptPpc.ppName}</option>
 				</c:forEach></td>
@@ -76,11 +76,11 @@
 		</tr>
 		<tr>
 			<td><label for="flEngHourStart">Eng Start Hour (0000.0)</label> </td>
-			<td><input id="engStrHur" onfocus="engineStartHour()" type="number" value=0 min="0.0" max="9999.9" step="0.1"	name="flEngHourStart"  /></td>
+			<td><input id="engStrHur" type="number" value=0.0 min="0.0" max="9999.9" step="0.1"	name="flEngHourStart"  /></td>
 		</tr>
 		<tr>
 			<td><label for="flEngHourEnd">Eng End Hour (0000.0)</label> </td>
-			<td><input type="number" value=0 min="0.0" max="9999.9"	name="flEngHourEnd"  /></td>
+			<td><input id="engEndHur" type="number" value=0.0 min="0.0" max="9999.9"	name="flEngHourEnd"/></td>
 		</tr>
 		<tr>
 			<td><label for="flFuelQt">Fuel Consumption (000.0)</label> </td>
@@ -123,6 +123,11 @@ function engineStartHour() {
 	  };
 	  xhttp.open("GET", "/addflight/esh/"+x, true);
 	  xhttp.send();
-	}
+	};
+
+function engEndHur() {
+	var x = document.getElementById("engStrHur").innerHTML;
+	document.getElementById("engEndHur").innerHTML = x;
+};
 </script>
 </html>

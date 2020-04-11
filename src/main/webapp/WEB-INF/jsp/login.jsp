@@ -143,14 +143,14 @@
 -->
 		</div>
 	</div>
-	<!--
+	
 	<div id="portfolio" class="container-fluid text-center bg-grey">
 		<h2>Portfolio</h2>
 		<h4>What we have created</h4>
 		<div class="row text-center">
 			<div class="col-sm-4">
 				<div class="thumbnail">
-					<img src="shokeda.jpg" alt="Shokeda">
+					<img src="${contextPath}/resources/static/shokeda.jpg" alt="Shokeda">
 					<p>
 						<strong>Shokeda</strong>
 					</p>
@@ -159,7 +159,7 @@
 			</div>
 			<div class="col-sm-4">
 				<div class="thumbnail">
-					<img src="kfarMaimon.jpg" alt="Kfar Maimon">
+					<img src="${contextPath}/resources/static/kfarMaimon.jpg" alt="Kfar Maimon">
 					<p>
 						<strong>Kfar Maimon</strong>
 					</p>
@@ -168,7 +168,7 @@
 			</div>
 			<div class="col-sm-4">
 				<div class="thumbnail">
-					<img src="myPPC.jpg" alt="My PPC">
+					<img src="${contextPath}/resources/static/myPPC.jpg" alt="My PPC">
 					<p>
 						<strong>My PPC</strong>
 					</p>
@@ -177,7 +177,7 @@
 			</div>
 		</div>
 	</div>
--->
+
 	<div id="contact" class="container-fluid bg-grey">
 		<h3>
 			<strong>CONTACT</strong>

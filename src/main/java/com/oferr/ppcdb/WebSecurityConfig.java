@@ -18,16 +18,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private UserDetailsService userDetailsService;
     
-    @Override
-    public void configure(WebSecurity web) throws Exception {
-      web
-        .ignoring()
-           .antMatchers(
-        		   "/*.css",
-        		   "/**/*.css",
-        		   "/**/*.js",
-        		   "/**/*.jpg"); // #3
-    }
+
+//    @Override
+//    public void configure(WebSecurity web) throws Exception {
+//      web
+//        .ignoring()
+//           .antMatchers(
+//        		   "/*.css",
+//        		   "/resources/**");
+//    }
 
 
     @Bean
@@ -41,9 +40,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                     .antMatchers(
                     		"/*.css",
-                    		"/resources/static/*.jpg",
-                    		"/resources/js/*.js",
-                    		"/resources/css/*.css",
                     		"/resources/**",
                     		"/registration")
                     .permitAll()

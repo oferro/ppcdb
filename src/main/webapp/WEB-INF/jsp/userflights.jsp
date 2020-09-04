@@ -10,8 +10,8 @@
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-<link rel="stylesheet" href="/resources/css/common.css">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="css/common.css">
+<link rel="stylesheet" href="css/style.css">
 
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -36,7 +36,9 @@
 			<c:if test="${ppc != null }"> - ${ppc.ppName}</c:if>
 			</H2>
 			<h3>
-				<a href="${contextPath}/addflight">חדש</a> <a href="/flights">רענן</a>
+				<a href="${contextPath}/addflight">הוספת טיסה</a> 
+<!--				<a href="/flights">רענן</a>
+-->
 			</h3>
 
 			<input id="myInput" type="text"	placeholder="Search..">
@@ -82,12 +84,13 @@
 							<td><c:out value="${t.flOtherExp}" /></td>
 							<td><c:out value="${t.flMaitenance}" /></td>
 							<td><c:out value="${t.flRemark}" /></td>
-							<td><a class="btn btn-md btn-primary" 
-									<c:if test="${t.flPilot.id != pilot.id}">disabled="disabled"</c:if>
-									href="flightUpdate/<c:out  value="${t.id}"/>"> עדכון </a>
+							<td>
+							<a class="btn btn-md btn-primary" 
+									<c:if test="${t.flPilot.id != pilot.id}"> disabled="disabled"</c:if>
+									href="/flightUpdate/<c:out  value="${t.id}"/>">עדכון</a>
 								<a class="btn btn-xs btn-danger"
 									<c:if test="${t.flPilot.id != pilot.id}"> disabled="disabled"</c:if>
-									href="flightDel/<c:out  value="${t.id}"/>">מחיקה</a>
+									href="/flightDel/<c:out  value="${t.id}"/>">מחיקה</a>
 								</td>
 								
 						</tr>

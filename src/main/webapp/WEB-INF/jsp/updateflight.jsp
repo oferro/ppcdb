@@ -13,7 +13,7 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link href="${contextPath}/resources/css/bootstrap.min.css"
 	rel="stylesheet">
-<link href="${contextPath}/resources/css/common.css" rel="stylesheet">
+<link href="${contextPath}resources/css/common.css" rel="stylesheet">
 
 
 <link rel="stylesheet" href="style.css">
@@ -125,8 +125,8 @@
 						</tr>
 					</table>
 					<input type="hidden" name="${_csrf.parameterName}"
-						value="${_csrf.token}" /> <input type="hidden" name="pathName"
-						value=userflights> 
+						value="${_csrf.token}" /> 
+					<input type="hidden" name="pathName" value=userflights> 
 					<input	
 						class="btn btn-primary btn-lg btn-block" type="submit"
 						value="update" name="myaction" /> 

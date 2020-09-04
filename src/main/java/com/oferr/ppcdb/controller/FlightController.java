@@ -68,6 +68,7 @@ public class FlightController {
 		if(uriName==null) {
 			uriName = "welcome";
 		};
+		System.out.println("PathInfo: " + uriName);
 		Sort sortFlight = Sort.by(Sort.Direction.DESC, "flDate").and(new Sort(Sort.Direction.DESC, "flToTime"));
 		Iterable<Flight> tisot = repository.findByFlPilot(pilot, sortFlight);
 		Iterable<Partner> pilotList =  partnerRepository.findByPtPilot(pilot); //pilot.getPartners(); //pilotRepository.findAll();

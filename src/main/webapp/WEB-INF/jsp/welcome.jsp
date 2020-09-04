@@ -10,8 +10,8 @@
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-<link  rel="stylesheet" href="$(contextPath)/resources/css/common.css">
-<link  rel="stylesheet" href="style.css">
+<link  rel="stylesheet" href="css/common.css">
+<link  rel="stylesheet" href="css/style.css">
 
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -78,7 +78,7 @@
 		<div class="row text-center">
 			<div class="col-sm-4">
 				<div class="thumbnail">
-					<img src="/resources/static/shokeda.jpg" alt="Shokeda">
+					<img src="static/shokeda.jpg" alt="Shokeda">
 					<p>
 						<strong>Shokeda</strong>
 					</p>
@@ -87,7 +87,7 @@
 			</div>
 			<div class="col-sm-4">
 				<div class="thumbnail">
-					<img src="/resources/static/kfarMaimon.jpg" alt="Kfar Maimon">
+					<img src="static/kfarMaimon.jpg" alt="Kfar Maimon">
 					<p>
 						<strong>Kfar Maimon</strong>
 					</p>
@@ -96,7 +96,7 @@
 			</div>
 			<div class="col-sm-4">
 				<div class="thumbnail">
-					<img src="/resources/static/myPPC.jpg" alt="My PPC">
+					<img src="static/myPPC.jpg" alt="My PPC">
 					<p>
 						<strong>My PPC</strong>
 					</p>
